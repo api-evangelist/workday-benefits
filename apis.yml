@@ -1,9 +1,12 @@
+aid: workday-benefits
 name: Workday Benefits API
 description: APIs for managing employee benefits, enrollments, and benefits administration in Workday
-image: https://www.workday.com/content/dam/web/images/logo.png
-url: https://www.workday.com
-created: '2024'
-modified: '2024'
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
 - name: Workday Benefits API
   description: Comprehensive API for managing employee benefits including health insurance, retirement plans, time off, and other benefit programs
@@ -53,6 +56,5 @@ common:
 - type: Privacy Policy
   url: https://www.workday.com/en-us/privacy.html
 maintainers:
-- name: Workday
-  email: developers@workday.com
-  url: https://www.workday.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
