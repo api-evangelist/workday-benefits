@@ -1,5 +1,5 @@
 aid: workday-benefits
-name: Workday Benefits API
+name: Workday Benefits
 description: APIs for managing employee benefits, enrollments, and benefits administration in Workday
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-
