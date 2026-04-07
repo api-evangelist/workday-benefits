@@ -15,31 +15,26 @@ apis:
       Comprehensive API for managing employee benefits including health insurance,
       retirement plans, time off, and other benefit programs.
     image: https://www.workday.com/content/dam/web/images/logo.png
-    humanURL: 
-      https://www.workday.com/en-us/products/human-capital-management/benefits.html
+    humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
     baseURL: https://wd2-impl-services1.workday.com/ccx/service
     tags:
       - Benefits
-      - Health Insurance
-      - Retirement
-      - Enrollments
-      - Human Resources
       - Employee Benefits
+      - Enrollments
+      - Health Insurance
+      - Human Resources
+      - Retirement
     properties:
       - type: Documentation
-        url: 
-          https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
       - type: OpenAPI
-        url: 
-          https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Benefits.json
+        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Benefits.json
       - type: Authentication
-        url: 
-          https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+        url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
       - type: Postman Collection
         url: https://www.postman.com/workday/workspace/workday-rest-api
       - type: Rate Limits
-        url: 
-          https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+        url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
       - type: Change Log
         url: https://community.workday.com/api-versions
       - type: Status Page
@@ -53,13 +48,11 @@ apis:
         url: https://community.workday.com/support
 common:
   - type: Getting Started
-    url: 
-      https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/_wTPrHlQFO6kuhPPQvXUdg
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/_wTPrHlQFO6kuhPPQvXUdg
   - type: Developer Portal
     url: https://developer.workday.com
   - type: Authentication Guide
-    url: 
-      https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
   - type: SDKs
     url: https://github.com/Workday
   - type: Blog
