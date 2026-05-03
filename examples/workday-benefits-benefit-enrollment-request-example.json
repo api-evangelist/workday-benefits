@@ -1,0 +1,10 @@
+{
+  "employeeId": "EMP-12345",
+  "planId": "BP-DENTAL-001",
+  "coverageLevel": "EMPLOYEE_PLUS_FAMILY",
+  "effectiveDate": "2026-01-01",
+  "dependentIds": [
+    "DEP-001",
+    "DEP-002"
+  ]
+}

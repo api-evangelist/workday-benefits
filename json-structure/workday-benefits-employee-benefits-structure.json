@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-structure/workday-benefits-employee-benefits-structure.json",
+  "title": "Employee Benefits",
+  "description": "A summary of all active benefit enrollments for an employee",
+  "type": "object",
+  "properties": {
+    "employeeId": {
+      "description": "Employee identifier",
+      "type": "string"
+    },
+    "employeeName": {
+      "description": "Employee full name",
+      "type": "string"
+    },
+    "enrollments": {
+      "description": "Active benefit enrollments",
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "totalEmployeePremium": {
+      "description": "Total monthly employee premium",
+      "type": "double"
+    },
+    "currency": {
+      "description": "Currency code",
+      "type": "string"
+    }
+  },
+  "required": [
+    "employeeId",
+    "enrollments",
+    "totalEmployeePremium",
+    "currency"
+  ]
+}

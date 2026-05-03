@@ -1,0 +1,199 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Workday Benefits Administration"
+  description: "Unified capability for HR and benefits teams managing Workday employee benefits including health insurance enrollments, retirement plans, dependent management, qualifying life events, and time off administration."
+  tags:
+    - Benefits
+    - Employee Benefits
+    - Enterprise
+    - HCM
+    - HR
+    - Workday
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      WORKDAY_CLIENT_ID: WORKDAY_CLIENT_ID
+      WORKDAY_CLIENT_SECRET: WORKDAY_CLIENT_SECRET
+      WORKDAY_TENANT: WORKDAY_TENANT
+
+capability:
+  consumes:
+    - import: workday-benefits
+      location: ./shared/benefits.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: workday-benefits-administration-api
+      description: "Unified REST API for Workday Benefits Administration workflows."
+      resources:
+        - path: /v1/benefit-plans
+          name: benefit-plans
+          description: "Benefit plans"
+          operations:
+            - method: GET
+              name: list-benefit-plans
+              description: "List benefit plans"
+              call: "workday-benefits.list-benefit-plans"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/benefit-plans/{planId}
+          name: benefit-plan-by-id
+          operations:
+            - method: GET
+              name: get-benefit-plan
+              description: "Get a benefit plan"
+              call: "workday-benefits.get-benefit-plan"
+              with:
+                planId: "rest.planId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/benefit-enrollments
+          name: benefit-enrollments
+          description: "Benefit enrollments"
+          operations:
+            - method: GET
+              name: list-benefit-enrollments
+              description: "List benefit enrollments"
+              call: "workday-benefits.list-benefit-enrollments"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-benefit-enrollment
+              description: "Create enrollment"
+              call: "workday-benefits.create-benefit-enrollment"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/dependents
+          name: dependents
+          description: "Dependents"
+          operations:
+            - method: GET
+              name: list-dependents
+              description: "List dependents"
+              call: "workday-benefits.list-dependents"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-dependent
+              description: "Add a dependent"
+              call: "workday-benefits.create-dependent"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/employees/{employeeId}/benefits
+          name: employee-benefits
+          description: "Employee benefits"
+          operations:
+            - method: GET
+              name: get-employee-benefits
+              description: "Get employee benefits"
+              call: "workday-benefits.get-employee-benefits"
+              with:
+                employeeId: "rest.employeeId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: workday-benefits-administration-mcp
+      transport: http
+      description: "MCP server for AI-assisted Workday Benefits Administration, enrollment operations, and benefits analytics."
+      tools:
+        - name: list-benefit-plans
+          description: "List Workday benefit plans including health, dental, vision, life, and retirement options"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "workday-benefits.list-benefit-plans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-benefit-plan
+          description: "Get a specific Workday benefit plan with coverage options and costs"
+          hints:
+            readOnly: true
+          call: "workday-benefits.get-benefit-plan"
+          with:
+            planId: "tools.planId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-benefit-enrollments
+          description: "List Workday benefit enrollments with optional filtering by employee or plan"
+          hints:
+            readOnly: true
+          call: "workday-benefits.list-benefit-enrollments"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-benefit-enrollment
+          description: "Get a specific Workday benefit enrollment by ID"
+          hints:
+            readOnly: true
+          call: "workday-benefits.get-benefit-enrollment"
+          with:
+            enrollmentId: "tools.enrollmentId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-benefit-enrollment
+          description: "Create a new Workday benefit enrollment for an employee"
+          hints:
+            readOnly: false
+          call: "workday-benefits.create-benefit-enrollment"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-dependents
+          description: "List Workday employee dependents and beneficiaries"
+          hints:
+            readOnly: true
+          call: "workday-benefits.list-dependents"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-dependent
+          description: "Add a new dependent or beneficiary for an employee"
+          hints:
+            readOnly: false
+          call: "workday-benefits.create-dependent"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-benefit-events
+          description: "List Workday benefit qualifying life events and open enrollment windows"
+          hints:
+            readOnly: true
+          call: "workday-benefits.list-benefit-events"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-time-off-plans
+          description: "List Workday time off and leave plans with accrual information"
+          hints:
+            readOnly: true
+          call: "workday-benefits.list-time-off-plans"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-employee-benefits
+          description: "Get a complete summary of all active benefit enrollments for an employee"
+          hints:
+            readOnly: true
+          call: "workday-benefits.get-employee-benefits"
+          with:
+            employeeId: "tools.employeeId"
+          outputParameters:
+            - type: object
+              mapping: "$."

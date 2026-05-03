@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-schema/workday-benefits-time-off-plan-schema.json",
+  "title": "Time Off Plan",
+  "description": "A Workday time off or leave benefit plan",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique time off plan identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Plan name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VACATION",
+        "SICK",
+        "PERSONAL",
+        "PARENTAL",
+        "BEREAVEMENT",
+        "JURY_DUTY",
+        "HOLIDAY"
+      ],
+      "description": "Type of time off"
+    },
+    "accrualRate": {
+      "type": "number",
+      "description": "Accrual rate amount"
+    },
+    "accrualUnit": {
+      "type": "string",
+      "enum": [
+        "DAYS_PER_YEAR",
+        "DAYS_PER_MONTH",
+        "HOURS_PER_MONTH"
+      ],
+      "description": "Accrual rate unit"
+    },
+    "maxBalance": {
+      "type": "number",
+      "description": "Maximum accrual balance"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "description": "Plan status"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "status"
+  ]
+}

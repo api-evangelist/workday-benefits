@@ -1,0 +1,248 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Workday"
+  description: "Unified vocabulary mapping operational (OpenAPI) and capability (Naftiko) dimensions for the Workday Benefits API"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: Workday Benefits API
+      namespace: workday-benefits
+      version: v40.2
+      baseUrl: https://{tenant}.workday.com/api/benefits/v1
+      status: active
+
+  resources:
+    - name: benefit-plans
+      api: workday-benefits
+      actions: [list, get]
+      description: Benefit plan definitions including health, dental, vision, life, retirement, and disability plans
+    - name: benefit-enrollments
+      api: workday-benefits
+      actions: [list, get, create]
+      description: Employee benefit enrollment elections and coverage selections
+    - name: dependents
+      api: workday-benefits
+      actions: [list, create]
+      description: Employee dependents and beneficiaries eligible for benefits coverage
+    - name: benefit-events
+      api: workday-benefits
+      actions: [list]
+      description: Qualifying life events and open enrollment periods that trigger benefit changes
+    - name: time-off-plans
+      api: workday-benefits
+      actions: [list]
+      description: Time off and leave benefit plans with accrual rates and balances
+    - name: employee-benefits
+      api: workday-benefits
+      actions: [get]
+      description: Complete summary of an employee's active benefit enrollments and premiums
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a paginated collection
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a single resource by identifier
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create a new resource
+
+  schemas:
+    benefits:
+      - name: BenefitPlan
+        description: Benefit plan definition with coverage options, carrier, and premium costs
+      - name: BenefitEnrollment
+        description: Employee benefit enrollment with coverage level and effective dates
+      - name: BenefitEnrollmentRequest
+        description: Request to enroll in a benefit plan with coverage and dependent selections
+      - name: Dependent
+        description: Employee dependent or beneficiary with relationship and demographic information
+      - name: BenefitEvent
+        description: Qualifying life event or open enrollment window
+      - name: TimeOffPlan
+        description: Time off or leave plan with accrual rules and maximum balances
+      - name: EmployeeBenefits
+        description: Complete employee benefits summary including all active enrollments
+
+  parameters:
+    pagination:
+      - name: limit
+        type: integer
+        description: Maximum number of records to return
+      - name: offset
+        type: integer
+        description: Number of records to skip for pagination
+    identifiers:
+      - name: planId
+        type: string
+        description: Benefit plan identifier
+      - name: enrollmentId
+        type: string
+        description: Benefit enrollment identifier
+      - name: employeeId
+        type: string
+        description: Employee identifier
+    filtering:
+      - name: planType
+        type: string
+        description: Filter benefit plans by type (HEALTH, DENTAL, VISION, etc.)
+      - name: status
+        type: string
+        description: Filter resources by status
+
+  enums:
+    plan-types:
+      - HEALTH
+      - DENTAL
+      - VISION
+      - LIFE
+      - RETIREMENT
+      - DISABILITY
+      - FSA
+      - HSA
+    plan-statuses:
+      - ACTIVE
+      - INACTIVE
+      - PENDING
+    enrollment-statuses:
+      - ACTIVE
+      - PENDING
+      - CANCELLED
+      - WAIVED
+    coverage-levels:
+      - EMPLOYEE_ONLY
+      - EMPLOYEE_PLUS_SPOUSE
+      - EMPLOYEE_PLUS_CHILDREN
+      - EMPLOYEE_PLUS_FAMILY
+    event-types:
+      - OPEN_ENROLLMENT
+      - NEW_HIRE
+      - MARRIAGE
+      - DIVORCE
+      - BIRTH
+      - ADOPTION
+      - DEATH
+      - LOSS_OF_COVERAGE
+    time-off-types:
+      - VACATION
+      - SICK
+      - PERSONAL
+      - PARENTAL
+      - BEREAVEMENT
+      - JURY_DUTY
+      - HOLIDAY
+
+  authentication:
+    schemes:
+      - name: OAuth2 Client Credentials
+        type: oauth2
+        description: OAuth2 client credentials flow for server-to-server authentication with Workday tenant
+        apis: [Workday Benefits API]
+
+capability:
+  workflows:
+    - name: Benefits Administration
+      file: capabilities/benefits-administration.yaml
+      description: Unified workflow for HR and benefits teams managing Workday employee benefit enrollments, dependents, qualifying events, and time off plans
+      apisUsed: [Workday Benefits API]
+      toolCount: 10
+      personas: [Benefits Administrator, HR Business Partner, Employee Self-Service]
+      domains: [Benefit Plans, Enrollments, Dependents, Events, Time Off]
+
+  personas:
+    - id: benefits-administrator
+      name: Benefits Administrator
+      description: Manages benefit plan configurations, open enrollment periods, and employee elections
+      workflows: [Benefits Administration]
+    - id: hr-business-partner
+      name: HR Business Partner
+      description: Supports employees through qualifying life events and enrollment changes
+      workflows: [Benefits Administration]
+    - id: employee-self-service
+      name: Employee Self-Service
+      description: Manages own benefit elections, dependents, and views benefit summaries
+      workflows: [Benefits Administration]
+    - id: payroll-administrator
+      name: Payroll Administrator
+      description: Processes benefit premium deductions and employer contributions
+      workflows: [Benefits Administration]
+
+  domains:
+    - name: Benefit Plans
+      description: Health, dental, vision, life, retirement, and other benefit plan definitions
+      resources: [benefit-plans]
+    - name: Enrollments
+      description: Employee benefit election and enrollment management
+      resources: [benefit-enrollments]
+    - name: Dependents
+      description: Employee dependent and beneficiary management
+      resources: [dependents]
+    - name: Events
+      description: Qualifying life events and open enrollment administration
+      resources: [benefit-events]
+    - name: Time Off
+      description: Time off and leave plan administration
+      resources: [time-off-plans]
+    - name: Employee Benefits
+      description: Employee benefit summary and reporting
+      resources: [employee-benefits]
+
+  namespaces:
+    consumed:
+      - name: workday-benefits
+        baseUri: https://{tenant}.workday.com/api/benefits/v1
+        description: Workday Benefits API
+    exposed-rest:
+      - name: workday-benefits-administration-api
+        port: 8080
+      - name: workday-benefits-api
+        port: 8100
+    exposed-mcp:
+      - name: workday-benefits-administration-mcp
+        port: 9080
+      - name: workday-benefits-mcp
+        port: 9100
+
+  binds:
+    - name: WORKDAY_CLIENT_ID
+      description: Workday OAuth2 client ID for authentication
+      workflows: [Benefits Administration]
+    - name: WORKDAY_CLIENT_SECRET
+      description: Workday OAuth2 client secret for authentication
+      workflows: [Benefits Administration]
+    - name: WORKDAY_TENANT
+      description: Workday tenant hostname
+      workflows: [Benefits Administration]
+
+crossReference:
+  - resource: benefit-plans
+    operations: [listBenefitPlans, getBenefitPlan]
+    workflows: [Benefits Administration]
+    personas: [Benefits Administrator, HR Business Partner]
+  - resource: benefit-enrollments
+    operations: [listBenefitEnrollments, getBenefitEnrollment, createBenefitEnrollment]
+    workflows: [Benefits Administration]
+    personas: [Benefits Administrator, HR Business Partner, Employee Self-Service]
+  - resource: dependents
+    operations: [listDependents, createDependent]
+    workflows: [Benefits Administration]
+    personas: [HR Business Partner, Employee Self-Service]
+  - resource: benefit-events
+    operations: [listBenefitEvents]
+    workflows: [Benefits Administration]
+    personas: [Benefits Administrator, HR Business Partner]
+  - resource: time-off-plans
+    operations: [listTimeOffPlans]
+    workflows: [Benefits Administration]
+    personas: [Benefits Administrator, HR Business Partner]
+  - resource: employee-benefits
+    operations: [getEmployeeBenefits]
+    workflows: [Benefits Administration]
+    personas: [Benefits Administrator, Employee Self-Service, Payroll Administrator]

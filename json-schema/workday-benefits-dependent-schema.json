@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-schema/workday-benefits-dependent-schema.json",
+  "title": "Dependent",
+  "description": "An employee dependent or beneficiary",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique dependent identifier"
+    },
+    "employeeId": {
+      "type": "string",
+      "description": "Associated employee identifier"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "Dependent first name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Dependent last name"
+    },
+    "relationship": {
+      "type": "string",
+      "enum": [
+        "SPOUSE",
+        "DOMESTIC_PARTNER",
+        "CHILD",
+        "STEP_CHILD",
+        "FOSTER_CHILD"
+      ],
+      "description": "Relationship to employee"
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date",
+      "description": "Dependent date of birth"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "description": "Dependent status"
+    }
+  },
+  "required": [
+    "id",
+    "employeeId",
+    "firstName",
+    "lastName",
+    "relationship",
+    "dateOfBirth"
+  ]
+}

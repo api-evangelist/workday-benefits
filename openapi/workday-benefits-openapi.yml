@@ -1,0 +1,989 @@
+openapi: 3.0.3
+info:
+  title: Workday Benefits API
+  description: >-
+    The Workday Benefits API provides RESTful access to employee benefits management
+    capabilities including health insurance enrollments, retirement plans, life
+    insurance, dependent management, time off policies, and benefits administration.
+    The API enables organizations to programmatically manage employee benefit
+    programs, process enrollments, and integrate benefits data with other systems.
+  version: 'v40.2'
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+  - url: https://{tenant}.workday.com/api/benefits/v1
+    description: Workday tenant REST API endpoint
+    variables:
+      tenant:
+        default: wd2-impl-services1
+        description: Your Workday tenant hostname
+
+security:
+  - oauth2: []
+
+tags:
+  - name: Benefit Plans
+    description: Manage benefit plan definitions and configurations
+  - name: Benefit Enrollments
+    description: Manage employee benefit enrollments and elections
+  - name: Dependents
+    description: Manage employee dependents and beneficiaries
+  - name: Benefit Events
+    description: Manage benefit qualifying events and open enrollment
+  - name: Time Off Plans
+    description: Manage time off and leave benefit plans
+  - name: Employee Benefits
+    description: Manage individual employee benefit summaries and balances
+
+paths:
+  /benefitPlans:
+    get:
+      operationId: listBenefitPlans
+      summary: Workday List Benefit Plans
+      description: Retrieves a collection of benefit plans including health, dental, vision, life insurance, and retirement plans available to employees.
+      tags:
+        - Benefit Plans
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: planType
+          in: query
+          description: Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)
+          schema:
+            type: string
+          example: HEALTH
+      responses:
+        '200':
+          description: A list of benefit plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitPlansResponse'
+              examples:
+                ListBenefitPlans200Example:
+                  summary: Default listBenefitPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 12
+                    data:
+                      - id: BP-HEALTH-001
+                        name: Premier Health PPO Plan
+                        type: HEALTH
+                        carrier: Blue Cross Blue Shield
+                        status: ACTIVE
+                        effectiveDate: '2026-01-01'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /benefitPlans/{planId}:
+    get:
+      operationId: getBenefitPlan
+      summary: Workday Get Benefit Plan
+      description: Retrieves a specific benefit plan by its identifier including coverage options and costs.
+      tags:
+        - Benefit Plans
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          description: Benefit plan identifier
+          schema:
+            type: string
+          example: BP-HEALTH-001
+      responses:
+        '200':
+          description: A benefit plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitPlan'
+              examples:
+                GetBenefitPlan200Example:
+                  summary: Default getBenefitPlan 200 response
+                  x-microcks-default: true
+                  value:
+                    id: BP-HEALTH-001
+                    name: Premier Health PPO Plan
+                    type: HEALTH
+                    carrier: Blue Cross Blue Shield
+                    status: ACTIVE
+                    effectiveDate: '2026-01-01'
+                    employeePremium: 150.00
+                    employerContribution: 450.00
+                    currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: planId
+
+  /benefitEnrollments:
+    get:
+      operationId: listBenefitEnrollments
+      summary: Workday List Benefit Enrollments
+      description: Retrieves a collection of employee benefit enrollments and elections.
+      tags:
+        - Benefit Enrollments
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: employeeId
+          in: query
+          description: Filter enrollments by employee ID
+          schema:
+            type: string
+          example: EMP-12345
+        - name: planId
+          in: query
+          description: Filter enrollments by benefit plan ID
+          schema:
+            type: string
+          example: BP-HEALTH-001
+      responses:
+        '200':
+          description: A list of benefit enrollments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitEnrollmentsResponse'
+              examples:
+                ListBenefitEnrollments200Example:
+                  summary: Default listBenefitEnrollments 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 250
+                    data:
+                      - id: ENR-001
+                        employeeId: EMP-12345
+                        planId: BP-HEALTH-001
+                        coverageLevel: EMPLOYEE_PLUS_FAMILY
+                        effectiveDate: '2026-01-01'
+                        status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+    post:
+      operationId: createBenefitEnrollment
+      summary: Workday Create Benefit Enrollment
+      description: Creates a new employee benefit enrollment election.
+      tags:
+        - Benefit Enrollments
+      requestBody:
+        description: Benefit enrollment details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BenefitEnrollmentRequest'
+            examples:
+              CreateBenefitEnrollmentExample:
+                summary: Create benefit enrollment request
+                x-microcks-default: true
+                value:
+                  employeeId: EMP-12345
+                  planId: BP-HEALTH-001
+                  coverageLevel: EMPLOYEE_PLUS_FAMILY
+                  effectiveDate: '2026-01-01'
+                  dependentIds:
+                    - DEP-001
+                    - DEP-002
+      responses:
+        '201':
+          description: Benefit enrollment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitEnrollment'
+              examples:
+                CreateBenefitEnrollment201Example:
+                  summary: Default createBenefitEnrollment 201 response
+                  x-microcks-default: true
+                  value:
+                    id: ENR-002
+                    employeeId: EMP-12345
+                    planId: BP-HEALTH-001
+                    coverageLevel: EMPLOYEE_PLUS_FAMILY
+                    effectiveDate: '2026-01-01'
+                    status: PENDING
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /benefitEnrollments/{enrollmentId}:
+    get:
+      operationId: getBenefitEnrollment
+      summary: Workday Get Benefit Enrollment
+      description: Retrieves a specific benefit enrollment by ID.
+      tags:
+        - Benefit Enrollments
+      parameters:
+        - name: enrollmentId
+          in: path
+          required: true
+          description: Benefit enrollment identifier
+          schema:
+            type: string
+          example: ENR-001
+      responses:
+        '200':
+          description: A benefit enrollment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitEnrollment'
+              examples:
+                GetBenefitEnrollment200Example:
+                  summary: Default getBenefitEnrollment 200 response
+                  x-microcks-default: true
+                  value:
+                    id: ENR-001
+                    employeeId: EMP-12345
+                    planId: BP-HEALTH-001
+                    coverageLevel: EMPLOYEE_PLUS_FAMILY
+                    effectiveDate: '2026-01-01'
+                    status: ACTIVE
+                    employeePremium: 150.00
+                    currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: enrollmentId
+
+  /dependents:
+    get:
+      operationId: listDependents
+      summary: Workday List Dependents
+      description: Retrieves a collection of employee dependents and beneficiaries.
+      tags:
+        - Dependents
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: employeeId
+          in: query
+          description: Filter dependents by employee ID
+          schema:
+            type: string
+          example: EMP-12345
+      responses:
+        '200':
+          description: A list of dependents
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DependentsResponse'
+              examples:
+                ListDependents200Example:
+                  summary: Default listDependents 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 3
+                    data:
+                      - id: DEP-001
+                        employeeId: EMP-12345
+                        firstName: John
+                        lastName: Smith
+                        relationship: SPOUSE
+                        dateOfBirth: '1985-03-15'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+    post:
+      operationId: createDependent
+      summary: Workday Create Dependent
+      description: Creates a new employee dependent or beneficiary record.
+      tags:
+        - Dependents
+      requestBody:
+        description: Dependent details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DependentRequest'
+            examples:
+              CreateDependentExample:
+                summary: Create dependent request
+                x-microcks-default: true
+                value:
+                  employeeId: EMP-12345
+                  firstName: Sarah
+                  lastName: Smith
+                  relationship: CHILD
+                  dateOfBirth: '2015-07-22'
+      responses:
+        '201':
+          description: Dependent created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dependent'
+              examples:
+                CreateDependent201Example:
+                  summary: Default createDependent 201 response
+                  x-microcks-default: true
+                  value:
+                    id: DEP-003
+                    employeeId: EMP-12345
+                    firstName: Sarah
+                    lastName: Smith
+                    relationship: CHILD
+                    dateOfBirth: '2015-07-22'
+                    status: ACTIVE
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /benefitEvents:
+    get:
+      operationId: listBenefitEvents
+      summary: Workday List Benefit Events
+      description: Retrieves a collection of benefit qualifying life events and open enrollment windows.
+      tags:
+        - Benefit Events
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: employeeId
+          in: query
+          description: Filter events by employee ID
+          schema:
+            type: string
+          example: EMP-12345
+        - name: status
+          in: query
+          description: Filter by event status
+          schema:
+            type: string
+          example: OPEN
+      responses:
+        '200':
+          description: A list of benefit events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitEventsResponse'
+              examples:
+                ListBenefitEvents200Example:
+                  summary: Default listBenefitEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 5
+                    data:
+                      - id: EVT-001
+                        employeeId: EMP-12345
+                        eventType: OPEN_ENROLLMENT
+                        status: OPEN
+                        startDate: '2026-11-01'
+                        endDate: '2026-11-30'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /timeOffPlans:
+    get:
+      operationId: listTimeOffPlans
+      summary: Workday List Time Off Plans
+      description: Retrieves a collection of time off and leave benefit plans.
+      tags:
+        - Time Off Plans
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+      responses:
+        '200':
+          description: A list of time off plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeOffPlansResponse'
+              examples:
+                ListTimeOffPlans200Example:
+                  summary: Default listTimeOffPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 6
+                    data:
+                      - id: TOP-001
+                        name: Annual Vacation
+                        type: VACATION
+                        accrualRate: 15
+                        accrualUnit: DAYS_PER_YEAR
+                        status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /employees/{employeeId}/benefits:
+    get:
+      operationId: getEmployeeBenefits
+      summary: Workday Get Employee Benefits
+      description: Retrieves a summary of all active benefit enrollments for a specific employee.
+      tags:
+        - Employee Benefits
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          description: Employee identifier
+          schema:
+            type: string
+          example: EMP-12345
+      responses:
+        '200':
+          description: Employee benefits summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeBenefits'
+              examples:
+                GetEmployeeBenefits200Example:
+                  summary: Default getEmployeeBenefits 200 response
+                  x-microcks-default: true
+                  value:
+                    employeeId: EMP-12345
+                    employeeName: Jane Smith
+                    enrollments:
+                      - planId: BP-HEALTH-001
+                        planName: Premier Health PPO Plan
+                        coverageLevel: EMPLOYEE_PLUS_FAMILY
+                        employeePremium: 150.00
+                        status: ACTIVE
+                    totalEmployeePremium: 275.50
+                    currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: employeeId
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            benefits: Access to Workday Benefits API
+
+  schemas:
+    BenefitPlan:
+      title: Benefit Plan
+      description: A Workday benefit plan including health, dental, vision, life, or retirement benefits
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique benefit plan identifier
+        name:
+          type: string
+          description: Benefit plan name
+        type:
+          type: string
+          enum: [HEALTH, DENTAL, VISION, LIFE, RETIREMENT, DISABILITY, FSA, HSA]
+          description: Type of benefit plan
+        carrier:
+          type: string
+          description: Insurance carrier or plan provider name
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE, PENDING]
+          description: Plan status
+        effectiveDate:
+          type: string
+          format: date
+          description: Plan effective date
+        endDate:
+          type: string
+          format: date
+          description: Plan end date
+        employeePremium:
+          type: number
+          description: Employee monthly premium cost
+        employerContribution:
+          type: number
+          description: Employer monthly contribution amount
+        currency:
+          type: string
+          description: Currency code
+        description:
+          type: string
+          description: Plan description
+      required: [id, name, type, status, effectiveDate]
+
+    BenefitPlansResponse:
+      title: Benefit Plans Response
+      description: Paginated response containing a list of benefit plans
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of benefit plans
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitPlan'
+      required: [total, data]
+
+    BenefitEnrollment:
+      title: Benefit Enrollment
+      description: An employee benefit enrollment election
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique enrollment identifier
+        employeeId:
+          type: string
+          description: Employee identifier
+        planId:
+          type: string
+          description: Benefit plan identifier
+        coverageLevel:
+          type: string
+          enum: [EMPLOYEE_ONLY, EMPLOYEE_PLUS_SPOUSE, EMPLOYEE_PLUS_CHILDREN, EMPLOYEE_PLUS_FAMILY]
+          description: Coverage level selected
+        effectiveDate:
+          type: string
+          format: date
+          description: Enrollment effective date
+        endDate:
+          type: string
+          format: date
+          description: Enrollment end date
+        status:
+          type: string
+          enum: [ACTIVE, PENDING, CANCELLED, WAIVED]
+          description: Enrollment status
+        employeePremium:
+          type: number
+          description: Employee monthly premium amount
+        currency:
+          type: string
+          description: Currency code
+        dependentIds:
+          type: array
+          items:
+            type: string
+          description: List of enrolled dependent IDs
+      required: [id, employeeId, planId, coverageLevel, effectiveDate, status]
+
+    BenefitEnrollmentsResponse:
+      title: Benefit Enrollments Response
+      description: Paginated response containing a list of benefit enrollments
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of enrollments
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEnrollment'
+      required: [total, data]
+
+    BenefitEnrollmentRequest:
+      title: Benefit Enrollment Request
+      description: Request to create or update a benefit enrollment
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Employee identifier
+        planId:
+          type: string
+          description: Benefit plan identifier
+        coverageLevel:
+          type: string
+          enum: [EMPLOYEE_ONLY, EMPLOYEE_PLUS_SPOUSE, EMPLOYEE_PLUS_CHILDREN, EMPLOYEE_PLUS_FAMILY]
+          description: Desired coverage level
+        effectiveDate:
+          type: string
+          format: date
+          description: Enrollment effective date
+        dependentIds:
+          type: array
+          items:
+            type: string
+          description: List of dependent IDs to enroll
+        waiveReason:
+          type: string
+          description: Reason for waiving coverage (if applicable)
+      required: [employeeId, planId, coverageLevel, effectiveDate]
+
+    Dependent:
+      title: Dependent
+      description: An employee dependent or beneficiary
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique dependent identifier
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        firstName:
+          type: string
+          description: Dependent first name
+        lastName:
+          type: string
+          description: Dependent last name
+        relationship:
+          type: string
+          enum: [SPOUSE, DOMESTIC_PARTNER, CHILD, STEP_CHILD, FOSTER_CHILD]
+          description: Relationship to employee
+        dateOfBirth:
+          type: string
+          format: date
+          description: Dependent date of birth
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE]
+          description: Dependent status
+      required: [id, employeeId, firstName, lastName, relationship, dateOfBirth]
+
+    DependentsResponse:
+      title: Dependents Response
+      description: Paginated response containing a list of dependents
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of dependents
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependent'
+      required: [total, data]
+
+    DependentRequest:
+      title: Dependent Request
+      description: Request to add a new dependent or beneficiary
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        firstName:
+          type: string
+          description: Dependent first name
+        lastName:
+          type: string
+          description: Dependent last name
+        relationship:
+          type: string
+          enum: [SPOUSE, DOMESTIC_PARTNER, CHILD, STEP_CHILD, FOSTER_CHILD]
+          description: Relationship to employee
+        dateOfBirth:
+          type: string
+          format: date
+          description: Dependent date of birth
+        socialSecurityNumber:
+          type: string
+          description: Social security number (for US dependents)
+      required: [employeeId, firstName, lastName, relationship, dateOfBirth]
+
+    BenefitEvent:
+      title: Benefit Event
+      description: A qualifying life event or open enrollment period
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique event identifier
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        eventType:
+          type: string
+          enum: [OPEN_ENROLLMENT, NEW_HIRE, MARRIAGE, DIVORCE, BIRTH, ADOPTION, DEATH, LOSS_OF_COVERAGE]
+          description: Type of benefit event
+        status:
+          type: string
+          enum: [OPEN, IN_PROGRESS, COMPLETE, EXPIRED]
+          description: Event status
+        startDate:
+          type: string
+          format: date
+          description: Event enrollment window start date
+        endDate:
+          type: string
+          format: date
+          description: Event enrollment window end date
+        eventDate:
+          type: string
+          format: date
+          description: Date the qualifying event occurred
+      required: [id, eventType, status, startDate, endDate]
+
+    BenefitEventsResponse:
+      title: Benefit Events Response
+      description: Paginated response containing a list of benefit events
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of benefit events
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEvent'
+      required: [total, data]
+
+    TimeOffPlan:
+      title: Time Off Plan
+      description: A Workday time off or leave benefit plan
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique time off plan identifier
+        name:
+          type: string
+          description: Plan name
+        type:
+          type: string
+          enum: [VACATION, SICK, PERSONAL, PARENTAL, BEREAVEMENT, JURY_DUTY, HOLIDAY]
+          description: Type of time off
+        accrualRate:
+          type: number
+          description: Accrual rate amount
+        accrualUnit:
+          type: string
+          enum: [DAYS_PER_YEAR, DAYS_PER_MONTH, HOURS_PER_MONTH]
+          description: Accrual rate unit
+        maxBalance:
+          type: number
+          description: Maximum accrual balance
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE]
+          description: Plan status
+      required: [id, name, type, status]
+
+    TimeOffPlansResponse:
+      title: Time Off Plans Response
+      description: Paginated response containing a list of time off plans
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of time off plans
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeOffPlan'
+      required: [total, data]
+
+    EmployeeBenefits:
+      title: Employee Benefits
+      description: A summary of all active benefit enrollments for an employee
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Employee identifier
+        employeeName:
+          type: string
+          description: Employee full name
+        enrollments:
+          type: array
+          items:
+            type: object
+            properties:
+              planId:
+                type: string
+                description: Benefit plan ID
+              planName:
+                type: string
+                description: Benefit plan name
+              coverageLevel:
+                type: string
+                description: Coverage level
+              employeePremium:
+                type: number
+                description: Monthly employee premium
+              status:
+                type: string
+                description: Enrollment status
+          description: Active benefit enrollments
+        totalEmployeePremium:
+          type: number
+          description: Total monthly employee premium across all plans
+        currency:
+          type: string
+          description: Currency code
+      required: [employeeId, enrollments, totalEmployeePremium, currency]
+
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required: [error, message]
+
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body

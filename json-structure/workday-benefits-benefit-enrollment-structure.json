@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-structure/workday-benefits-benefit-enrollment-structure.json",
+  "title": "Benefit Enrollment",
+  "description": "An employee benefit enrollment election",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique enrollment identifier",
+      "type": "string"
+    },
+    "employeeId": {
+      "description": "Employee identifier",
+      "type": "string"
+    },
+    "planId": {
+      "description": "Benefit plan identifier",
+      "type": "string"
+    },
+    "coverageLevel": {
+      "description": "Coverage level selected",
+      "type": "string",
+      "enum": [
+        "EMPLOYEE_ONLY",
+        "EMPLOYEE_PLUS_SPOUSE",
+        "EMPLOYEE_PLUS_CHILDREN",
+        "EMPLOYEE_PLUS_FAMILY"
+      ]
+    },
+    "effectiveDate": {
+      "description": "Enrollment effective date",
+      "type": "date"
+    },
+    "endDate": {
+      "description": "Enrollment end date",
+      "type": "date"
+    },
+    "status": {
+      "description": "Enrollment status",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PENDING",
+        "CANCELLED",
+        "WAIVED"
+      ]
+    },
+    "employeePremium": {
+      "description": "Employee monthly premium amount",
+      "type": "double"
+    },
+    "currency": {
+      "description": "Currency code",
+      "type": "string"
+    },
+    "dependentIds": {
+      "description": "List of enrolled dependent IDs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "employeeId",
+    "planId",
+    "coverageLevel",
+    "effectiveDate",
+    "status"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "EVT-001",
+  "employeeId": "EMP-12345",
+  "eventType": "OPEN_ENROLLMENT",
+  "status": "OPEN",
+  "startDate": "2026-11-01",
+  "endDate": "2026-11-30"
+}

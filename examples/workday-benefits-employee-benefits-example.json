@@ -1,0 +1,36 @@
+{
+  "employeeId": "EMP-12345",
+  "employeeName": "Jane Smith",
+  "enrollments": [
+    {
+      "planId": "BP-HEALTH-001",
+      "planName": "Premier Health PPO Plan",
+      "coverageLevel": "EMPLOYEE_PLUS_FAMILY",
+      "employeePremium": 150.0,
+      "status": "ACTIVE"
+    },
+    {
+      "planId": "BP-DENTAL-001",
+      "planName": "Delta Dental PPO",
+      "coverageLevel": "EMPLOYEE_PLUS_FAMILY",
+      "employeePremium": 35.5,
+      "status": "ACTIVE"
+    },
+    {
+      "planId": "BP-VISION-001",
+      "planName": "VSP Vision Plan",
+      "coverageLevel": "EMPLOYEE_PLUS_FAMILY",
+      "employeePremium": 12.0,
+      "status": "ACTIVE"
+    },
+    {
+      "planId": "BP-401K-001",
+      "planName": "401(k) Retirement Plan",
+      "coverageLevel": "EMPLOYEE_ONLY",
+      "employeePremium": 78.0,
+      "status": "ACTIVE"
+    }
+  ],
+  "totalEmployeePremium": 275.5,
+  "currency": "USD"
+}

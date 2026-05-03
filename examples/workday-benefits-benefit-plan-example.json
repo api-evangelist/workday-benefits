@@ -1,0 +1,13 @@
+{
+  "id": "BP-HEALTH-001",
+  "name": "Premier Health PPO Plan",
+  "type": "HEALTH",
+  "carrier": "Blue Cross Blue Shield",
+  "status": "ACTIVE",
+  "effectiveDate": "2026-01-01",
+  "endDate": "2026-12-31",
+  "employeePremium": 150.0,
+  "employerContribution": 450.0,
+  "currency": "USD",
+  "description": "Comprehensive PPO health plan with nationwide coverage"
+}

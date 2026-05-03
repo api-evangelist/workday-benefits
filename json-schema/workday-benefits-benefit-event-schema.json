@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-schema/workday-benefits-benefit-event-schema.json",
+  "title": "Benefit Event",
+  "description": "A qualifying life event or open enrollment period",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier"
+    },
+    "employeeId": {
+      "type": "string",
+      "description": "Associated employee identifier"
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "OPEN_ENROLLMENT",
+        "NEW_HIRE",
+        "MARRIAGE",
+        "DIVORCE",
+        "BIRTH",
+        "ADOPTION",
+        "DEATH",
+        "LOSS_OF_COVERAGE"
+      ],
+      "description": "Type of benefit event"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "IN_PROGRESS",
+        "COMPLETE",
+        "EXPIRED"
+      ],
+      "description": "Event status"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Event enrollment window start date"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Event enrollment window end date"
+    },
+    "eventDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the qualifying event occurred"
+    }
+  },
+  "required": [
+    "id",
+    "eventType",
+    "status",
+    "startDate",
+    "endDate"
+  ]
+}

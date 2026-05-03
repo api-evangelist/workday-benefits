@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-schema/workday-benefits-benefit-enrollment-request-schema.json",
+  "title": "Benefit Enrollment Request",
+  "description": "Request to create or update a benefit enrollment",
+  "type": "object",
+  "properties": {
+    "employeeId": {
+      "type": "string",
+      "description": "Employee identifier"
+    },
+    "planId": {
+      "type": "string",
+      "description": "Benefit plan identifier"
+    },
+    "coverageLevel": {
+      "type": "string",
+      "enum": [
+        "EMPLOYEE_ONLY",
+        "EMPLOYEE_PLUS_SPOUSE",
+        "EMPLOYEE_PLUS_CHILDREN",
+        "EMPLOYEE_PLUS_FAMILY"
+      ],
+      "description": "Desired coverage level"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Enrollment effective date"
+    },
+    "dependentIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of dependent IDs to enroll"
+    },
+    "waiveReason": {
+      "type": "string",
+      "description": "Reason for waiving coverage"
+    }
+  },
+  "required": [
+    "employeeId",
+    "planId",
+    "coverageLevel",
+    "effectiveDate"
+  ]
+}

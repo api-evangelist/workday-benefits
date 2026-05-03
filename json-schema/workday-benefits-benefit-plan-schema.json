@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/json-schema/workday-benefits-benefit-plan-schema.json",
+  "title": "Benefit Plan",
+  "description": "A Workday benefit plan including health, dental, vision, life, or retirement benefits",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique benefit plan identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Benefit plan name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "HEALTH",
+        "DENTAL",
+        "VISION",
+        "LIFE",
+        "RETIREMENT",
+        "DISABILITY",
+        "FSA",
+        "HSA"
+      ],
+      "description": "Type of benefit plan"
+    },
+    "carrier": {
+      "type": "string",
+      "description": "Insurance carrier or plan provider name"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "PENDING"
+      ],
+      "description": "Plan status"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Plan effective date"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Plan end date"
+    },
+    "employeePremium": {
+      "type": "number",
+      "description": "Employee monthly premium cost"
+    },
+    "employerContribution": {
+      "type": "number",
+      "description": "Employer monthly contribution amount"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "description": {
+      "type": "string",
+      "description": "Plan description"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "status",
+    "effectiveDate"
+  ]
+}

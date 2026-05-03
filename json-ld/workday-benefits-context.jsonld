@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "wdben": "https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/schema/",
+
+    "BenefitPlan": "wdben:BenefitPlan",
+    "BenefitEnrollment": "wdben:BenefitEnrollment",
+    "BenefitEnrollmentRequest": "wdben:BenefitEnrollmentRequest",
+    "Dependent": "wdben:Dependent",
+    "BenefitEvent": "wdben:BenefitEvent",
+    "TimeOffPlan": "wdben:TimeOffPlan",
+    "EmployeeBenefits": "wdben:EmployeeBenefits",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "wdben:status",
+    "type": "schema:additionalType",
+    "currency": "schema:currency",
+
+    "effectiveDate": {
+      "@id": "schema:validFrom",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "schema:validThrough",
+      "@type": "xsd:date"
+    },
+    "startDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "eventDate": {
+      "@id": "wdben:eventDate",
+      "@type": "xsd:date"
+    },
+    "dateOfBirth": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    },
+
+    "carrier": "wdben:carrier",
+    "coverageLevel": "wdben:coverageLevel",
+
+    "employeePremium": {
+      "@id": "wdben:employeePremium",
+      "@type": "xsd:double"
+    },
+    "employerContribution": {
+      "@id": "wdben:employerContribution",
+      "@type": "xsd:double"
+    },
+    "totalEmployeePremium": {
+      "@id": "wdben:totalEmployeePremium",
+      "@type": "xsd:double"
+    },
+
+    "employeeId": "schema:employee",
+    "employeeName": "schema:name",
+    "planId": "wdben:planId",
+    "planName": "schema:name",
+    "dependentIds": {
+      "@id": "wdben:dependentIds",
+      "@container": "@list"
+    },
+    "waiveReason": "wdben:waiveReason",
+    "enrollments": {
+      "@id": "wdben:enrollments",
+      "@container": "@list"
+    },
+
+    "firstName": "schema:givenName",
+    "lastName": "schema:familyName",
+    "relationship": "schema:knowsAbout",
+
+    "eventType": "wdben:eventType",
+
+    "accrualRate": {
+      "@id": "wdben:accrualRate",
+      "@type": "xsd:double"
+    },
+    "accrualUnit": "wdben:accrualUnit",
+    "maxBalance": {
+      "@id": "wdben:maxBalance",
+      "@type": "xsd:double"
+    },
+
+    "total": {
+      "@id": "wdben:total",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "wdben:data",
+      "@container": "@list"
+    }
+  }
+}

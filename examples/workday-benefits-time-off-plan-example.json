@@ -1,0 +1,9 @@
+{
+  "id": "TOP-001",
+  "name": "Annual Vacation",
+  "type": "VACATION",
+  "accrualRate": 15,
+  "accrualUnit": "DAYS_PER_YEAR",
+  "maxBalance": 30,
+  "status": "ACTIVE"
+}

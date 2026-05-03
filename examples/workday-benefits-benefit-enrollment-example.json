@@ -1,0 +1,15 @@
+{
+  "id": "ENR-001",
+  "employeeId": "EMP-12345",
+  "planId": "BP-HEALTH-001",
+  "coverageLevel": "EMPLOYEE_PLUS_FAMILY",
+  "effectiveDate": "2026-01-01",
+  "endDate": "2026-12-31",
+  "status": "ACTIVE",
+  "employeePremium": 150.0,
+  "currency": "USD",
+  "dependentIds": [
+    "DEP-001",
+    "DEP-002"
+  ]
+}

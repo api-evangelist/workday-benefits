@@ -1,0 +1,311 @@
+rules:
+  # ─── Info ───────────────────────────────────────────────────────────────────
+  wdben-info-contact:
+    message: "Info object must include a contact with name and url."
+    severity: warn
+    given: "$.info"
+    then:
+      - field: contact.name
+        function: truthy
+      - field: contact.url
+        function: truthy
+
+  wdben-info-version:
+    message: "API version must follow Workday vN format."
+    severity: warn
+    given: "$.info.version"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^v[0-9]+(\\.[0-9]+)?$"
+
+  # ─── Operations ─────────────────────────────────────────────────────────────
+  wdben-operation-id-required:
+    message: "Every operation must have an operationId."
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  wdben-operation-summary-required:
+    message: "Every operation must have a summary."
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  wdben-operation-summary-workday-prefix:
+    message: "Operation summary must start with 'Workday '."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Workday "
+
+  wdben-operation-description-required:
+    message: "Every operation must have a description."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  wdben-operation-tags-required:
+    message: "Every operation must have at least one tag."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  # ─── Parameters ─────────────────────────────────────────────────────────────
+  wdben-parameter-description-required:
+    message: "Every parameter must have a description."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  wdben-parameter-schema-required:
+    message: "Every parameter must have a schema."
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: schema
+      function: truthy
+
+  # ─── Responses ───────────────────────────────────────────────────────────────
+  wdben-response-200-required:
+    message: "GET operations must define a 200 response."
+    severity: error
+    given: "$.paths[*].get.responses"
+    then:
+      field: "200"
+      function: truthy
+
+  wdben-response-401-required:
+    message: "Operations must define a 401 unauthorized response."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "401"
+      function: truthy
+
+  wdben-response-403-required:
+    message: "Operations must define a 403 forbidden response."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "403"
+      function: truthy
+
+  # ─── Schemas ─────────────────────────────────────────────────────────────────
+  wdben-schema-title-required:
+    message: "Every schema in components must have a title."
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: title
+      function: truthy
+
+  wdben-schema-description-required:
+    message: "Every schema in components must have a description."
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  wdben-schema-properties-description:
+    message: "Schema properties should have descriptions."
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  # ─── Security ────────────────────────────────────────────────────────────────
+  wdben-security-schemes-defined:
+    message: "API must define security schemes in components."
+    severity: error
+    given: "$.components"
+    then:
+      field: securitySchemes
+      function: truthy
+
+  wdben-operation-security-required:
+    message: "All operations must have security defined."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: truthy
+
+  wdben-oauth2-flows-defined:
+    message: "OAuth2 security scheme must define flows."
+    severity: error
+    given: "$.components.securitySchemes.oauth2"
+    then:
+      field: flows
+      function: truthy
+
+  # ─── Microcks Extensions ────────────────────────────────────────────────────
+  wdben-microcks-operation-extension:
+    message: "Operations should include x-microcks-operation extension for mock configuration."
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  wdben-microcks-example-default:
+    message: "Response examples should include x-microcks-default: true for the primary example."
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].responses[*].content[*].examples[*]"
+    then:
+      field: x-microcks-default
+      function: truthy
+
+  # ─── Naming Conventions ─────────────────────────────────────────────────────
+  wdben-path-camel-case:
+    message: "Path segments should use camelCase per Workday conventions."
+    severity: info
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[a-zA-Z0-9/{}_.]*$"
+
+  wdben-schema-pascal-case:
+    message: "Schema names in components must use PascalCase."
+    severity: warn
+    given: "$.components.schemas"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]*$"
+
+  wdben-operation-id-camel-case:
+    message: "Operation IDs should use camelCase."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  # ─── Workday-Specific Patterns ───────────────────────────────────────────────
+  wdben-pagination-limit-param:
+    message: "List operations should support a limit parameter."
+    severity: info
+    given: "$.paths[*][?(@property === 'get')].parameters[?(@.name === 'limit')]"
+    then:
+      field: schema.type
+      function: enumeration
+      functionOptions:
+        values: [integer]
+
+  wdben-pagination-offset-param:
+    message: "List operations should support an offset parameter."
+    severity: info
+    given: "$.paths[*][?(@property === 'get')].parameters[?(@.name === 'offset')]"
+    then:
+      field: schema.type
+      function: enumeration
+      functionOptions:
+        values: [integer]
+
+  wdben-response-schema-ref:
+    message: "Success responses should reference a defined schema component."
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses[200,201].content.application/json.schema"
+    then:
+      field: "$ref"
+      function: truthy
+
+  wdben-server-tenant-variable:
+    message: "Server URL should include a {tenant} variable for multi-tenant support."
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "\\{tenant\\}"
+
+  wdben-error-response-schema:
+    message: "Error responses should reference the ErrorResponse schema."
+    severity: info
+    given: "$.components.responses[*].content.application/json.schema"
+    then:
+      field: "$ref"
+      function: truthy
+
+  # ─── Documentation ───────────────────────────────────────────────────────────
+  wdben-tags-global-defined:
+    message: "Tags used in operations should be defined at the global level."
+    severity: warn
+    given: "$.tags"
+    then:
+      field: description
+      function: truthy
+
+  wdben-examples-provided:
+    message: "Responses should include examples for documentation."
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].responses[200,201].content.application/json"
+    then:
+      field: examples
+      function: truthy
+
+  wdben-request-body-description:
+    message: "Request bodies should include a description."
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody"
+    then:
+      field: description
+      function: truthy
+
+  wdben-request-body-required-flag:
+    message: "Request bodies should explicitly declare if they are required."
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody"
+    then:
+      field: required
+      function: defined
+
+  # ─── Benefits-Specific Rules ─────────────────────────────────────────────────
+  wdben-enrollment-effective-date:
+    message: "Enrollment resources should include effectiveDate field."
+    severity: info
+    given: "$.components.schemas[?(@.title =~ /Enrollment/)].properties"
+    then:
+      field: effectiveDate
+      function: defined
+
+  wdben-dependent-dob-required:
+    message: "Dependent schemas should include dateOfBirth field."
+    severity: info
+    given: "$.components.schemas.Dependent.properties"
+    then:
+      field: dateOfBirth
+      function: defined
+
+  wdben-benefit-plan-status-enum:
+    message: "BenefitPlan status field should use defined enum values."
+    severity: warn
+    given: "$.components.schemas.BenefitPlan.properties.status"
+    then:
+      field: enum
+      function: truthy
+
+  wdben-coverage-level-enum:
+    message: "Coverage level fields should use defined enum values."
+    severity: info
+    given: "$.components.schemas[*].properties.coverageLevel"
+    then:
+      field: enum
+      function: truthy
