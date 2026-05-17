@@ -33,13 +33,13 @@ apis:
         url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
       - type: Postman Collection
         url: https://www.postman.com/workday/workspace/workday-rest-api
-      - type: Rate Limits
+      - type: RateLimits
         url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
-      - type: Change Log
+      - type: ChangeLog
         url: https://community.workday.com/api-versions
-      - type: Status Page
+      - type: StatusPage
         url: https://status.workday.com
-      - type: Terms of Service
+      - type: TermsOfService
         url: https://www.workday.com/en-us/legal.html
       - type: Support
         url: https://community.workday.com/
@@ -73,7 +73,7 @@ apis:
         url: json-structure/workday-benefits-time-off-plan-structure.json
       - type: JSONStructure
         url: json-structure/workday-benefits-employee-benefits-structure.json
-      - type: JSONLd
+      - type: JSONLD
         url: json-ld/workday-benefits-context.jsonld
       - type: SpectralRules
         url: rules/workday-benefits-spectral-rules.yml
@@ -87,7 +87,7 @@ apis:
       - type: Support
         url: https://community.workday.com/support
 common:
-  - type: Getting Started
+  - type: GettingStarted
     url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/_wTPrHlQFO6kuhPPQvXUdg
   - type: Developer Portal
     url: https://developer.workday.com
@@ -97,9 +97,9 @@ common:
     url: https://github.com/Workday
   - type: Blog
     url: https://blog.workday.com/en-us/technology.html
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.workday.com/en-us/privacy.html
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
