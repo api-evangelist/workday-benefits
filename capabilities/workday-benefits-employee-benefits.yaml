@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Benefits API — Employee Benefits
+  description: 'Workday Benefits API — Employee Benefits. 1 operations. Lead operation: Workday Get Employee Benefits. Self-contained
+    Naftiko capability covering one Workday Benefits business surface.'
+  tags:
+  - Workday Benefits
+  - Employee Benefits
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_BENEFITS_API_KEY: WORKDAY_BENEFITS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-benefits-employee-benefits
+    baseUri: https://{tenant}.workday.com/api/benefits/v1
+    description: Workday Benefits API — Employee Benefits business capability. Self-contained, no shared references.
+    resources:
+    - name: employees-employeeId-benefits
+      path: /employees/{employeeId}/benefits
+      operations:
+      - name: getemployeebenefits
+        method: GET
+        description: Workday Get Employee Benefits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: employeeId
+          in: path
+          type: string
+          description: Employee identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_BENEFITS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-benefits-employee-benefits-rest
+    port: 8080
+    description: REST adapter for Workday Benefits API — Employee Benefits. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/employees/{employeeid}/benefits
+      name: employees-employeeid-benefits
+      description: REST surface for employees-employeeId-benefits.
+      operations:
+      - method: GET
+        name: getemployeebenefits
+        description: Workday Get Employee Benefits
+        call: workday-benefits-employee-benefits.getemployeebenefits
+        with:
+          employeeId: rest.employeeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-benefits-employee-benefits-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Benefits API — Employee Benefits. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: workday-get-employee-benefits
+      description: Workday Get Employee Benefits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-benefits-employee-benefits.getemployeebenefits
+      with:
+        employeeId: tools.employeeId
+      outputParameters:
+      - type: object
+        mapping: $.

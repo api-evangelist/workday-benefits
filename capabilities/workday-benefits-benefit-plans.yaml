@@ -1,0 +1,133 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Benefits API — Benefit Plans
+  description: 'Workday Benefits API — Benefit Plans. 2 operations. Lead operation: Workday List Benefit Plans. Self-contained
+    Naftiko capability covering one Workday Benefits business surface.'
+  tags:
+  - Workday Benefits
+  - Benefit Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_BENEFITS_API_KEY: WORKDAY_BENEFITS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-benefits-benefit-plans
+    baseUri: https://{tenant}.workday.com/api/benefits/v1
+    description: Workday Benefits API — Benefit Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: benefitPlans
+      path: /benefitPlans
+      operations:
+      - name: listbenefitplans
+        method: GET
+        description: Workday List Benefit Plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of records to return
+        - name: offset
+          in: query
+          type: integer
+          description: Number of records to skip
+        - name: planType
+          in: query
+          type: string
+          description: Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)
+    - name: benefitPlans-planId
+      path: /benefitPlans/{planId}
+      operations:
+      - name: getbenefitplan
+        method: GET
+        description: Workday Get Benefit Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planId
+          in: path
+          type: string
+          description: Benefit plan identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_BENEFITS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-benefits-benefit-plans-rest
+    port: 8080
+    description: REST adapter for Workday Benefits API — Benefit Plans. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/benefitplans
+      name: benefitplans
+      description: REST surface for benefitPlans.
+      operations:
+      - method: GET
+        name: listbenefitplans
+        description: Workday List Benefit Plans
+        call: workday-benefits-benefit-plans.listbenefitplans
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          planType: rest.planType
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/benefitplans/{planid}
+      name: benefitplans-planid
+      description: REST surface for benefitPlans-planId.
+      operations:
+      - method: GET
+        name: getbenefitplan
+        description: Workday Get Benefit Plan
+        call: workday-benefits-benefit-plans.getbenefitplan
+        with:
+          planId: rest.planId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-benefits-benefit-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Benefits API — Benefit Plans. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: workday-list-benefit-plans
+      description: Workday List Benefit Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-benefits-benefit-plans.listbenefitplans
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        planType: tools.planType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: workday-get-benefit-plan
+      description: Workday Get Benefit Plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-benefits-benefit-plans.getbenefitplan
+      with:
+        planId: tools.planId
+      outputParameters:
+      - type: object
+        mapping: $.

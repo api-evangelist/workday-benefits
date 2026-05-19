@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Benefits API — Time Off Plans
+  description: 'Workday Benefits API — Time Off Plans. 1 operations. Lead operation: Workday List Time Off Plans. Self-contained
+    Naftiko capability covering one Workday Benefits business surface.'
+  tags:
+  - Workday Benefits
+  - Time Off Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_BENEFITS_API_KEY: WORKDAY_BENEFITS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-benefits-time-off-plans
+    baseUri: https://{tenant}.workday.com/api/benefits/v1
+    description: Workday Benefits API — Time Off Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: timeOffPlans
+      path: /timeOffPlans
+      operations:
+      - name: listtimeoffplans
+        method: GET
+        description: Workday List Time Off Plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of records to return
+        - name: offset
+          in: query
+          type: integer
+          description: Number of records to skip
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_BENEFITS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-benefits-time-off-plans-rest
+    port: 8080
+    description: REST adapter for Workday Benefits API — Time Off Plans. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/timeoffplans
+      name: timeoffplans
+      description: REST surface for timeOffPlans.
+      operations:
+      - method: GET
+        name: listtimeoffplans
+        description: Workday List Time Off Plans
+        call: workday-benefits-time-off-plans.listtimeoffplans
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-benefits-time-off-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Benefits API — Time Off Plans. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: workday-list-time-off-plans
+      description: Workday List Time Off Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-benefits-time-off-plans.listtimeoffplans
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
