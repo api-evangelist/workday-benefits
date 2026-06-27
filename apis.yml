@@ -28,7 +28,7 @@ apis:
         url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Benefits.json
       - type: Authentication
         url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
-      - type: Postman Collection
+      - type: PostmanCollection
         url: https://www.postman.com/workday/workspace/workday-rest-api
       - type: RateLimits
         url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
@@ -74,9 +74,9 @@ apis:
         url: json-ld/workday-benefits-context.jsonld
       - type: SpectralRules
         url: rules/workday-benefits-spectral-rules.yml
-      - type: NaftikoCapability - Benefits Administration
+      - type: X-NaftikoCapability-BenefitsAdministration
         url: capabilities/benefits-administration.yaml
-      - type: NaftikoCapability - Benefits (Shared)
+      - type: X-NaftikoCapability-BenefitsShared
         url: capabilities/shared/benefits.yaml
       - type: Vocabulary
         url: vocabulary/workday-benefits-vocabulary.yml
@@ -86,7 +86,7 @@ apis:
 common:
   - type: GettingStarted
     url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/_wTPrHlQFO6kuhPPQvXUdg
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.workday.com
   - type: Authentication Guide
     url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
@@ -100,9 +100,9 @@ common:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: NaftikoCapability - Benefits Administration
+  - type: X-NaftikoCapability-BenefitsAdministration
     url: capabilities/benefits-administration.yaml
-  - type: NaftikoCapability - Benefits (Shared)
+  - type: X-NaftikoCapability-BenefitsShared
     url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml

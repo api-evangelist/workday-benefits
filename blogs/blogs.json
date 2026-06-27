@@ -3,19 +3,12 @@
   "feeds": [
     {
       "source": "https://blog.workday.com/en-us/technology.html",
-      "feed_url": "https://blog.workday.com/en-us/technology.html",
-      "title": "",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://github.com/Workday",
-      "feed_url": "https://github.com/Workday",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 3,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 5,
+  "fetched": "2026-06-27T13:21:31Z",
+  "agent_pulled": "2026-06-27"
 }
