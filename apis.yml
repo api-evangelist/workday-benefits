@@ -84,6 +84,10 @@ apis:
       - type: Support
         url: https://community.workday.com/support
 common:
+  - type: TrustCenter
+    url: security/workday-benefits-trust-center.yml
+  - type: DomainSecurity
+    url: security/workday-benefits-domain-security.yml
   - type: Authentication
     url: authentication/workday-benefits-authentication.yml
   - type: OAuthScopes
