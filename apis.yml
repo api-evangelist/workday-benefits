@@ -84,6 +84,10 @@ apis:
       - type: Support
         url: https://community.workday.com/support
 common:
+  - type: Authentication
+    url: authentication/workday-benefits-authentication.yml
+  - type: OAuthScopes
+    url: scopes/workday-benefits-scopes.yml
   - type: GettingStarted
     url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/_wTPrHlQFO6kuhPPQvXUdg
   - type: DeveloperPortal
