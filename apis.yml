@@ -84,6 +84,8 @@ apis:
       - type: Support
         url: https://community.workday.com/support
 common:
+  - type: AgenticAccess
+    url: agentic-access/workday-benefits-agentic-access.yml
   - type: TrustCenter
     url: security/workday-benefits-trust-center.yml
   - type: DomainSecurity
