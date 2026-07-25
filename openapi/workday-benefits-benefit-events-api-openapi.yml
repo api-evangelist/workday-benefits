@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: Workday Benefits Benefit Enrollments Benefit Events API
+  description: The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.
+  version: v40.2
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/benefits/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Benefit Events
+  description: Manage benefit qualifying events and open enrollment
+paths:
+  /benefitEvents:
+    get:
+      operationId: listBenefitEvents
+      summary: Workday List Benefit Events
+      description: Retrieves a collection of benefit qualifying life events and open enrollment windows.
+      tags:
+      - Benefit Events
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          type: integer
+          default: 100
+        example: 100
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      - name: employeeId
+        in: query
+        description: Filter events by employee ID
+        schema:
+          type: string
+        example: EMP-12345
+      - name: status
+        in: query
+        description: Filter by event status
+        schema:
+          type: string
+        example: OPEN
+      responses:
+        '200':
+          description: A list of benefit events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitEventsResponse'
+              examples:
+                ListBenefitEvents200Example:
+                  summary: Default listBenefitEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 5
+                    data:
+                    - id: EVT-001
+                      employeeId: EMP-12345
+                      eventType: OPEN_ENROLLMENT
+                      status: OPEN
+                      startDate: '2026-11-01'
+                      endDate: '2026-11-30'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    BenefitEvent:
+      title: Benefit Event
+      description: A qualifying life event or open enrollment period
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique event identifier
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        eventType:
+          type: string
+          enum:
+          - OPEN_ENROLLMENT
+          - NEW_HIRE
+          - MARRIAGE
+          - DIVORCE
+          - BIRTH
+          - ADOPTION
+          - DEATH
+          - LOSS_OF_COVERAGE
+          description: Type of benefit event
+        status:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          - COMPLETE
+          - EXPIRED
+          description: Event status
+        startDate:
+          type: string
+          format: date
+          description: Event enrollment window start date
+        endDate:
+          type: string
+          format: date
+          description: Event enrollment window end date
+        eventDate:
+          type: string
+          format: date
+          description: Date the qualifying event occurred
+      required:
+      - id
+      - eventType
+      - status
+      - startDate
+      - endDate
+    BenefitEventsResponse:
+      title: Benefit Events Response
+      description: Paginated response containing a list of benefit events
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of benefit events
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEvent'
+      required:
+      - total
+      - data
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            benefits: Access to Workday Benefits API

@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: Workday Benefits Benefit Enrollments Employee Benefits API
+  description: The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.
+  version: v40.2
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/benefits/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Employee Benefits
+  description: Manage individual employee benefit summaries and balances
+paths:
+  /employees/{employeeId}/benefits:
+    get:
+      operationId: getEmployeeBenefits
+      summary: Workday Get Employee Benefits
+      description: Retrieves a summary of all active benefit enrollments for a specific employee.
+      tags:
+      - Employee Benefits
+      parameters:
+      - name: employeeId
+        in: path
+        required: true
+        description: Employee identifier
+        schema:
+          type: string
+        example: EMP-12345
+      responses:
+        '200':
+          description: Employee benefits summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeBenefits'
+              examples:
+                GetEmployeeBenefits200Example:
+                  summary: Default getEmployeeBenefits 200 response
+                  x-microcks-default: true
+                  value:
+                    employeeId: EMP-12345
+                    employeeName: Jane Smith
+                    enrollments:
+                    - planId: BP-HEALTH-001
+                      planName: Premier Health PPO Plan
+                      coverageLevel: EMPLOYEE_PLUS_FAMILY
+                      employeePremium: 150.0
+                      status: ACTIVE
+                    totalEmployeePremium: 275.5
+                    currency: USD
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: employeeId
+components:
+  schemas:
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    EmployeeBenefits:
+      title: Employee Benefits
+      description: A summary of all active benefit enrollments for an employee
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Employee identifier
+        employeeName:
+          type: string
+          description: Employee full name
+        enrollments:
+          type: array
+          items:
+            type: object
+            properties:
+              planId:
+                type: string
+                description: Benefit plan ID
+              planName:
+                type: string
+                description: Benefit plan name
+              coverageLevel:
+                type: string
+                description: Coverage level
+              employeePremium:
+                type: number
+                description: Monthly employee premium
+              status:
+                type: string
+                description: Enrollment status
+          description: Active benefit enrollments
+        totalEmployeePremium:
+          type: number
+          description: Total monthly employee premium across all plans
+        currency:
+          type: string
+          description: Currency code
+      required:
+      - employeeId
+      - enrollments
+      - totalEmployeePremium
+      - currency
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            benefits: Access to Workday Benefits API

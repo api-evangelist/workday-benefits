@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: Workday Benefits Benefit Enrollments Time Off Plans API
+  description: The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.
+  version: v40.2
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/benefits/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Time Off Plans
+  description: Manage time off and leave benefit plans
+paths:
+  /timeOffPlans:
+    get:
+      operationId: listTimeOffPlans
+      summary: Workday List Time Off Plans
+      description: Retrieves a collection of time off and leave benefit plans.
+      tags:
+      - Time Off Plans
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          type: integer
+          default: 100
+        example: 100
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      responses:
+        '200':
+          description: A list of time off plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeOffPlansResponse'
+              examples:
+                ListTimeOffPlans200Example:
+                  summary: Default listTimeOffPlans 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 6
+                    data:
+                    - id: TOP-001
+                      name: Annual Vacation
+                      type: VACATION
+                      accrualRate: 15
+                      accrualUnit: DAYS_PER_YEAR
+                      status: ACTIVE
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TimeOffPlan:
+      title: Time Off Plan
+      description: A Workday time off or leave benefit plan
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique time off plan identifier
+        name:
+          type: string
+          description: Plan name
+        type:
+          type: string
+          enum:
+          - VACATION
+          - SICK
+          - PERSONAL
+          - PARENTAL
+          - BEREAVEMENT
+          - JURY_DUTY
+          - HOLIDAY
+          description: Type of time off
+        accrualRate:
+          type: number
+          description: Accrual rate amount
+        accrualUnit:
+          type: string
+          enum:
+          - DAYS_PER_YEAR
+          - DAYS_PER_MONTH
+          - HOURS_PER_MONTH
+          description: Accrual rate unit
+        maxBalance:
+          type: number
+          description: Maximum accrual balance
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          description: Plan status
+      required:
+      - id
+      - name
+      - type
+      - status
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    TimeOffPlansResponse:
+      title: Time Off Plans Response
+      description: Paginated response containing a list of time off plans
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of time off plans
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeOffPlan'
+      required:
+      - total
+      - data
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            benefits: Access to Workday Benefits API
