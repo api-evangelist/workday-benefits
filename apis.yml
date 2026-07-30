@@ -1,89 +1,418 @@
 aid: workday-benefits
 name: Workday Benefits
 description: APIs for managing employee benefits, enrollments, and benefits administration in Workday.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday-benefits.png
 url: https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - name: Workday Benefits API
-    description: >-
-      Comprehensive API for managing employee benefits including health insurance, retirement plans, time off, and other
-      benefit programs.
-    image: https://www.workday.com/content/dam/web/images/logo.png
-    humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
-    baseURL: https://wd2-impl-services1.workday.com/ccx/service
-    tags:
-      - Benefits
-      - Employee Benefits
-      - Enrollments
-      - Health Insurance
-      - Human Resources
-      - Retirement
-    properties:
-      - type: Documentation
-        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
-      - type: OpenAPI
-        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Benefits.json
-      - type: Authentication
-        url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
-      - type: PostmanCollection
-        url: https://www.postman.com/workday/workspace/workday-rest-api
-      - type: RateLimits
-        url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
-      - type: ChangeLog
-        url: https://community.workday.com/api-versions
-      - type: StatusPage
-        url: https://status.workday.com
-      - type: TermsOfService
-        url: https://www.workday.com/en-us/legal.html
-      - type: Support
-        url: https://community.workday.com/
-      - type: OpenAPI
-        url: openapi/workday-benefits-openapi.yml
-      - type: JSONSchema
-        url: json-schema/workday-benefits-benefit-plan-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-benefits-benefit-enrollment-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-benefits-dependent-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-benefits-benefit-event-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-benefits-time-off-plan-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-benefits-employee-benefits-schema.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-benefit-plan-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-benefit-enrollment-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-dependent-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-benefit-event-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-time-off-plan-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-benefits-employee-benefits-structure.json
-      - type: JSONLD
-        url: json-ld/workday-benefits-context.jsonld
-      - type: SpectralRules
-        url: rules/workday-benefits-spectral-rules.yml
-      - type: X-NaftikoCapability-BenefitsAdministration
-        url: capabilities/benefits-administration.yaml
-      - type: X-NaftikoCapability-BenefitsShared
-        url: capabilities/shared/benefits.yaml
-      - type: Vocabulary
-        url: vocabulary/workday-benefits-vocabulary.yml
-    contact:
-      - type: Support
-        url: https://community.workday.com/support
+- aid: workday-benefits:workday-benefits-benefit-enrollments-api
+  name: Workday Benefits Benefit Enrollments API
+  description: Manage employee benefit enrollments and elections
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Benefit Enrollments
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-benefit-enrollments-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+  - type: Authentication
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+  - type: PostmanCollection
+    url: https://www.postman.com/workday/workspace/workday-rest-api
+  - type: RateLimits
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+  - type: ChangeLog
+    url: https://community.workday.com/api-versions
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: TermsOfService
+    url: https://www.workday.com/en-us/legal.html
+  - type: Support
+    url: https://community.workday.com/
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-dependent-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-event-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-time-off-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-employee-benefits-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-dependent-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-event-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-time-off-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-employee-benefits-structure.json
+  - type: JSONLD
+    url: json-ld/workday-benefits-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-benefits-spectral-rules.yml
+  - type: X-NaftikoCapability-BenefitsAdministration
+    url: capabilities/benefits-administration.yaml
+  - type: X-NaftikoCapability-BenefitsShared
+    url: capabilities/shared/benefits.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-benefits-vocabulary.yml
+- aid: workday-benefits:workday-benefits-benefit-events-api
+  name: Workday Benefits Benefit Events API
+  description: Manage benefit qualifying events and open enrollment
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Benefit Events
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-benefit-events-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+  - type: Authentication
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+  - type: PostmanCollection
+    url: https://www.postman.com/workday/workspace/workday-rest-api
+  - type: RateLimits
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+  - type: ChangeLog
+    url: https://community.workday.com/api-versions
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: TermsOfService
+    url: https://www.workday.com/en-us/legal.html
+  - type: Support
+    url: https://community.workday.com/
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-dependent-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-event-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-time-off-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-employee-benefits-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-dependent-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-event-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-time-off-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-employee-benefits-structure.json
+  - type: JSONLD
+    url: json-ld/workday-benefits-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-benefits-spectral-rules.yml
+  - type: X-NaftikoCapability-BenefitsAdministration
+    url: capabilities/benefits-administration.yaml
+  - type: X-NaftikoCapability-BenefitsShared
+    url: capabilities/shared/benefits.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-benefits-vocabulary.yml
+- aid: workday-benefits:workday-benefits-benefit-plans-api
+  name: Workday Benefits Benefit Plans API
+  description: Manage benefit plan definitions and configurations
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Benefit Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-benefit-plans-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+  - type: Authentication
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+  - type: PostmanCollection
+    url: https://www.postman.com/workday/workspace/workday-rest-api
+  - type: RateLimits
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+  - type: ChangeLog
+    url: https://community.workday.com/api-versions
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: TermsOfService
+    url: https://www.workday.com/en-us/legal.html
+  - type: Support
+    url: https://community.workday.com/
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-dependent-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-event-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-time-off-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-employee-benefits-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-dependent-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-event-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-time-off-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-employee-benefits-structure.json
+  - type: JSONLD
+    url: json-ld/workday-benefits-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-benefits-spectral-rules.yml
+  - type: X-NaftikoCapability-BenefitsAdministration
+    url: capabilities/benefits-administration.yaml
+  - type: X-NaftikoCapability-BenefitsShared
+    url: capabilities/shared/benefits.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-benefits-vocabulary.yml
+- aid: workday-benefits:workday-benefits-dependents-api
+  name: Workday Benefits Dependents API
+  description: Manage employee dependents and beneficiaries
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Dependents
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-dependents-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+  - type: Authentication
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+  - type: PostmanCollection
+    url: https://www.postman.com/workday/workspace/workday-rest-api
+  - type: RateLimits
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+  - type: ChangeLog
+    url: https://community.workday.com/api-versions
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: TermsOfService
+    url: https://www.workday.com/en-us/legal.html
+  - type: Support
+    url: https://community.workday.com/
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-dependent-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-event-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-time-off-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-employee-benefits-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-dependent-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-event-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-time-off-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-employee-benefits-structure.json
+  - type: JSONLD
+    url: json-ld/workday-benefits-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-benefits-spectral-rules.yml
+  - type: X-NaftikoCapability-BenefitsAdministration
+    url: capabilities/benefits-administration.yaml
+  - type: X-NaftikoCapability-BenefitsShared
+    url: capabilities/shared/benefits.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-benefits-vocabulary.yml
+- aid: workday-benefits:workday-benefits-employee-benefits-api
+  name: Workday Benefits Employee Benefits API
+  description: Manage individual employee benefit summaries and balances
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Employee Benefits
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-employee-benefits-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+  - type: Authentication
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+  - type: PostmanCollection
+    url: https://www.postman.com/workday/workspace/workday-rest-api
+  - type: RateLimits
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+  - type: ChangeLog
+    url: https://community.workday.com/api-versions
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: TermsOfService
+    url: https://www.workday.com/en-us/legal.html
+  - type: Support
+    url: https://community.workday.com/
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-dependent-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-event-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-time-off-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-employee-benefits-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-dependent-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-event-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-time-off-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-employee-benefits-structure.json
+  - type: JSONLD
+    url: json-ld/workday-benefits-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-benefits-spectral-rules.yml
+  - type: X-NaftikoCapability-BenefitsAdministration
+    url: capabilities/benefits-administration.yaml
+  - type: X-NaftikoCapability-BenefitsShared
+    url: capabilities/shared/benefits.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-benefits-vocabulary.yml
+- aid: workday-benefits:workday-benefits-time-off-plans-api
+  name: Workday Benefits Time Off Plans API
+  description: Manage time off and leave benefit plans
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Time Off Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-time-off-plans-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html
+  - type: Authentication
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w
+  - type: PostmanCollection
+    url: https://www.postman.com/workday/workspace/workday-rest-api
+  - type: RateLimits
+    url: https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w
+  - type: ChangeLog
+    url: https://community.workday.com/api-versions
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: TermsOfService
+    url: https://www.workday.com/en-us/legal.html
+  - type: Support
+    url: https://community.workday.com/
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-enrollment-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-dependent-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-benefit-event-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-time-off-plan-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-benefits-employee-benefits-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-enrollment-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-dependent-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-benefit-event-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-time-off-plan-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-benefits-employee-benefits-structure.json
+  - type: JSONLD
+    url: json-ld/workday-benefits-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-benefits-spectral-rules.yml
+  - type: X-NaftikoCapability-BenefitsAdministration
+    url: capabilities/benefits-administration.yaml
+  - type: X-NaftikoCapability-BenefitsShared
+    url: capabilities/shared/benefits.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-benefits-vocabulary.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/workday-benefits/overview
   - type: AgenticAccess
     url: agentic-access/workday-benefits-agentic-access.yml
   - type: TrustCenter
