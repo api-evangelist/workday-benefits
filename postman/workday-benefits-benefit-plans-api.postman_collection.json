@@ -1,0 +1,519 @@
+{
+  "info": {
+    "_postman_id": "f03402a8-085a-4252-bbdc-deb9ad8effcc",
+    "name": "Workday Benefits Benefit Enrollments Benefit Plans API",
+    "description": "The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:49.000Z",
+    "updatedAt": "2026-07-28T03:31:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f03402a8-085a-4252-bbdc-deb9ad8effcc"
+  },
+  "item": [
+    {
+      "name": "benefitPlans",
+      "item": [
+        {
+          "name": "{planId}",
+          "item": [
+            {
+              "name": "Workday Get Benefit Plan",
+              "id": "344094e2-8c1f-4937-b813-7777de562a3a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitPlans/:planId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitPlans",
+                    ":planId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "35583d27-1db6-4c20-9d5f-f25ca16fb796",
+                      "key": "planId",
+                      "value": "<string>",
+                      "description": "(Required) Benefit plan identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific benefit plan by its identifier including coverage options and costs."
+              },
+              "response": [
+                {
+                  "id": "7a1d3dad-e705-4253-a95a-40a4be2f341f",
+                  "name": "A benefit plan",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitPlans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitPlans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"HSA\",\n  \"status\": \"PENDING\",\n  \"effectiveDate\": \"<date>\",\n  \"carrier\": \"<string>\",\n  \"endDate\": \"<date>\",\n  \"employeePremium\": \"<number>\",\n  \"employerContribution\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:31:50.000Z",
+                  "updatedAt": "2026-07-28T03:31:50.000Z",
+                  "uid": "35240-7a1d3dad-e705-4253-a95a-40a4be2f341f"
+                },
+                {
+                  "id": "9cfd125a-134a-4e08-b4bf-46a16b790ab0",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitPlans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitPlans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:50.000Z",
+                  "updatedAt": "2026-07-28T03:31:50.000Z",
+                  "uid": "35240-9cfd125a-134a-4e08-b4bf-46a16b790ab0"
+                },
+                {
+                  "id": "310fb478-c2fb-4e44-ae24-18ef6ba74569",
+                  "name": "Insufficient permissions to access the resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitPlans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitPlans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:50.000Z",
+                  "updatedAt": "2026-07-28T03:31:50.000Z",
+                  "uid": "35240-310fb478-c2fb-4e44-ae24-18ef6ba74569"
+                },
+                {
+                  "id": "fc492297-728a-4d0b-9544-01ad1883556b",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitPlans/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitPlans",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "planId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:50.000Z",
+                  "updatedAt": "2026-07-28T03:31:50.000Z",
+                  "uid": "35240-fc492297-728a-4d0b-9544-01ad1883556b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:31:50.000Z",
+              "updatedAt": "2026-07-28T03:31:50.000Z",
+              "uid": "35240-344094e2-8c1f-4937-b813-7777de562a3a"
+            }
+          ],
+          "id": "bb40f3af-39c1-4a97-8fdb-a0f42eff2ed6",
+          "createdAt": "2026-07-28T03:31:50.000Z",
+          "updatedAt": "2026-07-28T03:31:50.000Z",
+          "uid": "35240-bb40f3af-39c1-4a97-8fdb-a0f42eff2ed6"
+        },
+        {
+          "name": "Workday List Benefit Plans",
+          "id": "f95d60bd-2de0-442c-8f68-9ef63d83224e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/benefitPlans?limit=100&offset=0&planType=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "benefitPlans"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)",
+                  "key": "planType",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of benefit plans including health, dental, vision, life insurance, and retirement plans available to employees."
+          },
+          "response": [
+            {
+              "id": "31b6ce9b-8636-45cf-93aa-097bdf42f477",
+              "name": "A list of benefit plans",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitPlans?limit=100&offset=0&planType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitPlans"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)",
+                      "key": "planType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"HSA\",\n      \"status\": \"PENDING\",\n      \"effectiveDate\": \"<date>\",\n      \"carrier\": \"<string>\",\n      \"endDate\": \"<date>\",\n      \"employeePremium\": \"<number>\",\n      \"employerContribution\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"VISION\",\n      \"status\": \"INACTIVE\",\n      \"effectiveDate\": \"<date>\",\n      \"carrier\": \"<string>\",\n      \"endDate\": \"<date>\",\n      \"employeePremium\": \"<number>\",\n      \"employerContribution\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:50.000Z",
+              "updatedAt": "2026-07-28T03:31:50.000Z",
+              "uid": "35240-31b6ce9b-8636-45cf-93aa-097bdf42f477"
+            },
+            {
+              "id": "254d0e88-4431-4ea7-99d7-7bfc8490147d",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitPlans?limit=100&offset=0&planType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitPlans"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)",
+                      "key": "planType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:50.000Z",
+              "updatedAt": "2026-07-28T03:31:50.000Z",
+              "uid": "35240-254d0e88-4431-4ea7-99d7-7bfc8490147d"
+            },
+            {
+              "id": "19bb2462-6222-4c2e-90d3-5701882145fe",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitPlans?limit=100&offset=0&planType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitPlans"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)",
+                      "key": "planType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:50.000Z",
+              "updatedAt": "2026-07-28T03:31:50.000Z",
+              "uid": "35240-19bb2462-6222-4c2e-90d3-5701882145fe"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:50.000Z",
+          "updatedAt": "2026-07-28T03:31:50.000Z",
+          "uid": "35240-f95d60bd-2de0-442c-8f68-9ef63d83224e"
+        }
+      ],
+      "id": "f33cb5d1-b1dd-4129-99ee-ba9ff1f30644",
+      "createdAt": "2026-07-28T03:31:50.000Z",
+      "updatedAt": "2026-07-28T03:31:50.000Z",
+      "uid": "35240-f33cb5d1-b1dd-4129-99ee-ba9ff1f30644"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "benefits",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/benefits/v1"
+    }
+  ]
+}

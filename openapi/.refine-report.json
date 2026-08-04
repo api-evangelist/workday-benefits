@@ -1,0 +1,24 @@
+{
+  "provider": "workday-benefits",
+  "sources": [
+    "workday-benefits-benefit-enrollments-api-openapi.yml",
+    "workday-benefits-benefit-events-api-openapi.yml",
+    "workday-benefits-benefit-plans-api-openapi.yml",
+    "workday-benefits-dependents-api-openapi.yml",
+    "workday-benefits-employee-benefits-api-openapi.yml",
+    "workday-benefits-time-off-plans-api-openapi.yml"
+  ],
+  "outputs": [
+    "workday-benefits-benefit-enrollments-api-openapi.yml",
+    "workday-benefits-benefit-events-api-openapi.yml",
+    "workday-benefits-benefit-plans-api-openapi.yml",
+    "workday-benefits-dependents-api-openapi.yml",
+    "workday-benefits-employee-benefits-api-openapi.yml",
+    "workday-benefits-time-off-plans-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

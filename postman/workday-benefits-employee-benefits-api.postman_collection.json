@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "16a527b8-61c7-4585-b4ec-7fd8cede51bf",
+    "name": "Workday Benefits Benefit Enrollments Employee Benefits API",
+    "description": "The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:51.000Z",
+    "updatedAt": "2026-07-28T03:31:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-16a527b8-61c7-4585-b4ec-7fd8cede51bf"
+  },
+  "item": [
+    {
+      "name": "employees",
+      "item": [
+        {
+          "name": "{employeeId}",
+          "item": [
+            {
+              "name": "benefits",
+              "item": [
+                {
+                  "name": "Workday Get Employee Benefits",
+                  "id": "3ce0ac79-5d84-4ba7-a852-002044f867f3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/employees/:employeeId/benefits",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "employees",
+                        ":employeeId",
+                        "benefits"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fd29fa35-b28d-4e02-8055-89193d7f03b9",
+                          "key": "employeeId",
+                          "value": "<string>",
+                          "description": "(Required) Employee identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a summary of all active benefit enrollments for a specific employee."
+                  },
+                  "response": [
+                    {
+                      "id": "e6ca42ec-f6ef-465d-a37a-f994e42b6ddd",
+                      "name": "Employee benefits summary",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/benefits",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "benefits"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"employeeId\": \"<string>\",\n  \"enrollments\": [\n    {\n      \"planId\": \"<string>\",\n      \"planName\": \"<string>\",\n      \"coverageLevel\": \"<string>\",\n      \"employeePremium\": \"<number>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"planId\": \"<string>\",\n      \"planName\": \"<string>\",\n      \"coverageLevel\": \"<string>\",\n      \"employeePremium\": \"<number>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"totalEmployeePremium\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"employeeName\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:31:52.000Z",
+                      "updatedAt": "2026-07-28T03:31:52.000Z",
+                      "uid": "35240-e6ca42ec-f6ef-465d-a37a-f994e42b6ddd"
+                    },
+                    {
+                      "id": "0cb0211c-9f3b-403d-906f-eaa5802f228e",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/benefits",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "benefits"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:52.000Z",
+                      "updatedAt": "2026-07-28T03:31:52.000Z",
+                      "uid": "35240-0cb0211c-9f3b-403d-906f-eaa5802f228e"
+                    },
+                    {
+                      "id": "1c3518c9-1168-4ac4-bb64-de3eda21c6a1",
+                      "name": "Insufficient permissions to access the resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/benefits",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "benefits"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:52.000Z",
+                      "updatedAt": "2026-07-28T03:31:52.000Z",
+                      "uid": "35240-1c3518c9-1168-4ac4-bb64-de3eda21c6a1"
+                    },
+                    {
+                      "id": "da040c4e-85c4-47f8-8763-5bfe8b184eb2",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/employees/:employeeId/benefits",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "employees",
+                            ":employeeId",
+                            "benefits"
+                          ],
+                          "variable": [
+                            {
+                              "key": "employeeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:52.000Z",
+                      "updatedAt": "2026-07-28T03:31:52.000Z",
+                      "uid": "35240-da040c4e-85c4-47f8-8763-5bfe8b184eb2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:52.000Z",
+                  "updatedAt": "2026-07-28T03:31:52.000Z",
+                  "uid": "35240-3ce0ac79-5d84-4ba7-a852-002044f867f3"
+                }
+              ],
+              "id": "87e15e4b-fafa-451f-b6a1-fc50f0e82a5c",
+              "createdAt": "2026-07-28T03:31:52.000Z",
+              "updatedAt": "2026-07-28T03:31:52.000Z",
+              "uid": "35240-87e15e4b-fafa-451f-b6a1-fc50f0e82a5c"
+            }
+          ],
+          "id": "92d2bfb3-ca30-4886-a9c0-919506dab053",
+          "createdAt": "2026-07-28T03:31:52.000Z",
+          "updatedAt": "2026-07-28T03:31:52.000Z",
+          "uid": "35240-92d2bfb3-ca30-4886-a9c0-919506dab053"
+        }
+      ],
+      "id": "ea79aa99-a175-4fd5-9c05-162c43cf301b",
+      "createdAt": "2026-07-28T03:31:52.000Z",
+      "updatedAt": "2026-07-28T03:31:52.000Z",
+      "uid": "35240-ea79aa99-a175-4fd5-9c05-162c43cf301b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "benefits",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/benefits/v1"
+    }
+  ]
+}

@@ -1,0 +1,808 @@
+{
+  "info": {
+    "_postman_id": "703383c5-f9d5-4cac-a9c5-dcc508799c63",
+    "name": "Workday Benefits Benefit Enrollments API",
+    "description": "The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:47.000Z",
+    "updatedAt": "2026-07-28T03:31:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-703383c5-f9d5-4cac-a9c5-dcc508799c63"
+  },
+  "item": [
+    {
+      "name": "benefitEnrollments",
+      "item": [
+        {
+          "name": "{enrollmentId}",
+          "item": [
+            {
+              "name": "Workday Get Benefit Enrollment",
+              "id": "4e341ee5-7486-4478-8eae-77d7eb559d68",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments/:enrollmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments",
+                    ":enrollmentId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "69af8126-f6b0-49d1-9c56-805118957538",
+                      "key": "enrollmentId",
+                      "value": "<string>",
+                      "description": "(Required) Benefit enrollment identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific benefit enrollment by ID."
+              },
+              "response": [
+                {
+                  "id": "151378d8-9447-48a0-bdcd-c4481eadad9e",
+                  "name": "A benefit enrollment",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitEnrollments/:enrollmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitEnrollments",
+                        ":enrollmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "enrollmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"status\": \"WAIVED\",\n  \"endDate\": \"<date>\",\n  \"employeePremium\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:48.000Z",
+                  "updatedAt": "2026-07-28T03:31:48.000Z",
+                  "uid": "35240-151378d8-9447-48a0-bdcd-c4481eadad9e"
+                },
+                {
+                  "id": "703b29c8-3c28-4806-923f-581cb04f95a3",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitEnrollments/:enrollmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitEnrollments",
+                        ":enrollmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "enrollmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:48.000Z",
+                  "updatedAt": "2026-07-28T03:31:48.000Z",
+                  "uid": "35240-703b29c8-3c28-4806-923f-581cb04f95a3"
+                },
+                {
+                  "id": "c9801266-5184-4c6f-b2f7-ef7b086b1e60",
+                  "name": "Insufficient permissions to access the resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitEnrollments/:enrollmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitEnrollments",
+                        ":enrollmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "enrollmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:48.000Z",
+                  "updatedAt": "2026-07-28T03:31:48.000Z",
+                  "uid": "35240-c9801266-5184-4c6f-b2f7-ef7b086b1e60"
+                },
+                {
+                  "id": "89b11d0a-d66d-4908-9283-31994313f136",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/benefitEnrollments/:enrollmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "benefitEnrollments",
+                        ":enrollmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "enrollmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:48.000Z",
+                  "updatedAt": "2026-07-28T03:31:48.000Z",
+                  "uid": "35240-89b11d0a-d66d-4908-9283-31994313f136"
+                }
+              ],
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-4e341ee5-7486-4478-8eae-77d7eb559d68"
+            }
+          ],
+          "id": "d892734b-e2a8-4fe8-89e2-c3d70557db8b",
+          "createdAt": "2026-07-28T03:31:48.000Z",
+          "updatedAt": "2026-07-28T03:31:48.000Z",
+          "uid": "35240-d892734b-e2a8-4fe8-89e2-c3d70557db8b"
+        },
+        {
+          "name": "Workday List Benefit Enrollments",
+          "id": "90c5556d-c811-4225-abaf-5238ae4ed216",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/benefitEnrollments?limit=100&offset=0&employeeId=<string>&planId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "benefitEnrollments"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter enrollments by employee ID",
+                  "key": "employeeId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter enrollments by benefit plan ID",
+                  "key": "planId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of employee benefit enrollments and elections."
+          },
+          "response": [
+            {
+              "id": "b37cea77-ff64-4058-a945-36c71e039362",
+              "name": "A list of benefit enrollments",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments?limit=100&offset=0&employeeId=<string>&planId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter enrollments by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter enrollments by benefit plan ID",
+                      "key": "planId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"employeeId\": \"<string>\",\n      \"planId\": \"<string>\",\n      \"coverageLevel\": \"EMPLOYEE_ONLY\",\n      \"effectiveDate\": \"<date>\",\n      \"status\": \"ACTIVE\",\n      \"endDate\": \"<date>\",\n      \"employeePremium\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"dependentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"employeeId\": \"<string>\",\n      \"planId\": \"<string>\",\n      \"coverageLevel\": \"EMPLOYEE_ONLY\",\n      \"effectiveDate\": \"<date>\",\n      \"status\": \"CANCELLED\",\n      \"endDate\": \"<date>\",\n      \"employeePremium\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"dependentIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-b37cea77-ff64-4058-a945-36c71e039362"
+            },
+            {
+              "id": "365e62c6-40c7-4d4c-bbaa-5e0e43bb4df5",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments?limit=100&offset=0&employeeId=<string>&planId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter enrollments by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter enrollments by benefit plan ID",
+                      "key": "planId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-365e62c6-40c7-4d4c-bbaa-5e0e43bb4df5"
+            },
+            {
+              "id": "10ebb905-3cd6-4967-b19d-391d88881486",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments?limit=100&offset=0&employeeId=<string>&planId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter enrollments by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter enrollments by benefit plan ID",
+                      "key": "planId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-10ebb905-3cd6-4967-b19d-391d88881486"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:48.000Z",
+          "updatedAt": "2026-07-28T03:31:48.000Z",
+          "uid": "35240-90c5556d-c811-4225-abaf-5238ae4ed216"
+        },
+        {
+          "name": "Workday Create Benefit Enrollment",
+          "id": "895e05de-f309-4e9c-9f11-31ce0ef702ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"waiveReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/benefitEnrollments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "benefitEnrollments"
+              ]
+            },
+            "description": "Creates a new employee benefit enrollment election."
+          },
+          "response": [
+            {
+              "id": "10bb13ea-dcb0-4d30-95a7-b8f7f32c984f",
+              "name": "Benefit enrollment created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"waiveReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"status\": \"WAIVED\",\n  \"endDate\": \"<date>\",\n  \"employeePremium\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-10bb13ea-dcb0-4d30-95a7-b8f7f32c984f"
+            },
+            {
+              "id": "65d0185c-5c9e-4515-96dc-aab893ff5eed",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"waiveReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-65d0185c-5c9e-4515-96dc-aab893ff5eed"
+            },
+            {
+              "id": "43890a8d-0982-418b-a33d-f13c77ce0821",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"waiveReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-43890a8d-0982-418b-a33d-f13c77ce0821"
+            },
+            {
+              "id": "91df9c26-19b6-460e-afeb-8fd6c5becac5",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_SPOUSE\",\n  \"effectiveDate\": \"<date>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"waiveReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEnrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEnrollments"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:48.000Z",
+              "updatedAt": "2026-07-28T03:31:48.000Z",
+              "uid": "35240-91df9c26-19b6-460e-afeb-8fd6c5becac5"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:48.000Z",
+          "updatedAt": "2026-07-28T03:31:48.000Z",
+          "uid": "35240-895e05de-f309-4e9c-9f11-31ce0ef702ed"
+        }
+      ],
+      "id": "e2389e37-532a-49c7-b55c-d17f80db8cbd",
+      "createdAt": "2026-07-28T03:31:48.000Z",
+      "updatedAt": "2026-07-28T03:31:48.000Z",
+      "uid": "35240-e2389e37-532a-49c7-b55c-d17f80db8cbd"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "benefits",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/benefits/v1"
+    }
+  ]
+}

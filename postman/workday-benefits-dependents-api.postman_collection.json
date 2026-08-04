@@ -1,0 +1,547 @@
+{
+  "info": {
+    "_postman_id": "a5ab3491-3f9c-44bd-a467-78e947102b95",
+    "name": "Workday Benefits Benefit Enrollments Dependents API",
+    "description": "The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:50.000Z",
+    "updatedAt": "2026-07-28T03:31:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a5ab3491-3f9c-44bd-a467-78e947102b95"
+  },
+  "item": [
+    {
+      "name": "dependents",
+      "item": [
+        {
+          "name": "Workday List Dependents",
+          "id": "0d9c41f1-9dbc-4594-a609-f6aa19949fed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dependents?limit=100&offset=0&employeeId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dependents"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter dependents by employee ID",
+                  "key": "employeeId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of employee dependents and beneficiaries."
+          },
+          "response": [
+            {
+              "id": "48ddf6f4-80cf-41fe-87bd-97d70cc0f436",
+              "name": "A list of dependents",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dependents?limit=100&offset=0&employeeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter dependents by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"employeeId\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"relationship\": \"STEP_CHILD\",\n      \"dateOfBirth\": \"<date>\",\n      \"status\": \"INACTIVE\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"employeeId\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"relationship\": \"FOSTER_CHILD\",\n      \"dateOfBirth\": \"<date>\",\n      \"status\": \"INACTIVE\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-48ddf6f4-80cf-41fe-87bd-97d70cc0f436"
+            },
+            {
+              "id": "a7f6b6b1-b30c-4f0a-b14a-133984495645",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dependents?limit=100&offset=0&employeeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter dependents by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-a7f6b6b1-b30c-4f0a-b14a-133984495645"
+            },
+            {
+              "id": "f010ac2f-c666-4936-a47c-af2a6570dd12",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dependents?limit=100&offset=0&employeeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter dependents by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-f010ac2f-c666-4936-a47c-af2a6570dd12"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:51.000Z",
+          "updatedAt": "2026-07-28T03:31:51.000Z",
+          "uid": "35240-0d9c41f1-9dbc-4594-a609-f6aa19949fed"
+        },
+        {
+          "name": "Workday Create Dependent",
+          "id": "b9ebf8c3-d2bd-4eca-9887-173652dd1323",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employeeId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"relationship\": \"STEP_CHILD\",\n  \"dateOfBirth\": \"<date>\",\n  \"socialSecurityNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dependents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dependents"
+              ]
+            },
+            "description": "Creates a new employee dependent or beneficiary record."
+          },
+          "response": [
+            {
+              "id": "8ce6f4e8-166f-4820-83e1-cf854d084c41",
+              "name": "Dependent created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"relationship\": \"STEP_CHILD\",\n  \"dateOfBirth\": \"<date>\",\n  \"socialSecurityNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dependents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"employeeId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"relationship\": \"CHILD\",\n  \"dateOfBirth\": \"<date>\",\n  \"status\": \"ACTIVE\"\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-8ce6f4e8-166f-4820-83e1-cf854d084c41"
+            },
+            {
+              "id": "1a161623-bf55-48b8-aec0-9da7ef344fc9",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"relationship\": \"STEP_CHILD\",\n  \"dateOfBirth\": \"<date>\",\n  \"socialSecurityNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dependents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-1a161623-bf55-48b8-aec0-9da7ef344fc9"
+            },
+            {
+              "id": "20685d91-741f-4b0f-88ac-049a1d6ff4e2",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"relationship\": \"STEP_CHILD\",\n  \"dateOfBirth\": \"<date>\",\n  \"socialSecurityNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dependents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-20685d91-741f-4b0f-88ac-049a1d6ff4e2"
+            },
+            {
+              "id": "67327f31-b031-4dcd-87f9-f6765da9a0c0",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"relationship\": \"STEP_CHILD\",\n  \"dateOfBirth\": \"<date>\",\n  \"socialSecurityNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dependents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dependents"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:51.000Z",
+              "updatedAt": "2026-07-28T03:31:51.000Z",
+              "uid": "35240-67327f31-b031-4dcd-87f9-f6765da9a0c0"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:51.000Z",
+          "updatedAt": "2026-07-28T03:31:51.000Z",
+          "uid": "35240-b9ebf8c3-d2bd-4eca-9887-173652dd1323"
+        }
+      ],
+      "id": "88221ccd-8a77-4ca1-bf0c-18a81b274deb",
+      "createdAt": "2026-07-28T03:31:51.000Z",
+      "updatedAt": "2026-07-28T03:31:51.000Z",
+      "uid": "35240-88221ccd-8a77-4ca1-bf0c-18a81b274deb"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "benefits",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/benefits/v1"
+    }
+  ]
+}

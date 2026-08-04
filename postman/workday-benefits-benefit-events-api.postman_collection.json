@@ -1,0 +1,298 @@
+{
+  "info": {
+    "_postman_id": "d8c66b30-c024-4859-9f62-718437029394",
+    "name": "Workday Benefits Benefit Enrollments Benefit Events API",
+    "description": "The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:48.000Z",
+    "updatedAt": "2026-07-28T03:31:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d8c66b30-c024-4859-9f62-718437029394"
+  },
+  "item": [
+    {
+      "name": "benefitEvents",
+      "item": [
+        {
+          "name": "Workday List Benefit Events",
+          "id": "4d6beb09-0fbc-41cc-8c0d-e5d80e7f28d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/benefitEvents?limit=100&offset=0&employeeId=<string>&status=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "benefitEvents"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter events by employee ID",
+                  "key": "employeeId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by event status",
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of benefit qualifying life events and open enrollment windows."
+          },
+          "response": [
+            {
+              "id": "7af43d45-bb34-4f49-859a-3a31597d8189",
+              "name": "A list of benefit events",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEvents?limit=100&offset=0&employeeId=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEvents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter events by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by event status",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"eventType\": \"DEATH\",\n      \"status\": \"IN_PROGRESS\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"employeeId\": \"<string>\",\n      \"eventDate\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"eventType\": \"NEW_HIRE\",\n      \"status\": \"EXPIRED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"employeeId\": \"<string>\",\n      \"eventDate\": \"<date>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:49.000Z",
+              "updatedAt": "2026-07-28T03:31:49.000Z",
+              "uid": "35240-7af43d45-bb34-4f49-859a-3a31597d8189"
+            },
+            {
+              "id": "159f6f90-393c-4e7e-a9d9-c8d933b70c05",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEvents?limit=100&offset=0&employeeId=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEvents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter events by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by event status",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:49.000Z",
+              "updatedAt": "2026-07-28T03:31:49.000Z",
+              "uid": "35240-159f6f90-393c-4e7e-a9d9-c8d933b70c05"
+            },
+            {
+              "id": "29a332e7-baba-4dfe-9eb9-7d0fedff85a3",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/benefitEvents?limit=100&offset=0&employeeId=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "benefitEvents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter events by employee ID",
+                      "key": "employeeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by event status",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:49.000Z",
+              "updatedAt": "2026-07-28T03:31:49.000Z",
+              "uid": "35240-29a332e7-baba-4dfe-9eb9-7d0fedff85a3"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:49.000Z",
+          "updatedAt": "2026-07-28T03:31:49.000Z",
+          "uid": "35240-4d6beb09-0fbc-41cc-8c0d-e5d80e7f28d2"
+        }
+      ],
+      "id": "80dffc57-3dd3-4903-863b-c7a5ba88fea7",
+      "createdAt": "2026-07-28T03:31:49.000Z",
+      "updatedAt": "2026-07-28T03:31:49.000Z",
+      "uid": "35240-80dffc57-3dd3-4903-863b-c7a5ba88fea7"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "benefits",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/benefits/v1"
+    }
+  ]
+}
