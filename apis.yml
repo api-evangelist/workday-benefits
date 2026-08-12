@@ -79,10 +79,6 @@ apis:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 - aid: workday-benefits:workday-benefits-benefit-events-api
@@ -144,10 +140,6 @@ apis:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 - aid: workday-benefits:workday-benefits-benefit-plans-api
@@ -209,10 +201,6 @@ apis:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 - aid: workday-benefits:workday-benefits-dependents-api
@@ -274,10 +262,6 @@ apis:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 - aid: workday-benefits:workday-benefits-employee-benefits-api
@@ -339,10 +323,6 @@ apis:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 - aid: workday-benefits:workday-benefits-time-off-plans-api
@@ -404,10 +384,6 @@ apis:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 common:
@@ -439,10 +415,6 @@ common:
     url: json-ld/workday-benefits-context.jsonld
   - type: SpectralRules
     url: rules/workday-benefits-spectral-rules.yml
-  - type: X-NaftikoCapability-BenefitsAdministration
-    url: capabilities/benefits-administration.yaml
-  - type: X-NaftikoCapability-BenefitsShared
-    url: capabilities/shared/benefits.yaml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 maintainers:
