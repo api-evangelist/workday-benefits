@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday-be
 url: https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: workday-benefits:workday-benefits-benefit-enrollments-api
   name: Workday Benefits Benefit Enrollments API
