@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Benefits Benefit Enrollments Benefit Plans API",
+    "version": "v40.2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Benefit Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Benefit Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/benefits/v1/benefitPlans",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "planType",
+                "value": "HEALTH",
+                "type": "query",
+                "description": "Filter by benefit plan type (HEALTH, DENTAL, VISION, LIFE, RETIREMENT)"
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of benefit plans including health, dental, vision, life insurance, and retirement plans available to employees."
+        },
+        {
+          "info": {
+            "name": "Workday Get Benefit Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/benefits/v1/benefitPlans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "BP-HEALTH-001",
+                "type": "path",
+                "description": "Benefit plan identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific benefit plan by its identifier including coverage options and costs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

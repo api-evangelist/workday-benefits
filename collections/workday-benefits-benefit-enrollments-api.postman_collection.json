@@ -1,0 +1,895 @@
+{
+  "item": [
+    {
+      "id": "d69d0d65-1e20-4be5-b34e-f1dc38ecdaa1",
+      "name": "Benefit Enrollments",
+      "description": {
+        "content": "Manage employee benefit enrollments and elections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50911a01-6a69-4f29-9a99-29c4492adbaa",
+          "name": "Workday List Benefit Enrollments",
+          "request": {
+            "name": "Workday List Benefit Enrollments",
+            "description": {
+              "content": "Retrieves a collection of employee benefit enrollments and elections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "benefitEnrollments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of records to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "employeeId",
+                  "value": "<string>",
+                  "description": "Filter enrollments by employee ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "planId",
+                  "value": "<string>",
+                  "description": "Filter enrollments by benefit plan ID"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Workday tenant hostname",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b93ce6a5-c099-4bff-8b13-57c3ed52b6e0",
+              "name": "A list of benefit enrollments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "employeeId",
+                      "value": "EMP-12345"
+                    },
+                    {
+                      "key": "planId",
+                      "value": "BP-HEALTH-001"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 250,\n  \"data\": [\n    {\n      \"id\": \"ENR-001\",\n      \"employeeId\": \"EMP-12345\",\n      \"planId\": \"BP-HEALTH-001\",\n      \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n      \"effectiveDate\": \"2026-01-01\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "938303b7-7af4-419c-b0f0-f4045ec38e9c",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "employeeId",
+                      "value": "EMP-12345"
+                    },
+                    {
+                      "key": "planId",
+                      "value": "BP-HEALTH-001"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Valid authentication credentials are required\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b3ae910-141e-4e3f-8cf3-d2552eebf6e2",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "employeeId",
+                      "value": "EMP-12345"
+                    },
+                    {
+                      "key": "planId",
+                      "value": "BP-HEALTH-001"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"FORBIDDEN\",\n  \"message\": \"You do not have permission to perform this action\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9976df08-9ec3-482c-a884-ba8c833e046a",
+          "name": "Workday Create Benefit Enrollment",
+          "request": {
+            "name": "Workday Create Benefit Enrollment",
+            "description": {
+              "content": "Creates a new employee benefit enrollment election.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "benefitEnrollments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Workday tenant hostname",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employeeId\": \"<string>\",\n  \"planId\": \"<string>\",\n  \"coverageLevel\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"dependentIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"waiveReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57432cc2-f50b-4192-a847-94abd31475d3",
+              "name": "Benefit enrollment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"EMP-12345\",\n  \"planId\": \"BP-HEALTH-001\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"dependentIds\": [\n    \"DEP-001\",\n    \"DEP-002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ENR-002\",\n  \"employeeId\": \"EMP-12345\",\n  \"planId\": \"BP-HEALTH-001\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"status\": \"PENDING\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe53fe0a-608b-45f7-884a-7d2a2781bc9c",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"EMP-12345\",\n  \"planId\": \"BP-HEALTH-001\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"dependentIds\": [\n    \"DEP-001\",\n    \"DEP-002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"BAD_REQUEST\",\n  \"message\": \"Invalid request body\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23055f52-a9e0-4daa-bd7e-ebfbc39f8348",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"EMP-12345\",\n  \"planId\": \"BP-HEALTH-001\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"dependentIds\": [\n    \"DEP-001\",\n    \"DEP-002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Valid authentication credentials are required\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bda26cc-cba3-4c2a-8832-bdac6fe6184f",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employeeId\": \"EMP-12345\",\n  \"planId\": \"BP-HEALTH-001\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"dependentIds\": [\n    \"DEP-001\",\n    \"DEP-002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"FORBIDDEN\",\n  \"message\": \"You do not have permission to perform this action\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d7b43e4-3b73-45c5-aaef-ba591152419f",
+          "name": "Workday Get Benefit Enrollment",
+          "request": {
+            "name": "Workday Get Benefit Enrollment",
+            "description": {
+              "content": "Retrieves a specific benefit enrollment by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "benefitEnrollments",
+                ":enrollmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "enrollmentId",
+                  "description": "(Required) Benefit enrollment identifier"
+                },
+                {
+                  "description": "Your Workday tenant hostname",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32a96d46-a09c-4d0e-8b17-bf2e10dc3874",
+              "name": "A benefit enrollment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments",
+                    ":enrollmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "enrollmentId",
+                      "description": "(Required) Benefit enrollment identifier"
+                    },
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ENR-001\",\n  \"employeeId\": \"EMP-12345\",\n  \"planId\": \"BP-HEALTH-001\",\n  \"coverageLevel\": \"EMPLOYEE_PLUS_FAMILY\",\n  \"effectiveDate\": \"2026-01-01\",\n  \"status\": \"ACTIVE\",\n  \"employeePremium\": 150,\n  \"currency\": \"USD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f28f6e6-a890-4008-b6d8-8523a644d1c9",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments",
+                    ":enrollmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "enrollmentId",
+                      "description": "(Required) Benefit enrollment identifier"
+                    },
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"UNAUTHORIZED\",\n  \"message\": \"Valid authentication credentials are required\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bafe0528-9bd8-426e-b5e2-dfda116f403e",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments",
+                    ":enrollmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "enrollmentId",
+                      "description": "(Required) Benefit enrollment identifier"
+                    },
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"FORBIDDEN\",\n  \"message\": \"You do not have permission to perform this action\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54d9a42f-954e-4fbd-af68-f946b50161d9",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "benefitEnrollments",
+                    ":enrollmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "enrollmentId",
+                      "description": "(Required) Benefit enrollment identifier"
+                    },
+                    {
+                      "description": "Your Workday tenant hostname",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"NOT_FOUND\",\n  \"message\": \"The requested resource does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Workday tenant hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "wd2-impl-services1",
+      "key": "tenant"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.workday.com/api/benefits/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "benefits"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7fea1cef-f768-4bef-8d75-5c1c5800c7ae",
+    "name": "Workday Benefits Benefit Enrollments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.\n\nContact Support:\n Name: Workday Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

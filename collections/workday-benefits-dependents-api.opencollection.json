@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Benefits Benefit Enrollments Dependents API",
+    "version": "v40.2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dependents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Dependents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/benefits/v1/dependents",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "employeeId",
+                "value": "EMP-12345",
+                "type": "query",
+                "description": "Filter dependents by employee ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of employee dependents and beneficiaries."
+        },
+        {
+          "info": {
+            "name": "Workday Create Dependent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/benefits/v1/dependents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new employee dependent or beneficiary record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Benefits Benefit Enrollments Time Off Plans API",
+    "version": "v40.2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Time Off Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Time Off Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/benefits/v1/timeOffPlans",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of time off and leave benefit plans."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
