@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Benefits Benefit Enrollments Dependents API
   description: The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.
@@ -128,61 +128,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
-    DependentRequest:
-      title: Dependent Request
-      description: Request to add a new dependent or beneficiary
-      type: object
-      properties:
-        employeeId:
-          type: string
-          description: Associated employee identifier
-        firstName:
-          type: string
-          description: Dependent first name
-        lastName:
-          type: string
-          description: Dependent last name
-        relationship:
-          type: string
-          enum:
-          - SPOUSE
-          - DOMESTIC_PARTNER
-          - CHILD
-          - STEP_CHILD
-          - FOSTER_CHILD
-          description: Relationship to employee
-        dateOfBirth:
-          type: string
-          format: date
-          description: Dependent date of birth
-        socialSecurityNumber:
-          type: string
-          description: Social security number (for US dependents)
-      required:
-      - employeeId
-      - firstName
-      - lastName
-      - relationship
-      - dateOfBirth
     Dependent:
       title: Dependent
       description: An employee dependent or beneficiary
@@ -226,6 +171,25 @@ components:
       - lastName
       - relationship
       - dateOfBirth
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
     DependentsResponse:
       title: Dependents Response
       description: Paginated response containing a list of dependents
@@ -241,25 +205,43 @@ components:
       required:
       - total
       - data
+    DependentRequest:
+      title: Dependent Request
+      description: Request to add a new dependent or beneficiary
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        firstName:
+          type: string
+          description: Dependent first name
+        lastName:
+          type: string
+          description: Dependent last name
+        relationship:
+          type: string
+          enum:
+          - SPOUSE
+          - DOMESTIC_PARTNER
+          - CHILD
+          - STEP_CHILD
+          - FOSTER_CHILD
+          description: Relationship to employee
+        dateOfBirth:
+          type: string
+          format: date
+          description: Dependent date of birth
+        socialSecurityNumber:
+          type: string
+          description: Social security number (for US dependents)
+      required:
+      - employeeId
+      - firstName
+      - lastName
+      - relationship
+      - dateOfBirth
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
     Forbidden:
       description: Insufficient permissions to access the resource
       content:
@@ -269,6 +251,24 @@ components:
           example:
             error: FORBIDDEN
             message: You do not have permission to perform this action
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
   securitySchemes:
     oauth2:
       type: oauth2

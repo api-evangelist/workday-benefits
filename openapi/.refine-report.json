@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "workday-benefits-benefit-enrollments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-benefits-benefit-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-benefits-benefit-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-benefits-dependents-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-benefits-employee-benefits-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-benefits-time-off-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

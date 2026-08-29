@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Benefits Benefit Enrollments Time Off Plans API
   description: The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.
@@ -70,7 +70,41 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
   schemas:
+    TimeOffPlansResponse:
+      title: Time Off Plans Response
+      description: Paginated response containing a list of time off plans
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of time off plans
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeOffPlan'
+      required:
+      - total
+      - data
     TimeOffPlan:
       title: Time Off Plan
       description: A Workday time off or leave benefit plan
@@ -136,40 +170,6 @@ components:
       required:
       - error
       - message
-    TimeOffPlansResponse:
-      title: Time Off Plans Response
-      description: Paginated response containing a list of time off plans
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of time off plans
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeOffPlan'
-      required:
-      - total
-      - data
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2
