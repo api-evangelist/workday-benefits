@@ -399,6 +399,8 @@ apis:
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
 common:
+  - type: Website
+    url: https://www.workday.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/workday-benefits/overview
   - type: AgenticAccess
