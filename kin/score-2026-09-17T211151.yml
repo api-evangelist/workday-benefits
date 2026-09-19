@@ -1,0 +1,53 @@
+# Kin Score artifact — workday-benefits — 2026-09-17T211151
+# The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
+---
+kin_score:
+  slug: workday-benefits
+  schema_version: 0.22.0
+  scored_at: '2026-09-17'
+  run_ts: 2026-09-17T211151
+  composite: 41.3
+  band: developing
+  facets:
+    discoverability: 63.0
+    contract_quality: 28.7
+    contract_governance: 33.3
+    operational_transparency: 39.5
+    developer_ergonomics: 28.6
+    access_clarity: 68.4
+  agent_readiness:
+    score: 27.7
+    band: agent-aware
+    dimensions:
+      spec_presence: true
+      agentic_access: derived
+      reversibility_documented: false
+      mcp_server: false
+      auth_clarity: negotiable
+      idempotency: false
+      error_semantics: false
+      openapi_examples: verified
+      rate_limit_signal: documented
+      event_surface_described: false
+      agent_skills: false
+      well_known_catalog: false
+      consent_identity: false
+      agent_card: false
+      dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
+  regulatory:
+    undetermined: true
+    note: provider declares no identity tags; regime could not be determined
+  provenance:
+    mcp: derived
+    skills: derived
+    agentic_access: derived
+    conformance: derived
+    contracts:
+      total: 9
+      derived: 7
+      coverage: 77.8
+      callable: 77.8
