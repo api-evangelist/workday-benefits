@@ -2,6 +2,13 @@
   "repo": "workday-benefits",
   "feeds": [
     {
+      "source": "https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md",
+      "feed_url": "https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
       "source": "https://github.com/Workday",
       "feed_url": "https://github.com/Workday",
       "title": "",
@@ -10,7 +17,7 @@
     }
   ],
   "post_count": 5,
-  "fetched": "2026-09-13T13:00:00Z",
+  "fetched": "2026-09-19T20:17:39Z",
   "agent_pulled": "2026-07-04",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "blog_subdomain",

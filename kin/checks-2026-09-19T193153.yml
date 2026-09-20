@@ -2,16 +2,16 @@
 kin_checks:
   slug: workday-benefits
   schema_version: 0.22.0
-  scored_at: '2026-09-18'
-  run_ts: 2026-09-18T231945
+  scored_at: '2026-09-19'
+  run_ts: 2026-09-19T193153
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
     earned: 42
-    partial: 28
-    missed: 40
+    partial: 29
+    missed: 39
     na: 26
   checks:
   - id: multiple_apis
@@ -37,24 +37,21 @@ kin_checks:
     status: missed
   - id: overlay_published
     status: missed
-  - id: change_log_present
-    status: missed
-    detail: pointer liveness 0.0
   - id: rate_limits_documented
     status: missed
   - id: rate_limits_rich
     status: missed
   - id: webhooks_advertised
     status: missed
+  - id: roadmap_present
+    status: missed
+    detail: pointer liveness 0.0
   - id: examples_published
     status: missed
   - id: portal_present
     status: missed
     detail: pointer liveness 0.0
   - id: getting_started_present
-    status: missed
-    detail: pointer liveness 0.0
-  - id: authentication_documented
     status: missed
     detail: pointer liveness 0.0
   - id: sdk_count_1
@@ -185,6 +182,10 @@ kin_checks:
   - id: status_page_present
     status: partial
     earned: 3.0
+    detail: pointer liveness 0.5
+  - id: postman_present
+    status: partial
+    earned: 1.0
     detail: pointer liveness 0.5
   - id: agent_skill_present
     status: partial
