@@ -1,0 +1,26 @@
+generated: '2026-09-17'
+method: generated
+source: >-
+  openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json,
+  openapi/workday-benefits-benefit-partner-openapi.json, conventions/workday-benefits-conventions.yml,
+  errors/workday-benefits-problem-types.yml
+provider: Workday Benefits
+skills:
+  - name: workday-benefits-read-enrollment-offerings
+    file: skills/workday-benefits-read-enrollment-offerings.md
+    api: Workday Benefit Enrollment Event Offerings API
+    consequence: read
+    operations:
+      - GET /employeeEnrollmentEvent
+      - GET /employeeEnrollmentEvent/{ID}
+  - name: workday-benefits-import-benefit-program
+    file: skills/workday-benefits-import-benefit-program.md
+    api: Workday Benefit Partner API
+    consequence: write
+    operations:
+      - POST /programs
+note: >-
+  Skills are grounded only in operations that exist in the harvested contracts. Workday's contracts declare no
+  operationId, so each step names the method and path verbatim. No skill was written for the 47-operation
+  Benefits_Administration SOAP service: a SOAP flow needs the tenant-specific endpoint and a WS-Security
+  credential that no public document supplies.

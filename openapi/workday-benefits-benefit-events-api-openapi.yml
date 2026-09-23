@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Workday Benefits Benefit Enrollments Benefit Events API
+  title: Workday Benefits Benefit Events API
   description: The Workday Benefits API provides RESTful access to employee benefits management capabilities including health insurance enrollments, retirement plans, life insurance, dependent management, time off policies, and benefits administration. The API enables organizations to programmatically manage employee benefit programs, process enrollments, and integrate benefits data with other systems.
   version: v40.2
   contact:
@@ -83,21 +83,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    BenefitEventsResponse:
-      title: Benefit Events Response
-      description: Paginated response containing a list of benefit events
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of benefit events
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BenefitEvent'
-      required:
-      - total
-      - data
     BenefitEvent:
       title: Benefit Event
       description: A qualifying life event or open enrollment period
@@ -166,16 +151,22 @@ components:
       required:
       - error
       - message
+    BenefitEventsResponse:
+      title: Benefit Events Response
+      description: Paginated response containing a list of benefit events
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of benefit events
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEvent'
+      required:
+      - total
+      - data
   responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
     Unauthorized:
       description: Authentication credentials are missing or invalid
       content:
@@ -185,6 +176,15 @@ components:
           example:
             error: UNAUTHORIZED
             message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2

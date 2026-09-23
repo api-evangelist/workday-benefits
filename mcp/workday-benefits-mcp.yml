@@ -1,0 +1,62 @@
+generated: '2026-09-17'
+method: searched
+status: candidate
+source: >-
+  https://developer.workday.com/doc/GUID-7ac8632c-1c99-44cd-b939-44c675ea6198.md (Workday Agent-Ready MCP
+  Tools Roadmap 2026), plus registry and web search for a publicly reachable Workday MCP endpoint
+name: Workday Benefits MCP (candidate)
+description: >-
+  Workday publishes an Agent-Ready MCP Tools roadmap naming individual MCP tool names and their READ/WRITE
+  class, and one of the tools shipping in the "Next" stage is a Benefits tool. Workday does NOT publish an
+  MCP endpoint URL, an installable first-party MCP package, or a tools/list manifest that can be introspected
+  anonymously - the Agent-Ready tools are early access through Workday Extend Professional. Nothing here was
+  probed as a live server; the tools below are what Workday itself names, plus a candidate derivation from
+  the two production Benefits REST contracts in openapi/.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+  note: >-
+    No reachable MCP endpoint and no first-party package. Probes of api.workday.com and developer.workday.com
+    returned 404 / an SPA shell, and no Workday documentation states an MCP URL. The third-party packages
+    workday-mcp (npm) and @mindstone/mcp-server-workday are not Workday-published and are not recorded as a
+    Workday surface.
+provider_published_tools:
+  source: https://developer.workday.com/doc/GUID-7ac8632c-1c99-44cd-b939-44c675ea6198.md
+  stage_next:
+    - tool: benefits_beneficiaryeventgroup_relationship_availablerelationships_prompt
+      title: Get Beneficiary Relationship Options
+      type: READ
+  stage_later:
+    - title: Add Beneficiary
+      type: WRITE
+    - title: Edit Beneficiary
+      type: WRITE
+    - title: Delete Beneficiary
+      type: WRITE
+  note: >-
+    Names and READ/WRITE classes are quoted from Workday's roadmap table. No input schema is published for
+    any of them; Workday states that write tools run through the same business-process controls, approvals,
+    delegation and audit trail as a human making the change. The roadmap is explicitly not a commitment to
+    deliver.
+candidate_tools:
+  derived_from:
+    - openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
+    - openapi/workday-benefits-benefit-partner-openapi.json
+  tools:
+    - name: list_employee_enrollment_events
+      description: Get worker benefit enrollment offerings for the active benefit enrollment event.
+      rest: GET /employeeEnrollmentEvent
+      consequence: read
+    - name: get_employee_enrollment_event
+      description: Get a single worker benefit enrollment event by Workday ID.
+      rest: GET /employeeEnrollmentEvent/{ID}
+      consequence: read
+    - name: create_benefit_program
+      description: Import a benefit program (announcement or message card) into Workday as a benefit partner.
+      rest: POST /programs
+      consequence: write
+      note: Creates a worker-visible card; no documented reversal operation on the REST surface.

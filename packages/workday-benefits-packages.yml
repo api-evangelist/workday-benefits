@@ -1,0 +1,56 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, and the Workday developer documentation (llms.txt doc index) searched
+  2026-09-17 for a first-party client library for the Workday Benefits REST/SOAP surface
+summary:
+  official_api_sdk_count: 0
+  note: >-
+    Workday publishes NO first-party SDK for its REST or SOAP APIs. The only first-party Workday packages in
+    a public registry are the Canvas design-system libraries (UI components for building Workday Extend apps),
+    which do not wrap this API surface; they are recorded here for accuracy and are also described in
+    components/. Because no package wraps the API, this repo deliberately carries NO `SDKs` pointer in
+    apis.yml - emitting one would credit Workday with client libraries it does not ship. The first-party
+    tooling that does exist is a CLI (WDCLI, see cli/) distributed from the Workday Developer Site behind
+    developer credentials rather than from a public registry.
+packages:
+  - name: '@workday/canvas-kit-react'
+    registry: npm
+    url: https://www.npmjs.com/package/@workday/canvas-kit-react
+    official: true
+    wraps_this_api: false
+    version: 16.1.1
+    published: '2026-09-15'
+    source_code: https://github.com/Workday/canvas-kit
+    note: Workday Canvas Kit React - the Workday design system UI component library, not an API client.
+  - name: '@workday/canvas-system-icons-web'
+    registry: npm
+    url: https://www.npmjs.com/package/@workday/canvas-system-icons-web
+    official: true
+    wraps_this_api: false
+    version: 5.1.0
+    published: '2026-08-26'
+    source_code: https://github.com/Workday/canvas-icons
+    note: Workday system icon set for web; design-system asset, not an API client.
+  - name: workday
+    registry: pypi
+    url: https://pypi.org/project/workday/
+    official: false
+    wraps_this_api: true
+    version: 0.4.0
+    published: '2018-06-27'
+    source_code: https://github.com/tonybaloney/workday
+    note: >-
+      Third-party Python client for Workday tenants (author Anthony Shaw), not published by Workday. Last
+      release 2018-06-27 - more than eight years behind the v47.0 web services and the v1 REST services it
+      would have to call. Recorded as an abandonment signal, not as a supported client.
+  - name: workday-mcp
+    registry: npm
+    url: https://www.npmjs.com/package/workday-mcp
+    official: false
+    wraps_this_api: true
+    version: 0.6.5
+    published: '2026-09-15'
+    note: >-
+      Third-party MCP server for Workday; its own npm description says it is "developed and maintained by AI".
+      Not a Workday package and not referenced by any Workday documentation.

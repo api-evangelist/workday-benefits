@@ -1,12 +1,7 @@
 {
   "provider": "workday-benefits",
   "sources": [
-    "workday-benefits-benefit-enrollments-api-openapi.yml",
-    "workday-benefits-benefit-events-api-openapi.yml",
-    "workday-benefits-benefit-plans-api-openapi.yml",
-    "workday-benefits-dependents-api-openapi.yml",
-    "workday-benefits-employee-benefits-api-openapi.yml",
-    "workday-benefits-time-off-plans-api-openapi.yml"
+    "_ae-authored/workday-benefits-openapi.yml"
   ],
   "outputs": [
     "workday-benefits-benefit-enrollments-api-openapi.yml",
@@ -20,13 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "workday-benefits-benefit-enrollments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-benefits-benefit-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-benefits-benefit-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-benefits-dependents-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-benefits-employee-benefits-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-benefits-time-off-plans-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "workday-benefits-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "workday-benefits-benefit-enrollments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-benefits-benefit-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-benefits-benefit-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-benefits-dependents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-benefits-employee-benefits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workday-benefits-time-off-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

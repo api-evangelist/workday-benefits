@@ -1,0 +1,56 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer.workday.com/doc/owp1552934548258.md (Web Services Versioning),
+  https://developer.workday.com/doc/GUID-85810465-bcfb-4fdf-a26d-55eaff3968a8-enHYPHENus.md (REST
+  Fundamentals), the REST service directory
+  (https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json), and probes of
+  status.workday.com
+versioning:
+  policy: published
+  rest: >-
+    Each REST service carries its own version in the path. Workday's own service directory classifies every
+    service into productionConfidenceLevel, previewConfidenceLevel, experimentalServices and
+    archivedServices, and both Benefits REST services sit in the production list (Benefit Enrollment Event
+    Offerings is explicitly stamped confidenceLevel "Production").
+  soap: >-
+    Endpoint versioning or message versioning; message version wins when both are given. Versions are whole
+    numbers before v21.0 and major.minor after.
+  availability_statuses: https://developer.workday.com/terms/availabilitystatuses
+deprecation:
+  policy: published
+  mechanism: >-
+    Superseded versions are moved to the Archived Services section of the REST service directory rather than
+    removed - the directory currently carries 44 archived service versions alongside 66 production ones, each
+    still resolvable with its own spec and change log. Workday explicitly tells developers not to build
+    production integrations on Experimental (labs/alpha/beta) versions because those will change before they
+    reach a production version.
+  benefits_surface:
+    archived_versions: 0
+    note: >-
+      Neither benefitEnrollmentEventOfferings nor benefitPartner has an archived predecessor version; both
+      are at v1. No operation in either contract is marked deprecated.
+  http_signals:
+    sunset_header: false
+    deprecation_header: false
+    note: >-
+      No RFC 8594 Sunset or Deprecation response header is documented for the Workday REST surface, and none
+      appears in either harvested contract.
+status_page:
+  url: https://status.workday.com
+  public: false
+  status_probed: 200
+  note: >-
+    status.workday.com resolves but redirects into Workday Community SSO
+    (signin.resourcecenter.workday.com -> community.workday.com/trust/status), so tenant status is customer-
+    only. A reachable page exists; an anonymous reader cannot see it.
+sla:
+  published: false
+  note: >-
+    Service levels are contractual and not published on a public page. The public Service Limits reference
+    (https://developer.workday.com/doc/dan1370797408285.md) states that Workday may throttle or suspend
+    access at its sole discretion when limits are exceeded, which is the closest published commitment.
+support:
+  community: https://community.workday.com/
+  developer_site: https://developer.workday.com
+changelog: changelog/workday-benefits-changelog.yml

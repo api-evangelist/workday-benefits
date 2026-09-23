@@ -1,0 +1,42 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer.workday.com/doc/GUID-6c547385-848b-4005-ab2c-632f1d6b5688.md (Get Started on the Workday
+  Developer Platform), https://developer.workday.com/doc/rni1611281077170.md (Validate Only Mode),
+  https://developer.workday.com/rest-api-explorer
+public_sandbox: false
+summary: >-
+  Workday publishes no anonymous sandbox, no test credentials and no test data for the Benefits APIs. What it
+  publishes is a non-production TENANT model plus a request-level dry run, both of which require an account.
+environments:
+  - name: Development tenant
+    type: non-production
+    access: >-
+      Provisioned through the Workday Developer Site Console (Tenants > Launch Tenant) and signed into with
+      Developer Platform credentials. Requires a developer account; not self-serve for the public.
+    purpose: Design, configure and prototype apps, integrations, business processes and security before promoting.
+  - name: Sandbox / implementation tenant
+    type: non-production
+    access: Customer-provisioned (for example wd2-impl-* hostnames); tenant-scoped, customer credentials only.
+    purpose: Test configuration changes and new features before moving them to production.
+  - name: Production tenant
+    type: production
+try_it:
+  surface: REST API Explorer
+  url: https://developer.workday.com/rest-api-explorer
+  anonymous: false
+  note: >-
+    Workday's own service directory marks per-operation "tryEnabled" flags; both Benefit Enrollment Event
+    Offerings operations and the Benefit Partner POST are tryEnabled=false, so even signed-in developers
+    cannot execute those two services from the explorer. Trying them requires a connected tenant.
+dry_run:
+  supported: true
+  header: 'x-validate-only: 1'
+  applies_to: [POST, PUT, PATCH, DELETE]
+  note: >-
+    The closest thing to test data Workday offers - it runs the whole validation chain against real tenant
+    configuration and returns the errors without persisting anything.
+  source: https://developer.workday.com/doc/rni1611281077170.md
+test_values:
+  published: false
+  note: No test card, test identifier, magic value or fixture set is published for the Benefits surface.

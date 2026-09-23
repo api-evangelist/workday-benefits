@@ -1,0 +1,599 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Changelog for benefitPartner",
+    "description": "The benefitPartner service enables third-party benefit providers to import benefit programs into Workday.  Benefit programs can be announcements or other messages the customer wants the software partner to import into Workday. The program can include a title, description, links, and an image and appears as a card on the worker's home screen.\n\nExample: A wellness week event, Benefits and Pay Hub announcement, or hosted meeting for speaker with a financial or insurance advisor.",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://<tenantHostname>/benefitPartner/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "06/30/2026",
+      "description": "Changes for v2026.26"
+    },
+    {
+      "name": "06/15/2026",
+      "description": "Changes for v2026.24"
+    },
+    {
+      "name": "06/15/2024",
+      "description": "Changes for v2024.24"
+    },
+    {
+      "name": "09/09/2023",
+      "description": "Changes for v2023.36"
+    }
+  ],
+  "paths": {
+    "2023.36/programs": {
+      "post": {
+        "tags": [
+          "09/09/2023"
+        ],
+        "summary": "Attachments Status has been changed",
+        "description": "## Attachments Status changed  \n| <div style=\"width:400px\">Updated Value</div> | <div style=\"width:400px\">Previous Value</div> |  \n| :--- | :--- |  \n| <div style=\"width:400px\">Contains attachment(s)</div> | <div style=\"width:400px\">None</div> |  \n\n <div>\n\n</div> <div style=\"color:#0067ac; background-color:#f4fcff; padding: 12px 0px 12px 12px;border-left: 5px solid #0067ac;\"> \n <b style=\"color:#0067ac\">View this Endpoint: </b>  <a href=\"#benefitPartner/v1/post-/programs\"> POST /programs</a>\n </div> \n <br>"
+      }
+    },
+    "2024.24/programs": {
+      "post": {
+        "tags": [
+          "06/15/2024"
+        ],
+        "summary": "Modified this existing endpoint",
+        "description": "## Description changed  \n| <div style=\"width:400px\">Updated Value</div> | <div style=\"width:400px\">Previous Value</div> |  \n| :--- | :--- |  \n| <div style=\"width:400px\">Creates a single benefit program instance with the specified data. <br/>In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner<br/><b>Secured by:</b> Manage: Benefit Program Software Partner<br/><b>Scope:</b> Benefits<br/></div> | <div style=\"width:400px\">Creates a single benefit program instance with the specified data. <br/>In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner<br/></div> |  \n\n## Security changed  \n| <div style=\"width:800px\">Updated Value</div> |  \n| :--- |  \n| <div style=\"width:800px\"></div> |  \n\n| <div style=\"width:400px\">Added Domains</div> | <div style=\"width:400px\">Removed Domains</div> |  \n| :--- | :--- |  \n| <div style=\"width:400px\">None</div> | <div style=\"width:400px\">Manage: Benefit Program Software Partner</div> |  \n\n## Scope changed  \n| <div style=\"width:800px\">Updated Value</div> |  \n| :--- |  \n| <div style=\"width:800px\"></div> |  \n\n| <div style=\"width:400px\">Added Domains</div> | <div style=\"width:400px\">Removed Domains</div> |  \n| :--- | :--- |  \n| <div style=\"width:400px\">None</div> | <div style=\"width:400px\">Benefits</div> |  \n\n <div>\n\n</div> <div style=\"color:#0067ac; background-color:#f4fcff; padding: 12px 0px 12px 12px;border-left: 5px solid #0067ac;\"> \n <b style=\"color:#0067ac\">View this Endpoint: </b>  <a href=\"#benefitPartner/v1/post-/programs\"> POST /programs</a>\n </div> \n <br>"
+      }
+    },
+    "2026.24/programs": {
+      "post": {
+        "tags": [
+          "06/15/2026"
+        ],
+        "summary": "Description has been changed",
+        "description": "## Description changed  \n| <div style=\"width:400px\">Updated Value</div> | <div style=\"width:400px\">Previous Value</div> |  \n| :--- | :--- |  \n| <div style=\"width:400px\">Creates a single benefit program instance with the specified data. <br/>In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner<br/></div> | <div style=\"width:400px\">Creates a single benefit program instance with the specified data. <br/>In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner<br/><b>Secured by:</b> Manage: Benefit Program Software Partner<br/><b>Scope:</b> Benefits<br/></div> |  \n\n <div>\n\n</div> <div style=\"color:#0067ac; background-color:#f4fcff; padding: 12px 0px 12px 12px;border-left: 5px solid #0067ac;\"> \n <b style=\"color:#0067ac\">View this Endpoint: </b>  <a href=\"#benefitPartner/v1/post-/programs\"> POST /programs</a>\n </div> \n <br>"
+      }
+    },
+    "2026.26/programs": {
+      "post": {
+        "tags": [
+          "06/30/2026"
+        ],
+        "summary": "Description has been changed",
+        "description": "## Description changed  \n| <div style=\"width:400px\">Updated Value</div> | <div style=\"width:400px\">Previous Value</div> |  \n| :--- | :--- |  \n| <div style=\"width:400px\">Creates a single benefit program instance with the specified data. <br/>In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner<br/><b>Secured By Domain:</b> Manage: Benefit Program Software Partner<br/><b>Scope:</b> Benefits<br/></div> | <div style=\"width:400px\">Creates a single benefit program instance with the specified data. <br/>In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner<br/></div> |  \n\n <div>\n\n</div> <div style=\"color:#0067ac; background-color:#f4fcff; padding: 12px 0px 12px 12px;border-left: 5px solid #0067ac;\"> \n <b style=\"color:#0067ac\">View this Endpoint: </b>  <a href=\"#benefitPartner/v1/post-/programs\"> POST /programs</a>\n </div> \n <br>"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "INSTANCE_MODEL_REFERENCE": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^(([0-9a-f]{32})|(\\S+=\\S+))$",
+            "type": "string",
+            "description": "Workday Id or Reference Id of the instance.",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "descriptor": {
+            "type": "string",
+            "description": "The display name of the instance",
+            "readOnly": true,
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "href": {
+            "type": "string",
+            "description": "A link to the instance",
+            "readOnly": true,
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          }
+        },
+        "exampleSetFlag": false,
+        "types": [
+          "object"
+        ]
+      },
+      "ERROR_MODEL_REFERENCE": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "A description of the error",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "field": {
+            "type": "string",
+            "description": "The field related to the error",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "description": "The path of the field related to the error",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "description": "Severity of the validation (e.g. Critical, Warning).",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          },
+          "internalMessage": {
+            "type": "string",
+            "description": "Internal message providing additional context for the validation (e.g. representation content validation details).",
+            "exampleSetFlag": false,
+            "types": [
+              "string"
+            ]
+          }
+        },
+        "exampleSetFlag": false,
+        "types": [
+          "object"
+        ]
+      },
+      "VALIDATION_ERROR_MODEL_REFERENCE": {
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "required": [
+              "error"
+            ],
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string",
+                "description": "A description of the error",
+                "exampleSetFlag": false,
+                "types": [
+                  "string"
+                ]
+              },
+              "errors": {
+                "type": "array",
+                "description": "An array of validation errors",
+                "exampleSetFlag": false,
+                "items": {
+                  "$ref": "#/components/schemas/ERROR_MODEL_REFERENCE",
+                  "exampleSetFlag": false
+                },
+                "types": [
+                  "array"
+                ]
+              }
+            },
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      },
+      "FACETS_MODEL_REFERENCE": {
+        "type": "array",
+        "exampleSetFlag": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "descriptor": {
+              "type": "string",
+              "description": "A description of the facet",
+              "exampleSetFlag": false,
+              "types": [
+                "string"
+              ]
+            },
+            "facetParameter": {
+              "type": "string",
+              "description": "The alias used to select the facet",
+              "exampleSetFlag": false,
+              "types": [
+                "string"
+              ]
+            },
+            "values": {
+              "type": "array",
+              "description": "the facet values",
+              "exampleSetFlag": false,
+              "items": {
+                "required": [
+                  "id"
+                ],
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "description": "The number of instances returned by this facet",
+                    "format": "int32",
+                    "exampleSetFlag": false,
+                    "types": [
+                      "integer"
+                    ]
+                  },
+                  "id": {
+                    "pattern": "^(([0-9a-f]{32})|(\\S+=\\S+))$",
+                    "type": "string",
+                    "description": "Workday Id or Reference Id of the instance.",
+                    "exampleSetFlag": false,
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "descriptor": {
+                    "type": "string",
+                    "description": "A description of the facet",
+                    "exampleSetFlag": false,
+                    "types": [
+                      "string"
+                    ]
+                  },
+                  "href": {
+                    "type": "string",
+                    "description": "A link to the instance",
+                    "readOnly": true,
+                    "exampleSetFlag": false,
+                    "types": [
+                      "string"
+                    ]
+                  }
+                },
+                "exampleSetFlag": false,
+                "types": [
+                  "object"
+                ]
+              },
+              "types": [
+                "array"
+              ]
+            }
+          },
+          "description": "This object represents the possible facets for this resource",
+          "readOnly": true,
+          "exampleSetFlag": false,
+          "types": [
+            "object"
+          ]
+        },
+        "types": [
+          "array"
+        ]
+      },
+      "MULTIPLE_INSTANCE_MODEL_REFERENCE": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32",
+            "exampleSetFlag": false,
+            "types": [
+              "integer"
+            ]
+          },
+          "data": {
+            "type": "array",
+            "exampleSetFlag": false,
+            "items": {
+              "$ref": "#/components/schemas/INSTANCE_MODEL_REFERENCE",
+              "exampleSetFlag": false
+            },
+            "types": [
+              "array"
+            ]
+          }
+        },
+        "exampleSetFlag": false,
+        "types": [
+          "object"
+        ]
+      },
+      "contentType_1fb0576459ce100013ab2834e1a50000": {
+        "description": "Image content Type",
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/INSTANCE_MODEL_REFERENCE",
+            "exampleSetFlag": false
+          },
+          {
+            "type": "object",
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      },
+      "benefitProgramImageData_1fb0576459ce100013ab27700b0e0000": {
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "alternativeText": {
+                "type": "string",
+                "description": "Specify a description of the image in the Alternative Text field for users of assistive technology.",
+                "example": "Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "file": {
+                "type": "string",
+                "description": "Base64 encoded data",
+                "format": "binary",
+                "extensions": {
+                  "x-workday-type": "File"
+                },
+                "exampleSetFlag": false,
+                "types": [
+                  "string"
+                ]
+              },
+              "fileLength": {
+                "type": "integer",
+                "description": "length of the file",
+                "format": "int32",
+                "example": 99999999999,
+                "extensions": {
+                  "x-workday-type": "Numeric"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "integer"
+                ]
+              },
+              "fileName": {
+                "maxLength": 255,
+                "type": "string",
+                "description": "Name of the file",
+                "example": "image.png",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "contentType": {
+                "$ref": "#/components/schemas/contentType_1fb0576459ce100013ab2834e1a50000",
+                "exampleSetFlag": false
+              },
+              "id": {
+                "type": "string",
+                "description": "The id for Attachment Representation (Blobitory)",
+                "exampleSetFlag": false,
+                "types": [
+                  "string"
+                ]
+              }
+            },
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      },
+      "wellbeingInterest_385dba18341910000a58c69aa2730000": {
+        "description": "The Wellbeing Interest implementing the Benefit Program on behalf of the customer.",
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/INSTANCE_MODEL_REFERENCE",
+            "exampleSetFlag": false
+          },
+          {
+            "type": "object",
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      },
+      "programPartner_cc61b1e2830310000c6b33d908470000": {
+        "description": "The name of the software partner implementing the benefit program on behalf of the customer. To get the program partner ID, use the Benefit Provider Report in Workday.",
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/INSTANCE_MODEL_REFERENCE",
+            "exampleSetFlag": false
+          },
+          {
+            "type": "object",
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      },
+      "image_0216b21ecae410002d4cca0591140004": {
+        "description": "The image for the benefit program card.   Supported file types: jpeg, png, bmp, and tiff.  Size maximum: 5 MB.  Width and height limits: w 528 X h 276 pixels.",
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/benefitProgramImageData_1fb0576459ce100013ab27700b0e0000",
+            "exampleSetFlag": false
+          },
+          {
+            "type": "object",
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      },
+      "benefitProgramsView_0216b21ecae410002d4cc96bee440000": {
+        "exampleSetFlag": false,
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "wellbeingInterest": {
+                "$ref": "#/components/schemas/wellbeingInterest_385dba18341910000a58c69aa2730000",
+                "exampleSetFlag": false
+              },
+              "programPartner": {
+                "$ref": "#/components/schemas/programPartner_cc61b1e2830310000c6b33d908470000",
+                "exampleSetFlag": false
+              },
+              "description": {
+                "type": "string",
+                "description": "The text description of the benefit program that the employee sees on the program card.  Charater limit: 375 or less.",
+                "example": "New Benefit Program for Aetna PPO customers",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "adminNotes": {
+                "type": "string",
+                "description": "Descriptive text from the benefit program partner to Workday administrators about the benefit program.",
+                "example": "Enable this program for salaried group that are eligible for Medical Aetna PPO",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "image": {
+                "$ref": "#/components/schemas/image_0216b21ecae410002d4cca0591140004",
+                "exampleSetFlag": false
+              },
+              "endDate": {
+                "type": "string",
+                "description": "The date when the benefit program ends. Must be after the start date.",
+                "format": "date",
+                "extensions": {
+                  "x-workday-type": "Date"
+                },
+                "exampleSetFlag": false,
+                "types": [
+                  "string"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "description": "The title of the benefit program card.   Character limit: 40 or less.",
+                "example": "Aetna PPO Perks",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "startDate": {
+                "type": "string",
+                "description": "The date when the benefit program begins. Must be before the end date.",
+                "format": "date",
+                "extensions": {
+                  "x-workday-type": "Date"
+                },
+                "exampleSetFlag": false,
+                "types": [
+                  "string"
+                ]
+              },
+              "urlAlias": {
+                "type": "string",
+                "description": "A text string that masks the URL to simplify the URL, making it shorter and easier to use.",
+                "example": "Aetna.com",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "url": {
+                "type": "string",
+                "description": "A external or internal web link to the benefit program that must begin with http or https.",
+                "example": "https://www.Aetna.com",
+                "extensions": {
+                  "x-workday-type": "Text"
+                },
+                "exampleSetFlag": true,
+                "types": [
+                  "string"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "description": "The id for Benefit Program",
+                "exampleSetFlag": false,
+                "types": [
+                  "string"
+                ]
+              }
+            },
+            "exampleSetFlag": false,
+            "types": [
+              "object"
+            ]
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://<tenantAuthorizationHostname>",
+            "scopes": {}
+          }
+        }
+      }
+    },
+    "extensions": {}
+  }
+}

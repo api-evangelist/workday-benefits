@@ -1,0 +1,36 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/doc/GUID-9338193c-86c5-43cf-b8d6-5e76b1283d02-enHYPHENus.md
+cli:
+  name: Workday Developer Command Line Interface
+  binary: wdcli
+  official: true
+  scope: >-
+    Interacts with Workday Developer Site services (Integration Apps and Extend Apps) from a command-line
+    session. It is a platform/app-lifecycle CLI, not a client for the Benefits REST or SOAP endpoints.
+  prerequisites:
+    - Access to Workday Developer Site credentials
+  install:
+    method: Workday Developer Site download
+    public_registry: false
+    note: >-
+      Workday's published steps say "Install the WDCLI" and then sign in; the distribution is the Developer
+      Site rather than npm/PyPI/Homebrew, and no public package for it was found in any registry on
+      2026-09-17. The install artefact itself is behind developer-account sign-in.
+  commands:
+    - group: auth
+      commands:
+        - command: wdcli auth:login
+          description: Sign in to a WDCLI session against the Workday Developer Site.
+          source: https://developer.workday.com/doc/GUID-9338193c-86c5-43cf-b8d6-5e76b1283d02-enHYPHENus.md
+  references:
+    - title: 'Reference: Workday Developer CLI (WDCLI) Commands for Integration Apps'
+      url: https://developer.workday.com/doc/GUID-fab8db7c-9305-41d2-8606-64aa81ce2e68-enHYPHENus.md
+    - title: 'Reference: Workday Developer CLI (WDCLI) for Extend Apps Commands'
+      url: https://developer.workday.com/doc/GUID-16d9d3f3-ba63-4022-8a84-ad78bd5189ca-enHYPHENus.md
+    - title: 'Reference: Proxy Server Settings for WDCLI Commands'
+      url: https://developer.workday.com/doc/GUID-9661f391-0337-4639-a8bd-259f55898c87-enHYPHENus.md
+note: >-
+  Only the two commands Workday states verbatim in the Get Started topic are recorded. The full command
+  reference pages exist but are gated behind the same developer sign-in as the download, so the grouped
+  command surface was not enumerated rather than guessed.

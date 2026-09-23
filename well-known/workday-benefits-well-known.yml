@@ -1,0 +1,131 @@
+generated: '2026-09-17'
+method: probed
+source: live probes of every host this record knows
+note: >-
+  Probed the registrable domain and www, the tenant/API hosts named by apis.yml and the OpenAPI servers[]
+  blocks, the docs and developer hosts, and the security subdomain found via the trust centre. ONE real
+  document was served: an RFC 9116 security.txt on security.workday.com. developer.workday.com answers 200
+  with the same 4,927-byte single-page-app HTML shell for every /.well-known/* path - that is a catch-all,
+  not a document, and is recorded as a miss.
+hosts:
+  - host: workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: www.workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: security.workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: workday-benefits-security.txt
+        content_type: text/plain
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: developer.workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+      - path: /.well-known/openid-configuration
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+      - path: /.well-known/api-catalog
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+      - path: /.well-known/agent-card.json
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+      - path: /.well-known/agent.json
+        status: 200
+        note: HTML single-page-app shell, not a document - counted as a miss
+  - host: community.workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: doc.workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: api.workday.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404

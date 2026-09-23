@@ -1,0 +1,128 @@
+generated: '2026-09-17'
+method: derived
+source: >-
+  openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json (34 component schemas) and
+  openapi/workday-benefits-benefit-partner-openapi.json (11 component schemas); relationships read from
+  $ref links between schemas
+identifiers:
+  primary: Workday ID (WID) - a 32-character system identifier carried in every object's `id`
+  alternates:
+    - 'Reference ID form: Reference_ID=value'
+    - 'me - the calling user'
+  common_fields:
+    - id
+    - descriptor (human-readable label for the instance)
+    - href (URL of the instance, on some views)
+  note: >-
+    Workday schema component names are suffixed with the internal object WID (for example
+    healthcareElectionsInEnrollmentOffering_12efc4fddc4010001bbe501350b30000); the logical entity name is the
+    part before the underscore and is what is used below.
+entities:
+  - name: employeeEnrollmentEvent
+    api: Workday Benefit Enrollment Event Offerings API
+    operations:
+      - GET /employeeEnrollmentEvent
+      - GET /employeeEnrollmentEvent/{ID}
+    description: >-
+      A worker's single active benefit enrollment event and the offerings available inside it. The collection
+      response is the standard { total, data[] } envelope.
+  - name: enrollmentOfferingsByType
+    fields: [id, descriptor, healthcareEnrollmentOfferings, retirementSavingsEnrollmentOfferings]
+  - name: healthcareEnrollmentOfferings
+    fields: [id, healthcareElectionsFromEnrollmentOffering, descriptor]
+  - name: healthcareElectionsInEnrollmentOffering
+    fields: [id, descriptor, benefitPlanForElection, benefitPlanProviderAndName, benefitPlanCurrency,
+             planFrequency, enrollmentOfferingType, employeeCostPerPlanFrequency, employerCostPerPlanFrequency,
+             coverageOptions, healthcareCoverageTarget, dependentElections, kbArticleFromBenefitElection,
+             benefitPlanExternalDescriptionURL, benefitProviderWebsite, expandedPlanDetails,
+             expandedBenefitPlanDetailsAdditionalText]
+  - name: healthcareCoverageOptions
+    fields: [coverageLevel, employeeCost]
+  - name: dependentElectionView
+    fields: [id, href, descriptor, dependent, dependentRelationship, providerID,
+             couldBeCoveredForHealthcareCoverageElsewhere]
+  - name: retirementSavingsEnrollmentOfferings
+    fields: [id, retirementSavingsElectionsForEnrollmentOffering, descriptor]
+  - name: retirementSavingsElectionsForEnrollmentOffering
+    fields: [id, descriptor, planName, planFrequency, enrollmentOfferingType, beneficiaryAllocation,
+             employeeContributionPercentage, employeeContributionPercentageMinimum,
+             employeeContributionPercentageMaximum, employeeContributionAmountByPlanFrequency,
+             employeeContributionAmountMinimumByPlanFrequency, employeeContributionAmountMaximumByPlanFrequency,
+             employerContributionPercent, employerContributionAmountByPlanFrequency]
+  - name: beneficiaryAllocation
+    fields: [id, descriptor, beneficiaryName, primaryPercentage, contingentPercentage]
+  - name: benefitProgramsView
+    api: Workday Benefit Partner API
+    operations:
+      - POST /programs
+    fields: [title, description, adminNotes, startDate, endDate, image, programPartner, wellbeingInterest]
+    constraints:
+      - 'title: 40 characters or less'
+      - 'description: 375 characters or less'
+      - 'endDate must be after startDate'
+  - name: image
+    api: Workday Benefit Partner API
+    fields: [benefitProgramImageData, contentType]
+    constraints:
+      - 'file types JPG, JPEG, PNG, BMP, TIFF'
+      - '5 MB maximum'
+relationships:
+  - from: employeeEnrollmentEvent
+    to: enrollmentOfferingsByType
+    type: has_many
+    via: data[]
+  - from: enrollmentOfferingsByType
+    to: healthcareEnrollmentOfferings
+    type: has_many
+    via: healthcareEnrollmentOfferings
+  - from: enrollmentOfferingsByType
+    to: retirementSavingsEnrollmentOfferings
+    type: has_many
+    via: retirementSavingsEnrollmentOfferings
+  - from: healthcareEnrollmentOfferings
+    to: healthcareElectionsInEnrollmentOffering
+    type: has_many
+    via: healthcareElectionsFromEnrollmentOffering
+  - from: healthcareElectionsInEnrollmentOffering
+    to: healthcareCoverageOptions
+    type: has_many
+    via: coverageOptions
+  - from: healthcareElectionsInEnrollmentOffering
+    to: dependentElectionView
+    type: has_many
+    via: dependentElections
+  - from: healthcareElectionsInEnrollmentOffering
+    to: knowledgeBaseArticleID
+    type: has_one
+    via: kbArticleFromBenefitElection
+  - from: healthcareElectionsInEnrollmentOffering
+    to: benefitPlanForElection
+    type: belongs_to
+    via: benefitPlanForElection
+  - from: retirementSavingsEnrollmentOfferings
+    to: retirementSavingsElectionsForEnrollmentOffering
+    type: has_many
+    via: retirementSavingsElectionsForEnrollmentOffering
+  - from: retirementSavingsElectionsForEnrollmentOffering
+    to: beneficiaryAllocation
+    type: has_many
+    via: beneficiaryAllocation
+  - from: benefitProgramsView
+    to: image
+    type: has_one
+    via: image
+  - from: benefitProgramsView
+    to: programPartner
+    type: belongs_to
+    via: programPartner
+  - from: benefitProgramsView
+    to: wellbeingInterest
+    type: belongs_to
+    via: wellbeingInterest
+soap_surface:
+  note: >-
+    The Benefits_Administration v47.0 WSDL carries the much wider benefits object model (benefit plans, plan
+    year definitions, annual/individual rates, providers, elections, dependents, beneficiaries, billing
+    events, ACA 1095-C data). It is not expanded here - the entities above are only what the two REST
+    contracts declare.
+  contract: wsdl/workday-benefits-benefits-administration-v47.wsdl

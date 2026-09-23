@@ -1,0 +1,160 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer.workday.com/doc/GUID-85810465-bcfb-4fdf-a26d-55eaff3968a8-enHYPHENus.md (REST API
+  Fundamentals), https://developer.workday.com/doc/lvb1611857200890.md (Pagination),
+  https://developer.workday.com/doc/GUID-0159fe14-1c59-4976-a83e-c04133cc4851-enHYPHENus.md (REST API
+  Headers), https://developer.workday.com/doc/rni1611281077170.md (Validate Only Mode),
+  https://developer.workday.com/doc/dan1370797408285.md (Service Limits), plus the harvested contracts
+auth_style:
+  scheme: OAuth 2.0 only
+  detail: >-
+    Every REST call is OAuth-authenticated. Integrations register an API client on the Developer Site and
+    choose an authorization flow; Extend and Orchestrate call through the regional API Gateway, which handles
+    authentication and routes to the tenant. Authorization is then enforced by Workday security domains on
+    the integration system user, so a valid token is not sufficient - the domain must be granted.
+  see: authentication/workday-benefits-authentication.yml
+base_url:
+  integrations: 'https://{tenantHostname}/api/{serviceName}/{version}/{tenant}'
+  gateway: 'https://{apiGatewayBasePath}/{serviceName}/{version}'
+  gateway_example: https://api.us.wcp.workday.com/staffing/v7/workers
+  note: Region-based gateway base paths are listed at https://developer.workday.com/doc/dlh1653340161856.md
+identifiers:
+  id_field: id
+  formats:
+    - Workday ID (WID) - a 32-character system identifier
+    - 'Reference ID - Reference_ID=value form, e.g. /workers/Employee_ID=21005'
+    - 'me - the current user'
+  object_fields:
+    - descriptor - human-readable description of the object
+    - id - the Workday ID
+    - href - a URL representing the object
+pagination:
+  style: limit/offset
+  params:
+    limit:
+      default: 20
+      maximum: 100
+      note: Some services override the maximum to 1000; nested prompt endpoints default and cap at 1000.
+    offset:
+      default: 0
+  response_fields:
+    - data[] - the collection
+    - total - the number of objects in the whole result set
+  ordering: Ascending instance ID by default, so pages are stable across calls unless the service defines its own sort.
+  caching: >-
+    Paged requests hold a server-side cache: 2 hours between paged requests, and 30 minutes after the last
+    page is requested. Page-1 requests take longer because Workday builds that cache - do not set a tight
+    HTTP timeout on page 1.
+field_selection:
+  expansion: Not supported.
+  sparse_fields: Not supported. Empty values are omitted from responses entirely, and field order is not stable.
+  subresources: 'Collections hang off an instance as subresources: GET /{resource}/{id}/{subresource}'
+request_tracing:
+  headers:
+    - wd-external-request-id
+    - wd-external-application-id
+    - wd-external-originator-id
+  note: >-
+    External integration headers enable tracking in Workday server logs. Workday does not log GET requests,
+    unsuccessful requests, or web service responses, so these headers are the only correlation handle.
+  reference: https://developer.workday.com/doc/GUID-4037a047-c6e5-4e83-bfce-54e07d30b76b-enHYPHENus.md
+other_headers:
+  - header: x-validate-only
+    values: '1 (validate) | 0 (execute)'
+    purpose: Dry-run - see dry_run_mode below.
+  - header: wd-request-timeout
+    purpose: Per-request timeout override.
+  - header: wd-warning-action
+    values: 'e.g. updateonwarning'
+    purpose: Decide whether a warning-severity validation blocks or proceeds.
+  - header: wd-metadata-api-version
+    purpose: Select the REST metadata API version.
+  - header: x-wd-image-max-dimension
+    purpose: Image resize, Extend apps only.
+versioning:
+  rest: >-
+    Per-service versions in the path (benefitEnrollmentEventOfferings/v1, benefitPartner/v1). The REST API
+    Explorer lists current versions under Production Services and pre-production ones under Experimental
+    Services; experimental versions are evaluation-only and will change.
+  soap: >-
+    Endpoint versioning (https://{domain}/ccx/service/{tenant}/{service}/{version}) or message versioning; when
+    both are present the message version wins. Benefits_Administration is at v47.0.
+  see: lifecycle/workday-benefits-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  see: errors/workday-benefits-problem-types.yml
+rate_limit_signaling:
+  status: 429
+  headers_published: false
+  detail: >-
+    Workday documents the 429 (and a 500 on the SOAP/RaaS path) and recommends exponential back-off, but
+    publishes no RateLimit-* or Retry-After header contract and no numeric per-second ceiling.
+  see: rate-limits/workday-benefits-rate-limits.yml
+dry_run_mode:
+  supported: true
+  mechanism: 'x-validate-only: 1 request header'
+  applies_to: [POST, PUT, PATCH, DELETE]
+  behaviour: >-
+    Runs operation security, display-option, field-level security, instance-set, prompt-resource, currency,
+    optional-field-configuration and header/representation validations WITHOUT persisting anything. Returns
+    200 when the request would be accepted, or a 4xx with the validation error list when it would not.
+    Re-send without the header (or with 0) to execute.
+  source: https://developer.workday.com/doc/rni1611281077170.md
+idempotency:
+  coverage: none
+  mechanism: null
+  detail: >-
+    No idempotency key exists anywhere in the Workday REST surface: the complete REST API header reference
+    lists six headers and none of them is an idempotency key, and neither harvested contract declares one. A
+    retried POST /programs creates a second benefit program. The only replay protection available to a client
+    is to validate first with x-validate-only and to correlate with wd-external-request-id.
+  scope: []
+reversibility:
+  grade: documented
+  detail: >-
+    The two production REST contracts in this repo are almost entirely read-only: the Benefit Enrollment Event
+    Offerings API is two GETs (reversibility na), and the Benefit Partner API has exactly one write, POST
+    /programs, with no cancel, delete or undo operation on the REST surface - once a benefit program card is
+    imported, the REST API offers no way to take it back. The reversal paths for the benefits domain live on
+    the SOAP contract, where they are named operations rather than a generic undo.
+  write_surfaces:
+    - api: Workday Benefit Enrollment Event Offerings API
+      writes: []
+      reversal: na
+      note: Read-only surface (2 GET operations).
+    - api: Workday Benefit Partner API
+      writes:
+        - POST /programs
+      reversal: none
+      window: null
+      note: >-
+        No reversal operation is published for this endpoint and no window is stated. Not asserting one -
+        removing an imported program appears to be a tenant-side action, which Workday does not document as
+        an API call.
+    - api: Workday Benefits Administration Web Service (SOAP)
+      writes:
+        - Change_Benefits
+        - Change_Beneficiary
+        - Add_Dependent
+        - Edit_Dependent
+        - Enroll_in_Retirement_Savings_Plans
+        - Bulk_Import_Change_Benefits
+      reversal: documented
+      window: null
+      note: >-
+        Workday's benefits writes are business-process events, so the reversal path is the business process
+        itself (rescind/correct on the event) rather than an API operation, and every write is subject to the
+        same approvals and audit trail as a human transaction. The WSDL declares no explicit cancel/rescind
+        operation for these events and Workday publishes no time window for one, so no window is recorded.
+  grade_reason: >-
+    documented, not verified: a reversal path exists for the SOAP write surface (business-process
+    correction/rescind) but no operation-level reversal and no stated window is published anywhere, and the
+    REST write has neither.
+cross_links:
+  errors: errors/workday-benefits-problem-types.yml
+  lifecycle: lifecycle/workday-benefits-lifecycle.yml
+  authentication: authentication/workday-benefits-authentication.yml
+  rate_limits: rate-limits/workday-benefits-rate-limits.yml
+  scopes: scopes/workday-benefits-scopes.yml

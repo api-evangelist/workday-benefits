@@ -180,21 +180,6 @@ paths:
         dispatcherRules: enrollmentId
 components:
   schemas:
-    BenefitEnrollmentsResponse:
-      title: Benefit Enrollments Response
-      description: Paginated response containing a list of benefit enrollments
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of enrollments
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BenefitEnrollment'
-      required:
-      - total
-      - data
     BenefitEnrollmentRequest:
       title: Benefit Enrollment Request
       description: Request to create or update a benefit enrollment
@@ -231,6 +216,21 @@ components:
       - planId
       - coverageLevel
       - effectiveDate
+    BenefitEnrollmentsResponse:
+      title: Benefit Enrollments Response
+      description: Paginated response containing a list of benefit enrollments
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of enrollments
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEnrollment'
+      required:
+      - total
+      - data
     ErrorResponse:
       title: Error Response
       description: Standard error response
@@ -307,33 +307,6 @@ components:
       - effectiveDate
       - status
   responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
     BadRequest:
       description: Invalid request parameters or body
       content:
@@ -343,6 +316,33 @@ components:
           example:
             error: BAD_REQUEST
             message: Invalid request body
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
   securitySchemes:
     oauth2:
       type: oauth2

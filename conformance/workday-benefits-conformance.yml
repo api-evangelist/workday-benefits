@@ -1,0 +1,72 @@
+generated: '2026-09-17'
+method: derived
+source: >-
+  openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json,
+  openapi/workday-benefits-benefit-partner-openapi.json,
+  wsdl/workday-benefits-benefits-administration-v47.wsdl, and the Workday REST API documentation set
+conformance:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      Both production REST contracts declare components.securitySchemes.OAuth2 (type oauth2) and Workday's
+      REST API Authentication topic requires OAuth for every call -
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - id: oidc
+    conforms: false
+    evidence: >-
+      No openid-configuration document is served on any Workday host probed 2026-09-17 (workday.com,
+      www.workday.com, developer.workday.com, community.workday.com, api.workday.com, security.workday.com
+      all 404 or return an SPA shell), and no OpenID Connect scheme is declared in either contract.
+  - id: rfc9457
+    conforms: false
+    evidence: >-
+      Errors use a Workday-specific envelope ({error, errors[{error, code, field, path, severity,
+      internalMessage}]}) served as application/json, not application/problem+json - see
+      components.schemas.VALIDATION_ERROR_MODEL_REFERENCE in both contracts.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Documented, uniform limit/offset pagination with a `total` field on collection responses -
+      https://developer.workday.com/doc/lvb1611857200890.md and the `data[]`/`total` response shape in
+      openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No idempotency key header is documented anywhere in the Workday REST API header reference
+      (https://developer.workday.com/doc/GUID-0159fe14-1c59-4976-a83e-c04133cc4851-enHYPHENus.md) and none
+      appears in either contract.
+  - id: soap-1.1
+    conforms: true
+    evidence: >-
+      wsdl/workday-benefits-benefits-administration-v47.wsdl is a WSDL 1.1 document binding 47 SOAP
+      operations in the urn:com.workday/bsvc namespace, published at
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits_Administration/v47.0/Benefits_Administration.wsdl
+  - id: ws-security
+    conforms: false
+    evidence: >-
+      The Benefits_Administration v47.0 WSDL carries no wsse/WS-Security policy element - the document binds
+      operations only. Workday documents WS-Security UsernameToken separately, in SOAP API Authentication and
+      Security (https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md),
+      so the mechanism is real but is NOT declared in the contract; recorded false because this file grades
+      what the contract itself says.
+  - id: scim
+    conforms: false
+    evidence: No SCIM schema URN appears in either REST contract or in the Benefits_Administration WSDL.
+  - id: odata
+    conforms: false
+    evidence: No $metadata surface or OData annotation appears in any harvested contract.
+  - id: fhir
+    conforms: false
+    evidence: Not a healthcare-clinical surface; no FHIR resource type appears in any harvested contract.
+domain_standards:
+  - id: aca-1095c
+    name: ACA Employer-Provided Health Insurance Offer and Coverage (Form 1095-C) reporting data
+    conforms: true
+    evidence: >-
+      The Benefits_Administration v47.0 WSDL declares the operation Get_ACA_1095-C_Forms_Data, a
+      contract-level declaration of the US Affordable Care Act employer-reporting data set -
+      wsdl/workday-benefits-benefits-administration-v47.wsdl
+    note: >-
+      Recorded because the standard is declared by the CONTRACT (a named operation exposing the 1095-C data
+      set), not by marketing prose. No other benefits-domain standard (for example an X12 834 benefit
+      enrolment message type) is declared in any harvested Workday contract, and none is asserted here.

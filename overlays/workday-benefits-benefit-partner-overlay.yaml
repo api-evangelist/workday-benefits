@@ -1,0 +1,50 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Workday Benefit Partner API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-09-17'
+  method: generated
+  source: openapi/workday-benefits-benefit-partner-openapi.json
+  note: >-
+    Captures API Evangelist additions to Workday's verbatim contract WITHOUT mutating it. The operationId,
+    the consequence class and the reversibility note are ours; the validation codes referenced below are
+    Workday's own, quoted from the 400 response description.
+extends: ../openapi/workday-benefits-benefit-partner-openapi.json
+actions:
+  - target: $.info
+    update:
+      contact:
+        name: Workday Developer Site
+        url: https://developer.workday.com
+      x-api-evangelist-provider: workday-benefits
+      x-api-evangelist-harvested-from: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/benefitPartner_v1_20260905_oas3.json
+      x-api-evangelist-harvested: '2026-09-17'
+  - target: $.paths['/programs'].post
+    update:
+      operationId: createBenefitProgram
+      summary: Import a benefit program card into a Workday tenant
+      x-consequence: write
+      x-reversibility:
+        reversal: none
+        window: null
+        note: >-
+          No cancel, delete or undo operation is published for this endpoint. Validate with the
+          x-validate-only:1 header before sending, because the created card is worker-visible.
+      x-idempotency:
+        supported: false
+        note: No idempotency key exists on the Workday REST surface; a retried POST creates a second program.
+      x-error-codes: errors/workday-benefits-problem-types.yml
+  - target: $.servers
+    update:
+      - url: https://{tenantHostname}/api/benefitPartner/v1/{tenant}
+        description: >-
+          Integration base path form documented in Workday REST API Fundamentals; the provider spec ships the
+          gateway-relative form https://<tenantHostname>/benefitPartner/v1
+        variables:
+          tenantHostname:
+            default: wd2-impl-services1.workday.com
+            description: Your Workday tenant hostname
+          tenant:
+            default: tenant
+            description: Your Workday tenant name

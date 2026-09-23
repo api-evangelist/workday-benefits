@@ -1,9 +1,47 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/workday-benefits-openapi.yml
+generated: '2026-09-17'
+method: searched
+source: openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json, openapi/workday-benefits-benefit-enrollments-api-openapi.yml,
+  openapi/workday-benefits-benefit-events-api-openapi.yml, openapi/workday-benefits-benefit-partner-openapi.json,
+  openapi/workday-benefits-benefit-plans-api-openapi.yml, openapi/workday-benefits-dependents-api-openapi.yml, openapi/workday-benefits-employee-benefits-api-openapi.yml,
+  openapi/workday-benefits-time-off-plans-api-openapi.yml
 schemes:
+- name: OAuth2
+  source: openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
+  flows:
+  - flow: implicit
+    authorizationUrl: https://<tenantAuthorizationHostname>
 - name: oauth2
-  source: openapi/workday-benefits-openapi.yml
+  source: openapi/workday-benefits-benefit-enrollments-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+- name: oauth2
+  source: openapi/workday-benefits-benefit-events-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+- name: OAuth2
+  source: openapi/workday-benefits-benefit-partner-openapi.json
+  flows:
+  - flow: implicit
+    authorizationUrl: https://<tenantAuthorizationHostname>
+- name: oauth2
+  source: openapi/workday-benefits-benefit-plans-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+- name: oauth2
+  source: openapi/workday-benefits-dependents-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+- name: oauth2
+  source: openapi/workday-benefits-employee-benefits-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+- name: oauth2
+  source: openapi/workday-benefits-time-off-plans-api-openapi.yml
   flows:
   - flow: clientCredentials
     tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
@@ -13,4 +51,20 @@ scopes:
   flows:
   - clientCredentials
   sources:
-  - openapi/workday-benefits-openapi.yml
+  - openapi/workday-benefits-benefit-enrollments-api-openapi.yml
+  - openapi/workday-benefits-benefit-events-api-openapi.yml
+  - openapi/workday-benefits-benefit-plans-api-openapi.yml
+  - openapi/workday-benefits-dependents-api-openapi.yml
+  - openapi/workday-benefits-employee-benefits-api-openapi.yml
+  - openapi/workday-benefits-time-off-plans-api-openapi.yml
+docs: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+scope_model:
+  style: functional-area scopes granted at API client registration
+  detail: Workday scopes are Functional Area scopes selected when the API client is registered in the tenant, not
+    string scopes enumerated in the contract. Both production Benefits contracts declare an OAuth2 scheme whose
+    scopes object is EMPTY, so no scope string can be read from the machine-readable contract - the scope that matters
+    for this surface is the Benefits functional area plus the security domains it carries.
+  contract_declared_scopes: 0
+  note: 'The single scope "benefits" listed below is derived from the API Evangelist-authored scaffold specs in
+    openapi/ (x-generated-from: documentation), NOT from a Workday-published scope reference. It is retained for
+    continuity and is flagged here so it is not mistaken for a provider-published scope string.'

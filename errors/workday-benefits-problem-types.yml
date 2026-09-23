@@ -1,0 +1,106 @@
+generated: '2026-09-17'
+method: derived
+source: >-
+  openapi/workday-benefits-benefit-partner-openapi.json and
+  openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json (4xx/5xx responses), enriched from
+  https://developer.workday.com/doc/GUID-6f06b090-c7b5-47cc-b929-d2a1f1116eef-enHYPHENus.md
+format: workday-error-envelope
+rfc9457: false
+envelope:
+  media_type: application/json
+  shape: '{ "error": "<message>", "errors": [ { "error", "code", "field", "path", "severity", "internalMessage" } ] }'
+  schema_refs:
+    - '#/components/schemas/ERROR_MODEL_REFERENCE'
+    - '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+  fields:
+    error: A description of the error.
+    code: >-
+      The code that corresponds to the error message. Workday states explicitly - use the error code to drive
+      programmatic error handling, and do not branch on message strings, which are subject to change.
+    field: The field related to the error.
+    path: The path of the field related to the error.
+    severity: Critical or Warning.
+    internalMessage: Additional validation context (for example representation-content validation detail).
+  validation_order: >-
+    Workday's REST framework validates in a fixed sequence and stops at the first critical failure; later
+    validation levels are not evaluated until earlier errors are fixed.
+status_codes:
+  - status: 400
+    title: Invalid request
+    meaning: >-
+      Malformed JSON, a schema/type mismatch, missing or out-of-range required fields, or a business-process
+      violation (the request is syntactically valid but conflicts with a controlling business process or
+      configuration rule).
+    remediation: >-
+      Validate the body against the contract; for business-process violations, change the request to comply
+      with tenant configuration. Re-run with the x-validate-only:1 header to test without persisting.
+    reference: https://community.workday.com/rest/error-messages
+  - status: 401
+    title: Unauthorized / Invalid Access Token
+    meaning: Credentials were not supplied, or the OAuth 2.0 token is invalid or expired.
+    remediation: Generate a new access token from the tenant token endpoint.
+  - status: 403
+    title: Not Authorized
+    meaning: >-
+      The user lacks the required security domain for the resource or subresource. Access to a subresource
+      also requires permission on the parent resource.
+    remediation: Have the Workday customer grant the security domain to the integration system user / API client.
+  - status: 404
+    title: 'Not Found: {value}'
+    meaning: The path or an ID is invalid, or the user does not have permission to see the instance.
+    remediation: Verify the path and the WID/Reference_ID, and confirm permissions.
+  - status: 405
+    title: Method not Allowed
+    meaning: The HTTP method is not supported for that resource.
+  - status: 429
+    title: Too Many Requests
+    meaning: >-
+      Workday rejects REST and RaaS requests when other requests overload tenant resources, and also
+      rate-limits traffic that generates an excessive volume of invalid requests.
+    remediation: Exponential back-off with retry.
+    reference: https://developer.workday.com/doc/dan1370797408285.md
+  - status: default
+    title: An error occurred
+    meaning: Unclassified error; the envelope above still applies.
+validation_codes:
+  source: >-
+    Verbatim from the 400 response description of POST /programs in
+    openapi/workday-benefits-benefit-partner-openapi.json
+  api: Workday Benefit Partner API
+  codes:
+    - code: A1586
+      severity: Critical
+      message: End Date can't be before the Start Date.
+    - code: A1587
+      severity: Critical
+      message: 'Some of the required fields are missing : [fields]'
+    - code: A1588
+      severity: Critical
+      message: URL Address must start with "http://" or "https://"
+    - code: A1624
+      severity: Critical
+      message: You don't have access to the web service. Request access from your Workday customer.
+    - code: A1625
+      severity: Critical
+      message: 'This image file type is unsupported. Use 1 of the following file types: JPG, JPEG, PNG, BMP or TIFF.'
+    - code: A1626
+      severity: Critical
+      message: Use an image file with a size 5 MB or less.
+    - code: A1627
+      severity: Critical
+      message: 'Description: 120 character maximum.'
+    - code: A1655
+      severity: Critical
+      message: >-
+        Specify an image description in the Alternative Text field for workers that use assistive technology.
+        Character limit: 60. (the same code is also used for "Title: 60 character maximum.")
+    - code: A1656
+      severity: Critical
+      message: 'URL Alias: 24 character maximum.'
+    - code: A1848
+      severity: Critical
+      message: Specify either the Wellbeing Interest or Wellbeing Category for the Benefit Programs, but not both.
+note: >-
+  Workday documents per-endpoint validation codes inside each 400 response description in the REST API
+  Explorer rather than in one central registry. Only the codes the harvested contracts actually carry are
+  recorded; the enrollment-offerings contract's 400 description carries no code table.

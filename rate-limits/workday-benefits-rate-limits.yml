@@ -3,85 +3,86 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Workday Benefits
 providerId: workday-benefits
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/doc/dan1370797408285.md
+modified: '2026-09-17'
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
 tags:
   - Rate Limiting
-  - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Workday Benefits API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+  - Service Limits
+description: >-
+  What Workday actually publishes about throttling on the REST and SOAP surfaces this repo covers. Workday
+  publishes NO numeric requests-per-second or requests-per-minute ceiling for the REST APIs and NO
+  RateLimit-* response header contract - it publishes the failure code, the conditions under which it
+  throttles, and hard size/volume boundaries. This file replaces a 2026-05-04 scaffold whose per-tier
+  numbers (10/100/1000 rpm, X-RateLimit-* headers) were invented and are not Workday's.
+limit_count: 0
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    No rate-limit response header is documented in the Workday REST API header reference or declared in
+    either harvested contract. An agent gets the status code and nothing else - there is no runtime budget
+    signal to read.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Workday Benefits API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Workday Benefits API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Workday Benefits API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Workday Benefits API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Workday Benefits API
+  soapThrottled: 500
+  note: >-
+    "429 Too Many Requests: For REST and RaaS APIs. 500 Internal Service Error: For SOAP and RaaS APIs - the
+    500 error code can sometimes be caused by too many requests."
+limits: []
+published_conditions:
+  - scope: tenant
+    trigger: Requests throttled under high load
+    detail: >-
+      Workday rejects API requests (Workday Web Services SOAP API and Workday REST API) when other requests
+      overload tenant resources. No numeric threshold is published.
+  - scope: traffic-class
+    trigger: Excessive volume of invalid requests
+    detail: >-
+      System guardrails temporarily rate-limit that specific traffic with an HTTP 429 so one customer's error
+      spike cannot exhaust shared resources.
+  - scope: contract
+    trigger: Exceeding any published service limit
+    detail: >-
+      Workday may, at its sole discretion, throttle use of the integration or web service, or suspend access
+      until usage is back within the limit.
+boundaries:
+  - name: Paged request cache retention
+    value: 2 hours between paged requests; 30 minutes after the last page is requested
+  - name: Incoming import web service request size
+    value: 2 GB
+  - name: All other incoming web service request size
+    value: 500 MB
+  - name: Attachment size (SOAP and REST)
+    value: 30 MB maximum
+  - name: HTTP header size on web service requests
+    value: 16 KB
+  - name: Web service response instance ceiling
+    value: 1,000,000 instances in a response
+  - name: Rich text string size
+    value: 1,048,576 characters (1 MB)
+  - name: Collection page size
+    value: 'limit default 20, maximum 100 (some services 1000)'
+  - name: REST/RaaS extract request volume (RaaS interfaces)
+    value: >-
+      Tiered by customer size, 75,000-350,000 requests per 24 hours and 15,000-100,000 in any 60-minute
+      period - the only numeric request-volume ceiling Workday publishes, and it applies to Reports-as-a-
+      Service extracts, not to these Benefits endpoints.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Back-off
+    description: >-
+      Workday recommends an exponential back-off retry mechanism on the process generating the requests when
+      a 429 (or a 500 on SOAP/RaaS) is returned.
+  - name: Page-1 timeouts
+    description: >-
+      Do not set a strict HTTP timeout on the first page of a paged request; Workday builds the result cache
+      during that call, so page 1 is legitimately slower than later pages.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,12 +1,25 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/workday-benefits-openapi.yml
+generated: '2026-09-17'
+method: searched
+source: openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json, openapi/workday-benefits-benefit-enrollments-api-openapi.yml,
+  openapi/workday-benefits-benefit-events-api-openapi.yml, openapi/workday-benefits-benefit-partner-openapi.json,
+  openapi/workday-benefits-benefit-plans-api-openapi.yml, openapi/workday-benefits-dependents-api-openapi.yml, openapi/workday-benefits-employee-benefits-api-openapi.yml,
+  openapi/workday-benefits-time-off-plans-api-openapi.yml + https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
 summary:
   types:
   - oauth2
   oauth2_flows:
   - clientCredentials
+  - implicit
 schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: implicit
+    authorizationUrl: https://<tenantAuthorizationHostname>
+    scopes: 0
+  sources:
+  - openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
+  - openapi/workday-benefits-benefit-partner-openapi.json
 - name: oauth2
   type: oauth2
   flows:
@@ -14,4 +27,30 @@ schemes:
     tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
     scopes: 1
   sources:
-  - openapi/workday-benefits-openapi.yml
+  - openapi/workday-benefits-benefit-enrollments-api-openapi.yml
+  - openapi/workday-benefits-benefit-events-api-openapi.yml
+  - openapi/workday-benefits-benefit-plans-api-openapi.yml
+  - openapi/workday-benefits-dependents-api-openapi.yml
+  - openapi/workday-benefits-employee-benefits-api-openapi.yml
+  - openapi/workday-benefits-time-off-plans-api-openapi.yml
+docs: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+documented:
+  model: OAuth 2.0 only - Workday requires OAuth to authenticate every REST API call.
+  client_registration: Register an API client on the Workday Developer Site / in the tenant ("Register API Client
+    for Integrations"), then choose an authorization flow to generate the access token.
+  flows_documented:
+  - authorization_code
+  - client_credentials (server-to-server integrations)
+  - refresh_token
+  flow_in_contract: implicit - the two production Benefits contracts declare only components.securitySchemes.OAuth2
+    with an implicit flow and an unresolved https://<tenantAuthorizationHostname> authorization URL; Workday parameterises
+    the host per tenant rather than publishing a concrete authorization server.
+  token_endpoint: https://{tenantHostname}/ccx/oauth2/{tenant}/token
+  gateway: Extend and Orchestrate calls go through the regional API Gateway, which handles authentication and routes
+    to the tenant - https://developer.workday.com/doc/dlh1653340161856.md
+  authorization: A valid token is not sufficient. Workday enforces security domains on the integration system user;
+    a 403 "Not Authorized" means the domain has not been granted, and subresource access also requires permission
+    on the parent resource.
+  soap: The Benefits_Administration web service authenticates with WS-Security UsernameToken or OAuth - https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md
+  discovery: No /.well-known/openid-configuration or /.well-known/oauth-authorization-server document is served
+    on any Workday host probed 2026-09-17.

@@ -1,0 +1,77 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/benefitPartner_v1_changeLog.json
+  and .../benefitEnrollmentEventOfferings_v1_changeLog.json - the per-service change logs Workday publishes
+  alongside each REST contract
+scheme:
+  releases: 'Workday release train, YYYY.WW (calendar year and week), e.g. 2026.33'
+  api_versions: Per-service integer versions in the path (v1, v5, v7 ...)
+  format: >-
+    Each change log is itself an OpenAPI-shaped document whose paths are keyed release/endpoint and whose tags
+    carry the release date, so a diff is machine-readable per operation.
+current:
+  - api: Workday Benefit Enrollment Event Offerings API
+    version: v1
+    spec_stamp: '20260905'
+    confidence_level: Production
+    changelog: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - api: Workday Benefit Partner API
+    version: v1
+    spec_stamp: '20260905'
+    confidence_level: not stated by Workday for this service
+    changelog: changelog/workday-benefits-benefit-partner-changelog.json
+  - api: Workday Benefits Administration Web Service (SOAP)
+    version: v47.0
+    changelog: https://developer.workday.com/doc/GUID-9fb15b62-550a-47ad-b113-27743dcc761f-enHYPHENus.md
+    note: SOAP version changes are viewed through the Workday API Change Log report inside a tenant.
+entries:
+  - release: '2026.33'
+    date: '2026-08-17'
+    api: Workday Benefit Enrollment Event Offerings API
+    breaking: false
+    changes:
+      - 'Modified this existing endpoint: GET /employeeEnrollmentEvent/{ID}'
+  - release: '2026.26'
+    date: '2026-06-30'
+    api: Workday Benefit Enrollment Event Offerings API
+    breaking: false
+    changes:
+      - 'Description changed: GET /employeeEnrollmentEvent'
+      - 'Description changed: GET /employeeEnrollmentEvent/{ID}'
+  - release: '2026.26'
+    date: '2026-06-30'
+    api: Workday Benefit Partner API
+    breaking: false
+    changes:
+      - 'Description changed: POST /programs'
+  - release: '2026.24'
+    date: '2026-06-15'
+    api: Workday Benefit Enrollment Event Offerings API
+    breaking: false
+    changes:
+      - 'Description changed: GET /employeeEnrollmentEvent'
+      - 'Description changed: GET /employeeEnrollmentEvent/{ID}'
+  - release: '2026.24'
+    date: '2026-06-15'
+    api: Workday Benefit Partner API
+    breaking: false
+    changes:
+      - 'Description changed: POST /programs'
+  - release: '2024.24'
+    date: '2024-06-15'
+    api: Workday Benefit Partner API
+    breaking: false
+    changes:
+      - 'Modified this existing endpoint: POST /programs'
+  - release: '2023.36'
+    date: '2023-09-09'
+    api: Workday Benefit Partner API
+    breaking: false
+    changes:
+      - 'POST /programs attachment status changed from None to "Contains attachment(s)"'
+note: >-
+  This is the complete published change history for both Benefits REST services, not a recent window - each
+  service's change log contains only these entries. No breaking change is recorded for either service since
+  the v1 contracts were published. Site-wide documentation release notes are separate:
+  https://developer.workday.com/doc/relnotes_dl.md

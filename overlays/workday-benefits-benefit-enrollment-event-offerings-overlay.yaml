@@ -1,0 +1,45 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Workday Benefit Enrollment Event Offerings API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-09-17'
+  method: generated
+  source: openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
+  note: >-
+    Captures API Evangelist additions to Workday's verbatim contract WITHOUT mutating it. The provider's spec
+    declares no operationId on either operation and no info.contact - both are recorded here as our
+    enhancement, not as something Workday publishes.
+extends: ../openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
+actions:
+  - target: $.info
+    update:
+      contact:
+        name: Workday Developer Site
+        url: https://developer.workday.com
+      x-api-evangelist-provider: workday-benefits
+      x-api-evangelist-harvested-from: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/benefitEnrollmentEventOfferings_v1_20260905_oas3.json
+      x-api-evangelist-harvested: '2026-09-17'
+  - target: $.paths['/employeeEnrollmentEvent'].get
+    update:
+      operationId: listEmployeeEnrollmentEvents
+      summary: List worker benefit enrollment events
+      x-consequence: read
+  - target: $.paths['/employeeEnrollmentEvent/{ID}'].get
+    update:
+      operationId: getEmployeeEnrollmentEvent
+      summary: Get one worker benefit enrollment event by Workday ID
+      x-consequence: read
+  - target: $.servers
+    update:
+      - url: https://{tenantHostname}/api/benefitEnrollmentEventOfferings/v1/{tenant}
+        description: >-
+          Integration base path form documented in Workday REST API Fundamentals; the provider spec ships the
+          gateway-relative form https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
+        variables:
+          tenantHostname:
+            default: wd2-impl-services1.workday.com
+            description: Your Workday tenant hostname
+          tenant:
+            default: tenant
+            description: Your Workday tenant name
