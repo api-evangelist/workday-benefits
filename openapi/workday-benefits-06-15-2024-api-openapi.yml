@@ -1,0 +1,142 @@
+openapi: 3.2.0
+info:
+  title: Changelog for benefitPartner 06/15/2024 API
+  description: 'The benefitPartner service enables third-party benefit providers to import benefit programs into Workday. Benefit programs can be announcements or other messages the customer wants the software partner to import into Workday. The program can include a title, description, links, and an image and appears as a card on the worker''s home screen.
+
+
+    Example: A wellness week event, Benefits and Pay Hub announcement, or hosted meeting for speaker with a financial or insurance advisor.'
+  version: v1
+servers:
+- url: https://<tenantHostname>/benefitPartner/v1
+tags:
+- name: 06/15/2024
+  description: Changes for v2024.24
+paths:
+  2024.24/programs:
+    post:
+      tags:
+      - 06/15/2024
+      summary: Modified this existing endpoint
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Creates a single benefit program instance with the specified data.
+
+        In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner
+
+        Secured by: Manage: Benefit Program Software Partner
+
+        Scope: Benefits
+
+
+        |
+
+        Creates a single benefit program instance with the specified data.
+
+        In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner
+
+
+        |
+
+
+        ## Security changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        None
+
+        |
+
+        Manage: Benefit Program Software Partner
+
+        |
+
+
+        ## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        None
+
+        |
+
+        Benefits
+
+        |
+
+
+        View this Endpoint: POST /programs'
+      operationId: post202424Programs
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

@@ -49,9 +49,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-benefits-benefit-enrollments-api-openapi.yml
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
   - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: PostmanCollection
     url: https://www.postman.com/workday/workspace/workday-rest-api
   - type: RateLimits
@@ -109,9 +111,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-benefits-benefit-events-api-openapi.yml
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
   - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: PostmanCollection
     url: https://www.postman.com/workday/workspace/workday-rest-api
   - type: RateLimits
@@ -169,9 +173,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-benefits-benefit-plans-api-openapi.yml
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
   - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: PostmanCollection
     url: https://www.postman.com/workday/workspace/workday-rest-api
   - type: RateLimits
@@ -229,9 +235,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-benefits-dependents-api-openapi.yml
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
   - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: PostmanCollection
     url: https://www.postman.com/workday/workspace/workday-rest-api
   - type: RateLimits
@@ -289,9 +297,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-benefits-employee-benefits-api-openapi.yml
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
   - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: PostmanCollection
     url: https://www.postman.com/workday/workspace/workday-rest-api
   - type: RateLimits
@@ -349,9 +359,11 @@ apis:
   - type: OpenAPI
     url: openapi/workday-benefits-time-off-plans-api-openapi.yml
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
   - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: PostmanCollection
     url: https://www.postman.com/workday/workspace/workday-rest-api
   - type: RateLimits
@@ -398,83 +410,12 @@ apis:
     url: rules/workday-benefits-spectral-rules.yml
   - type: Vocabulary
     url: vocabulary/workday-benefits-vocabulary.yml
-- aid: workday-benefits:workday-benefits-benefit-enrollment-event-offerings-api
-  name: Workday Benefit Enrollment Event Offerings API
-  description: The Benefit Enrollment Event Offerings REST API enables you to get worker benefit enrollment offerings
-    for a single and active benefit enrollment event. Production confidence level, v1, published by Workday in the
-    REST API Explorer service directory.
-  humanURL: https://developer.workday.com/rest-api-explorer
-  baseURL: https://{tenantHostname}/api/benefitEnrollmentEventOfferings/v1/{tenant}
-  tags:
-  - Benefits
-  - Benefit Enrollment
-  - Human Resources
-  - HCM
-  - Enrollment Events
-  tags_raw:
-  - Benefits
-  - Benefit Enrollment
-  - Human Resources
-  - Human Capital Management
-  - Enrollment Events
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-benefits-benefit-enrollment-event-offerings-openapi.json
-  - type: OpenAPI
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/benefitEnrollmentEventOfferings_v1_20260905_oas3.json
-    name: OpenAPI (provider-hosted)
-  - type: Overlay
-    url: overlays/workday-benefits-benefit-enrollment-event-offerings-overlay.yaml
-  - type: APIReference
-    url: https://developer.workday.com/rest-api-explorer
-  - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: ChangeLog
-    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
-    name: Service change log (provider-published)
-- aid: workday-benefits:workday-benefits-benefit-partner-api
-  name: Workday Benefit Partner API
-  description: The benefitPartner service enables third-party benefit providers to import benefit programs into
-    Workday. Benefit programs can be announcements or other messages the customer wants the software partner to
-    import into Workday, appearing as a card on the worker home screen.
-  humanURL: https://developer.workday.com/rest-api-explorer
-  baseURL: https://{tenantHostname}/api/benefitPartner/v1/{tenant}
-  tags:
-  - Benefits
-  - Benefit Partners
-  - Human Resources
-  - HCM
-  - Programs
-  tags_raw:
-  - Benefits
-  - Benefit Partners
-  - Human Resources
-  - Human Capital Management
-  - Programs
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-benefits-benefit-partner-openapi.json
-  - type: OpenAPI
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/benefitPartner_v1_20260905_oas3.json
-    name: OpenAPI (provider-hosted)
-  - type: Overlay
-    url: overlays/workday-benefits-benefit-partner-overlay.yaml
-  - type: APIReference
-    url: https://developer.workday.com/rest-api-explorer
-  - type: Documentation
-    url: https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: ChangeLog
-    url: changelog/workday-benefits-benefit-partner-changelog.json
-    name: Service change log (provider-published)
 - aid: workday-benefits:workday-benefits-benefits-administration-soap-api
   name: Workday Benefits Administration Web Service (SOAP)
-  description: 'The Benefits Administration Web Service contains operations that expose Workday Human Capital Management
-    Business Services benefits-related data: 47 SOAP operations covering benefit plans, elections, dependents, beneficiaries,
-    retirement savings, ACA 1095-C data, rates and benefit providers.'
+  description: >-
+    The Benefits Administration Web Service contains operations that expose Workday Human Capital Management
+    Business Services benefits-related data: 47 SOAP operations covering benefit plans, elections, dependents,
+    beneficiaries, retirement savings, ACA 1095-C data, rates and benefit providers.
   humanURL: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
   baseURL: https://{tenantHostname}/ccx/service/{tenant}/Benefits_Administration/v47.0
   tags:
@@ -493,14 +434,174 @@ apis:
   - type: WSDL
     url: wsdl/workday-benefits-benefits-administration-v47.wsdl
   - type: WSDL
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits_Administration/v47.0/Benefits_Administration.wsdl
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits_Administration/v47.0/Benefits_Administration.wsdl
     name: WSDL (provider-hosted)
   - type: Documentation
-    url: https://developer.workday.com/doc/GUID-43742c5c-4caf-436f-bdd5-94330d32288c-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-43742c5c-4caf-436f-bdd5-94330d32288c-enHYPHENus.md
   - type: APIReference
     url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
     name: Workday Web Services (WWS) Directory v47.0
+- aid: workday-benefits:workday-benefits-06-15-2024-api
+  name: Workday Benefits 06/15/2024 API
+  description: Changes for v2024.24
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - 06/15/2024
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-06-15-2024-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
+- aid: workday-benefits:workday-benefits-06-15-2026-api
+  name: Workday Benefits 06/15/2026 API
+  description: Changes for v2026.24
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - 06/15/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-06-15-2026-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
+- aid: workday-benefits:workday-benefits-06-30-2026-api
+  name: Workday Benefits 06/30/2026 API
+  description: Changes for v2026.26
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - 06/30/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-06-30-2026-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
+- aid: workday-benefits:workday-benefits-08-17-2026-api
+  name: Workday Benefits 08/17/2026 API
+  description: Changes for v2026.33
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - 08/17/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-08-17-2026-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
+- aid: workday-benefits:workday-benefits-09-09-2023-api
+  name: Workday Benefits 09/09/2023 API
+  description: Changes for v2023.36
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - 09/09/2023
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-09-09-2023-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
+- aid: workday-benefits:workday-benefits-employeeenrollmentevent-api
+  name: Workday Benefits Employee Enrollment Event API
+  description: Processing Worker's Latest Employee Enrollment Event
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - employeeEnrollmentEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-employeeenrollmentevent-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
+- aid: workday-benefits:workday-benefits-programs-api
+  name: Workday Benefits Programs API
+  description: Provides the ability to import benefits program cards into Workday.
+  humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - programs
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-benefits-programs-api-openapi.yml
+  - type: APIReference
+    url: https://developer.workday.com/rest-api-explorer
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json
+  - type: ChangeLog
+    url: changelog/workday-benefits-benefit-partner-changelog.json
 common:
+- type: Overlay
+  url: overlays/workday-benefits-benefit-enrollment-event-offerings-overlay.yaml
+- type: Overlay
+  url: overlays/workday-benefits-benefit-partner-overlay.yaml
 - type: Website
   url: https://www.workday.com/
 - type: PostmanWorkspace

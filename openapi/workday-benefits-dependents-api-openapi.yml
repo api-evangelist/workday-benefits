@@ -128,57 +128,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DependentsResponse:
-      title: Dependents Response
-      description: Paginated response containing a list of dependents
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of dependents
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dependent'
-      required:
-      - total
-      - data
-    DependentRequest:
-      title: Dependent Request
-      description: Request to add a new dependent or beneficiary
-      type: object
-      properties:
-        employeeId:
-          type: string
-          description: Associated employee identifier
-        firstName:
-          type: string
-          description: Dependent first name
-        lastName:
-          type: string
-          description: Dependent last name
-        relationship:
-          type: string
-          enum:
-          - SPOUSE
-          - DOMESTIC_PARTNER
-          - CHILD
-          - STEP_CHILD
-          - FOSTER_CHILD
-          description: Relationship to employee
-        dateOfBirth:
-          type: string
-          format: date
-          description: Dependent date of birth
-        socialSecurityNumber:
-          type: string
-          description: Social security number (for US dependents)
-      required:
-      - employeeId
-      - firstName
-      - lastName
-      - relationship
-      - dateOfBirth
     Dependent:
       title: Dependent
       description: An employee dependent or beneficiary
@@ -241,7 +190,67 @@ components:
       required:
       - error
       - message
+    DependentRequest:
+      title: Dependent Request
+      description: Request to add a new dependent or beneficiary
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        firstName:
+          type: string
+          description: Dependent first name
+        lastName:
+          type: string
+          description: Dependent last name
+        relationship:
+          type: string
+          enum:
+          - SPOUSE
+          - DOMESTIC_PARTNER
+          - CHILD
+          - STEP_CHILD
+          - FOSTER_CHILD
+          description: Relationship to employee
+        dateOfBirth:
+          type: string
+          format: date
+          description: Dependent date of birth
+        socialSecurityNumber:
+          type: string
+          description: Social security number (for US dependents)
+      required:
+      - employeeId
+      - firstName
+      - lastName
+      - relationship
+      - dateOfBirth
+    DependentsResponse:
+      title: Dependents Response
+      description: Paginated response containing a list of dependents
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of dependents
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependent'
+      required:
+      - total
+      - data
   responses:
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
     BadRequest:
       description: Invalid request parameters or body
       content:
@@ -260,15 +269,6 @@ components:
           example:
             error: UNAUTHORIZED
             message: Valid authentication credentials are required
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2

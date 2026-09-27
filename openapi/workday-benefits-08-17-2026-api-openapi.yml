@@ -1,0 +1,55 @@
+openapi: 3.2.0
+info:
+  title: Changelog for benefitEnrollmentEventOfferings 08/17/2026 API
+  description: The Benefit Enrollment Event Offerings REST API enable you to get worker benefit enrollment offerings for a single and active benefit enrollment event.
+  version: v1
+servers:
+- url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
+tags:
+- name: 08/17/2026
+  description: Changes for v2026.33
+paths:
+  2026.33/employeeEnrollmentEvent/{ID}:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /employeeEnrollmentEvent/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_employeeEnrollmentEvent'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: get202633EmployeeEnrollmentEventByID
+      x-operation-id-source: derived
+components:
+  schemas:
+    ResourceIdPathValue_employeeEnrollmentEvent:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+      exampleSetFlag: true
+      types:
+      - string
+  securitySchemes:
+    OAuth2:
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

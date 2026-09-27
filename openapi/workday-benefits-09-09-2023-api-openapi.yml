@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: Changelog for benefitPartner 09/09/2023 API
+  description: 'The benefitPartner service enables third-party benefit providers to import benefit programs into Workday. Benefit programs can be announcements or other messages the customer wants the software partner to import into Workday. The program can include a title, description, links, and an image and appears as a card on the worker''s home screen.
+
+
+    Example: A wellness week event, Benefits and Pay Hub announcement, or hosted meeting for speaker with a financial or insurance advisor.'
+  version: v1
+servers:
+- url: https://<tenantHostname>/benefitPartner/v1
+tags:
+- name: 09/09/2023
+  description: Changes for v2023.36
+paths:
+  2023.36/programs:
+    post:
+      tags:
+      - 09/09/2023
+      summary: Attachments Status has been changed
+      description: '## Attachments Status changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Contains attachment(s)
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: POST /programs'
+      operationId: post202336Programs
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

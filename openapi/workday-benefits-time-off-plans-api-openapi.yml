@@ -71,21 +71,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    TimeOffPlansResponse:
-      title: Time Off Plans Response
-      description: Paginated response containing a list of time off plans
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
       type: object
       properties:
-        total:
-          type: integer
-          description: Total number of time off plans
-        data:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/TimeOffPlan'
+            type: string
+          description: Additional error details
       required:
-      - total
-      - data
+      - error
+      - message
     TimeOffPlan:
       title: Time Off Plan
       description: A Workday time off or leave benefit plan
@@ -132,35 +136,22 @@ components:
       - name
       - type
       - status
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
+    TimeOffPlansResponse:
+      title: Time Off Plans Response
+      description: Paginated response containing a list of time off plans
       type: object
       properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
+        total:
+          type: integer
+          description: Total number of time off plans
+        data:
           type: array
           items:
-            type: string
-          description: Additional error details
+            $ref: '#/components/schemas/TimeOffPlan'
       required:
-      - error
-      - message
+      - total
+      - data
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
     Forbidden:
       description: Insufficient permissions to access the resource
       content:
@@ -170,6 +161,15 @@ components:
           example:
             error: FORBIDDEN
             message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
   securitySchemes:
     oauth2:
       type: oauth2

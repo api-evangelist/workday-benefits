@@ -1,0 +1,149 @@
+openapi: 3.2.0
+info:
+  title: Workday Benefits 06/15/2026 API
+  version: v1
+  description: 'Operations tagged 06/15/2026 across 2 of this provider''s published API definitions: workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
+- url: https://<tenantHostname>/benefitPartner/v1
+tags:
+- name: 06/15/2026
+  description: Changes for v2026.24
+paths:
+  2026.24/employeeEnrollmentEvent:
+    get:
+      tags:
+      - 06/15/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves the latest benefit enrollment event of the processing worker.
+
+
+        |
+
+        Retrieves the latest benefit enrollment event of the processing worker.
+
+        Secured by: Self-Service: Benefit Elections, Self-Service: Retirement Savings
+
+        Scope: Benefits
+
+
+        |
+
+
+        View this Endpoint: GET /employeeEnrollmentEvent'
+      operationId: get202624EmployeeEnrollmentEvent
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
+  2026.24/employeeEnrollmentEvent/{ID}:
+    get:
+      tags:
+      - 06/15/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves the latest benefit enrollment event of the processing worker. This resource will return one event that is New, In Progress or the latest finalized.
+
+
+        |
+
+        Retrieves the latest benefit enrollment event of the processing worker. This resource will return one event that is New, In Progress or the latest finalized.
+
+        Secured by: Self-Service: Benefit Elections, Self-Service: Retirement Savings
+
+        Scope: Benefits
+
+
+        |
+
+
+        View this Endpoint: GET /employeeEnrollmentEvent/{ID}'
+      operationId: get202624EmployeeEnrollmentEventByID
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
+  2026.24/programs:
+    post:
+      tags:
+      - 06/15/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Creates a single benefit program instance with the specified data.
+
+        In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner
+
+
+        |
+
+        Creates a single benefit program instance with the specified data.
+
+        In the request body, specify at least these required fields: url, startDate, endDate, description, title, urlAlias, and programPartner
+
+        Secured by: Manage: Benefit Program Software Partner
+
+        Scope: Benefits
+
+
+        |
+
+
+        View this Endpoint: POST /programs'
+      operationId: post202624Programs
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/benefitPartner/v1
+components:
+  securitySchemes:
+    OAuth2:
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}
+x-refined-from:
+- workday-benefits-benefit-enrollment-event-offerings-changelog.json
+- workday-benefits-benefit-partner-changelog.json
