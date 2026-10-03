@@ -34,11 +34,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ResourceIdPathValue_employeeEnrollmentEvent:
-      exampleSetFlag: false
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-        exampleSetFlag: false
     WorkdayId:
       pattern: ^[0-9a-f]{32}$
       type: string
@@ -47,6 +42,11 @@ components:
       exampleSetFlag: true
       types:
       - string
+    ResourceIdPathValue_employeeEnrollmentEvent:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
   securitySchemes:
     OAuth2:
       flows:

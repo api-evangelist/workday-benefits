@@ -152,15 +152,6 @@ components:
       - total
       - data
   responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
     Unauthorized:
       description: Authentication credentials are missing or invalid
       content:
@@ -170,6 +161,15 @@ components:
           example:
             error: UNAUTHORIZED
             message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2

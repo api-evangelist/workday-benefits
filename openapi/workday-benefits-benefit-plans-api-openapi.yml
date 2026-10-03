@@ -123,6 +123,21 @@ paths:
         dispatcherRules: planId
 components:
   schemas:
+    BenefitPlansResponse:
+      title: Benefit Plans Response
+      description: Paginated response containing a list of benefit plans
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of benefit plans
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitPlan'
+      required:
+      - total
+      - data
     ErrorResponse:
       title: Error Response
       description: Standard error response
@@ -142,21 +157,6 @@ components:
       required:
       - error
       - message
-    BenefitPlansResponse:
-      title: Benefit Plans Response
-      description: Paginated response containing a list of benefit plans
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of benefit plans
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BenefitPlan'
-      required:
-      - total
-      - data
     BenefitPlan:
       title: Benefit Plan
       description: A Workday benefit plan including health, dental, vision, life, or retirement benefits
@@ -217,24 +217,6 @@ components:
       - status
       - effectiveDate
   responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
     NotFound:
       description: The requested resource was not found
       content:
@@ -244,6 +226,24 @@ components:
           example:
             error: NOT_FOUND
             message: The requested resource does not exist
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2

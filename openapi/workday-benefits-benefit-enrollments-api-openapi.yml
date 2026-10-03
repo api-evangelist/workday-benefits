@@ -180,6 +180,40 @@ paths:
         dispatcherRules: enrollmentId
 components:
   schemas:
+    BenefitEnrollmentsResponse:
+      title: Benefit Enrollments Response
+      description: Paginated response containing a list of benefit enrollments
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of enrollments
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEnrollment'
+      required:
+      - total
+      - data
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
     BenefitEnrollmentRequest:
       title: Benefit Enrollment Request
       description: Request to create or update a benefit enrollment
@@ -272,50 +306,16 @@ components:
       - coverageLevel
       - effectiveDate
       - status
-    BenefitEnrollmentsResponse:
-      title: Benefit Enrollments Response
-      description: Paginated response containing a list of benefit enrollments
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of enrollments
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BenefitEnrollment'
-      required:
-      - total
-      - data
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
   responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
+    NotFound:
+      description: The requested resource was not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
+            error: NOT_FOUND
+            message: The requested resource does not exist
     BadRequest:
       description: Invalid request parameters or body
       content:
@@ -334,15 +334,15 @@ components:
           example:
             error: UNAUTHORIZED
             message: Valid authentication credentials are required
-    NotFound:
-      description: The requested resource was not found
+    Forbidden:
+      description: Insufficient permissions to access the resource
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2
