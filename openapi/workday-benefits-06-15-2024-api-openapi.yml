@@ -1,11 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for benefitPartner 06/15/2024 API
-  description: 'The benefitPartner service enables third-party benefit providers to import benefit programs into Workday. Benefit programs can be announcements or other messages the customer wants the software partner to import into Workday. The program can include a title, description, links, and an image and appears as a card on the worker''s home screen.
-
-
-    Example: A wellness week event, Benefits and Pay Hub announcement, or hosted meeting for speaker with a financial or insurance advisor.'
+  title: Workday Benefits 06/15/2024 API
   version: v1
+  description: 'Operations tagged 06/15/2024 across 2 of this provider''s published API definitions: workday-benefits-benefit-partner-changelog.json, workday-benefits-benefit-partner-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/benefitPartner/v1
 tags:
@@ -133,6 +130,8 @@ paths:
         View this Endpoint: POST /programs'
       operationId: post202424Programs
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/benefitPartner/v1
 components:
   securitySchemes:
     OAuth2:
@@ -140,3 +139,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-benefits-benefit-partner-changelog.json
+- workday-benefits-benefit-partner-changelog.json

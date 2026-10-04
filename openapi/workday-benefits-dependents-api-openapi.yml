@@ -128,76 +128,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DependentsResponse:
-      title: Dependents Response
-      description: Paginated response containing a list of dependents
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of dependents
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dependent'
-      required:
-      - total
-      - data
-    DependentRequest:
-      title: Dependent Request
-      description: Request to add a new dependent or beneficiary
-      type: object
-      properties:
-        employeeId:
-          type: string
-          description: Associated employee identifier
-        firstName:
-          type: string
-          description: Dependent first name
-        lastName:
-          type: string
-          description: Dependent last name
-        relationship:
-          type: string
-          enum:
-          - SPOUSE
-          - DOMESTIC_PARTNER
-          - CHILD
-          - STEP_CHILD
-          - FOSTER_CHILD
-          description: Relationship to employee
-        dateOfBirth:
-          type: string
-          format: date
-          description: Dependent date of birth
-        socialSecurityNumber:
-          type: string
-          description: Social security number (for US dependents)
-      required:
-      - employeeId
-      - firstName
-      - lastName
-      - relationship
-      - dateOfBirth
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
     Dependent:
       title: Dependent
       description: An employee dependent or beneficiary
@@ -241,6 +171,76 @@ components:
       - lastName
       - relationship
       - dateOfBirth
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    DependentRequest:
+      title: Dependent Request
+      description: Request to add a new dependent or beneficiary
+      type: object
+      properties:
+        employeeId:
+          type: string
+          description: Associated employee identifier
+        firstName:
+          type: string
+          description: Dependent first name
+        lastName:
+          type: string
+          description: Dependent last name
+        relationship:
+          type: string
+          enum:
+          - SPOUSE
+          - DOMESTIC_PARTNER
+          - CHILD
+          - STEP_CHILD
+          - FOSTER_CHILD
+          description: Relationship to employee
+        dateOfBirth:
+          type: string
+          format: date
+          description: Dependent date of birth
+        socialSecurityNumber:
+          type: string
+          description: Social security number (for US dependents)
+      required:
+      - employeeId
+      - firstName
+      - lastName
+      - relationship
+      - dateOfBirth
+    DependentsResponse:
+      title: Dependents Response
+      description: Paginated response containing a list of dependents
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of dependents
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependent'
+      required:
+      - total
+      - data
   responses:
     BadRequest:
       description: Invalid request parameters or body
@@ -251,15 +251,6 @@ components:
           example:
             error: BAD_REQUEST
             message: Invalid request body
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
     Forbidden:
       description: Insufficient permissions to access the resource
       content:
@@ -269,6 +260,15 @@ components:
           example:
             error: FORBIDDEN
             message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
   securitySchemes:
     oauth2:
       type: oauth2

@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Workday Benefits 06/30/2026 API
   version: v1
-  description: 'Operations tagged 06/30/2026 across 2 of this provider''s published API definitions: workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged 06/30/2026 across 4 of this provider''s published API definitions: workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json, workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
 - url: https://<tenantHostname>/benefitPartner/v1
@@ -145,5 +145,7 @@ components:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
 x-refined-from:
+- workday-benefits-benefit-enrollment-event-offerings-changelog.json
+- workday-benefits-benefit-partner-changelog.json
 - workday-benefits-benefit-enrollment-event-offerings-changelog.json
 - workday-benefits-benefit-partner-changelog.json

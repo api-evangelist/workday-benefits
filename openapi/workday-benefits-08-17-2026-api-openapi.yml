@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for benefitEnrollmentEventOfferings 08/17/2026 API
-  description: The Benefit Enrollment Event Offerings REST API enable you to get worker benefit enrollment offerings for a single and active benefit enrollment event.
+  title: Workday Benefits 08/17/2026 API
   version: v1
+  description: 'Operations tagged 08/17/2026 across 2 of this provider''s published API definitions: workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-enrollment-event-offerings-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
 tags:
@@ -32,8 +32,15 @@ paths:
             valueSetFlag: true
       operationId: get202633EmployeeEnrollmentEventByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/benefitEnrollmentEventOfferings/v1
 components:
   schemas:
+    ResourceIdPathValue_employeeEnrollmentEvent:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
     WorkdayId:
       pattern: ^[0-9a-f]{32}$
       type: string
@@ -42,14 +49,12 @@ components:
       exampleSetFlag: true
       types:
       - string
-    ResourceIdPathValue_employeeEnrollmentEvent:
-      exampleSetFlag: false
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-        exampleSetFlag: false
   securitySchemes:
     OAuth2:
       flows:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-benefits-benefit-enrollment-event-offerings-changelog.json
+- workday-benefits-benefit-enrollment-event-offerings-changelog.json
