@@ -558,7 +558,8 @@ apis:
   description: Processing Worker's Latest Employee Enrollment Event
   humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/service
-  tags:
+  tags: []
+  tags_raw:
   - employeeEnrollmentEvent
   properties:
   - type: OpenAPI
@@ -581,6 +582,8 @@ apis:
   humanURL: https://www.workday.com/en-us/products/human-capital-management/benefits.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/service
   tags:
+  - Programs
+  tags_raw:
   - programs
   properties:
   - type: OpenAPI

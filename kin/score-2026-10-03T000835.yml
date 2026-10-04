@@ -1,25 +1,23 @@
-# Kin Score artifact — workday-benefits — 2026-08-25T154045
+# Kin Score artifact — workday-benefits — 2026-10-03T000835
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: workday-benefits
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T154045
-  composite: 27.0
-  band: thin
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T000835
+  composite: 52.7
+  band: developing
   facets:
-    discoverability: 55.6
-    contract_quality: 28.9
-    governance: 28.8
-    operational_transparency: 7.9
-    developer_ergonomics: 14.3
-    commercial_clarity: 34.2
-    contract_governance: 28.8
-    access_clarity: 34.2
+    discoverability: 73.2
+    contract_quality: 45.1
+    contract_governance: 31.8
+    operational_transparency: 47.4
+    developer_ergonomics: 54.2
+    access_clarity: 44.7
   agent_readiness:
-    score: 27.7
-    band: agent-aware
+    score: 34.4
+    band: agent-ready
     dimensions:
       spec_presence: true
       agentic_access: derived
@@ -27,11 +25,11 @@ kin_score:
       mcp_server: false
       auth_clarity: negotiable
       idempotency: false
-      error_semantics: false
+      error_semantics: verified
       openapi_examples: verified
       rate_limit_signal: documented
       event_surface_described: false
-      agent_skills: false
+      agent_skills: derived
       well_known_catalog: false
       consent_identity: false
       agent_card: false
@@ -41,13 +39,18 @@ kin_score:
       dynamic_client_registration: false
       agentic_commerce: false
   regulatory:
-    applies: false
-    undetermined: true
-    note: provider carries no tags; regime could not be determined
+    applies: true
+    regime: Employment & Payroll
+    regime_id: employment_payroll
+    score: 45.1
+    matched_via: tags
   provenance:
+    mcp: derived
+    skills: derived
     agentic_access: derived
+    conformance: derived
     contracts:
-      total: 6
-      derived: 6
-      coverage: 100.0
-      callable: 100.0
+      total: 14
+      derived: 7
+      coverage: 50.0
+      callable: 50.0
