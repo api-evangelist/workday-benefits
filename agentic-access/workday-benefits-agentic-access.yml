@@ -1,22 +1,44 @@
-generated: '2026-07-15'
+generated: '2026-10-03'
 method: generated
-source: openapi/workday-benefits-openapi.yml
+source: openapi/workday-benefits-06-15-2024-api-openapi.yml, openapi/workday-benefits-06-15-2026-api-openapi.yml,
+  openapi/workday-benefits-06-30-2026-api-openapi.yml, openapi/workday-benefits-08-17-2026-api-openapi.yml,
+  openapi/workday-benefits-09-09-2023-api-openapi.yml, openapi/workday-benefits-benefit-enrollments-api-openapi.yml,
+  openapi/workday-benefits-benefit-events-api-openapi.yml, openapi/workday-benefits-benefit-plans-api-openapi.yml,
+  openapi/workday-benefits-dependents-api-openapi.yml, openapi/workday-benefits-employee-benefits-api-openapi.yml,
+  openapi/workday-benefits-employeeenrollmentevent-api-openapi.yml, openapi/workday-benefits-programs-api-openapi.yml,
+  openapi/workday-benefits-time-off-plans-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 10
+  operations: 22
   by_action_class:
-    connected: 8
-    acting: 2
+    acting: 7
+    connected: 15
   by_consequence:
-    read: 8
-    write: 2
+    write: 7
+    read: 15
   human_in_the_loop_required: 0
 operations:
-- path: /benefitPlans
+- path: 2024.24/programs
+  method: post
+  operationId: post202424Programs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/employeeEnrollmentEvent
   method: get
-  operationId: listBenefitPlans
+  operationId: get202624EmployeeEnrollmentEvent
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -24,9 +46,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /benefitPlans/{planId}
+- path: 2026.24/employeeEnrollmentEvent/{ID}
   method: get
-  operationId: getBenefitPlan
+  operationId: get202624EmployeeEnrollmentEventByID
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -34,6 +56,84 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: 2026.24/programs
+  method: post
+  operationId: post202624Programs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/employeeEnrollmentEvent
+  method: get
+  operationId: get202626EmployeeEnrollmentEvent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/employeeEnrollmentEvent/{ID}
+  method: get
+  operationId: get202626EmployeeEnrollmentEventByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/programs
+  method: post
+  operationId: post202626Programs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/employeeEnrollmentEvent/{ID}
+  method: get
+  operationId: get202633EmployeeEnrollmentEventByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2023.36/programs
+  method: post
+  operationId: post202336Programs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /benefitEnrollments
   method: get
   operationId: listBenefitEnrollments
@@ -70,6 +170,36 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /benefitEvents
+  method: get
+  operationId: listBenefitEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /benefitPlans
+  method: get
+  operationId: listBenefitPlans
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /benefitPlans/{planId}
+  method: get
+  operationId: getBenefitPlan
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /dependents
   method: get
   operationId: listDependents
@@ -96,29 +226,55 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /benefitEvents
-  method: get
-  operationId: listBenefitEvents
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /timeOffPlans
-  method: get
-  operationId: listTimeOffPlans
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /employees/{employeeId}/benefits
   method: get
   operationId: getEmployeeBenefits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employeeEnrollmentEvent
+  method: get
+  operationId: getEmployeeEnrollmentEvent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employeeEnrollmentEvent/{ID}
+  method: get
+  operationId: getEmployeeEnrollmentEventByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /programs
+  method: post
+  operationId: postPrograms
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /timeOffPlans
+  method: get
+  operationId: listTimeOffPlans
   x-agentic-access:
     action-class: connected
     consequence: read

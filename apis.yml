@@ -601,6 +601,8 @@ apis:
   - type: ChangeLog
     url: changelog/workday-benefits-benefit-partner-changelog.json
 common:
+- type: FinOps
+  url: finops/workday-benefits-finops.yml
 - type: Overlay
   url: overlays/workday-benefits-benefit-enrollment-event-offerings-overlay.yaml
 - type: Overlay
