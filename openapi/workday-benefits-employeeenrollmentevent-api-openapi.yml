@@ -168,46 +168,53 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    coverageLevel_4f42502ff6c510000ed6f1333f850001:
-      description: coverage Level
+    healthcareElectionsFromEnrollmentOffering_12efc4fddc4010001d8e4d466d7b0001:
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    enrollmentOfferingType_86947b85567410001bba474ce3f90000:
-      description: The type of the benefit plan, such as Medical, Dental, Vision.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    WorkdayId:
-      pattern: ^[0-9a-f]{32}$
-      type: string
-      description: Workday ID (32-character lowercase hexadecimal string).
-      example: a3f5b554007d20e98360015c5e6daf6
-    INSTANCE_MODEL_REFERENCE:
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
-          type: string
-          description: Workday Id or Reference Id of the instance.
-        descriptor:
-          type: string
-          description: The display name of the instance
-          readOnly: true
-        href:
-          type: string
-          description: A link to the instance
-          readOnly: true
-    retirementSavingsElectionsForEnrollmentOffering_86947b855674100011207aaa23530000:
-      allOf:
-      - $ref: '#/components/schemas/retirementSavingsElectionsForEnrollmentOffering_86947b855674100011980aa390a30000'
+      - $ref: '#/components/schemas/healthcareElectionsInEnrollmentOffering_12efc4fddc4010001bbe501350b30000'
       - type: object
         properties:
           id:
             type: string
-            description: The id for Retirement Savings Election
+            description: The id for Health Care Election
+    knowledgeBaseArticleID_3e986c16c4f1100017d3c89d0ede0000:
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Knowledge Base Article
+    dependentElectionView_bb9c89eab9d6100021d0afa20a5e0000:
+      allOf:
+      - type: object
+        properties:
+          dependent:
+            $ref: '#/components/schemas/dependent_bb9c89eab9d6100021d0b03bd5010000'
+          providerID:
+            type: string
+            description: The Provider ID selected for the dependent on the health care election.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          dependentRelationship:
+            $ref: '#/components/schemas/dependentRelationship_bb9c89eab9d6100021d0b03bd5010002'
+          couldBeCoveredForHealthcareCoverageElsewhere:
+            type: boolean
+            description: Returns whether the Dependent could covered for health care elsewhere (relevant for spousal surcharge)
+            example: true
+            x-workday-type: Boolean
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          href:
+            type: string
+            description: A link to the instance
+          id:
+            type: string
+            description: The id for Dependent Election
     retirementSavingsElectionsForEnrollmentOffering_86947b855674100011980aa390a30000:
       allOf:
       - type: object
@@ -275,91 +282,14 @@ components:
           id:
             type: string
             description: The id for Retirement Savings Election
-    benefitPlanForElection_9234851c14b210002a58789b3fb20000:
-      description: Benefit Plan for Election
+    retirementSavingsElectionsForEnrollmentOffering_86947b855674100011207aaa23530000:
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    dependentRelationship_bb9c89eab9d6100021d0b03bd5010002:
-      description: Relationship Type of the Dependent Person for the Dependent Election
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    enrollmentOfferingsByType_4d0b89015192100018e31387450f0000:
-      allOf:
-      - type: object
-        properties:
-          retirementSavingsEnrollmentOfferings:
-            type: array
-            description: Retirement Savings Enrollment Offerings for Employee Enrollment Event
-            items:
-              $ref: '#/components/schemas/retirementSavingsEnrollmentOfferings_bb9c89eab9d6100025935561ee690000'
-            x-workday-type: Multi-instance
-          healthcareEnrollmentOfferings:
-            type: array
-            description: Healthcare Enrollment Offerings for Employee Enrollment Event
-            items:
-              $ref: '#/components/schemas/healthcareEnrollmentOfferings_4d0b8901519210001cbee1efecdb0000'
-            x-workday-type: Multi-instance
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: Workday Id or Reference Id of the instance.
-    healthcareCoverageOptions_4f42502ff6c510000ed6f1333f850000:
-      allOf:
-      - type: object
-        properties:
-          coverageLevel:
-            $ref: '#/components/schemas/coverageLevel_4f42502ff6c510000ed6f1333f850001'
-          employeeCost:
-            type: string
-            description: Employee Cost
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-    beneficiaryAllocation_86947b85567410001c20970c1cc90000:
-      allOf:
-      - $ref: '#/components/schemas/beneficiaryAllocation_86947b85567410001c8e5f2717520000'
+      - $ref: '#/components/schemas/retirementSavingsElectionsForEnrollmentOffering_86947b855674100011980aa390a30000'
       - type: object
         properties:
           id:
             type: string
-            description: The id for Beneficiary Allocation
-    dependentElectionView_bb9c89eab9d6100021d0afa20a5e0000:
-      allOf:
-      - type: object
-        properties:
-          dependent:
-            $ref: '#/components/schemas/dependent_bb9c89eab9d6100021d0b03bd5010000'
-          providerID:
-            type: string
-            description: The Provider ID selected for the dependent on the health care election.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-          dependentRelationship:
-            $ref: '#/components/schemas/dependentRelationship_bb9c89eab9d6100021d0b03bd5010002'
-          couldBeCoveredForHealthcareCoverageElsewhere:
-            type: boolean
-            description: Returns whether the Dependent could covered for health care elsewhere (relevant for spousal surcharge)
-            example: true
-            x-workday-type: Boolean
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          href:
-            type: string
-            description: A link to the instance
-          id:
-            type: string
-            description: The id for Dependent Election
-    enrollmentOfferingType_12efc4fddc4010001bbe501350b30002:
-      description: The type of the benefit plan, such as Medical, Dental, Vision.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
+            description: The id for Retirement Savings Election
     beneficiaryAllocation_86947b85567410001c8e5f2717520000:
       allOf:
       - type: object
@@ -414,15 +344,21 @@ components:
         internalMessage:
           type: string
           description: Internal message providing additional context for the validation (e.g. representation content validation details).
-    retirementSavingsElections_86947b855674100011207a1074c40000:
+    enrollmentOfferingsByType_4d0b89015192100018e31387450f0000:
       allOf:
       - type: object
         properties:
-          retirementSavingsElectionsForEnrollmentOffering:
+          retirementSavingsEnrollmentOfferings:
             type: array
-            description: Retirement Savings Elections For Enrollment Offering
+            description: Retirement Savings Enrollment Offerings for Employee Enrollment Event
             items:
-              $ref: '#/components/schemas/retirementSavingsElectionsForEnrollmentOffering_86947b855674100011207aaa23530000'
+              $ref: '#/components/schemas/retirementSavingsEnrollmentOfferings_bb9c89eab9d6100025935561ee690000'
+            x-workday-type: Multi-instance
+          healthcareEnrollmentOfferings:
+            type: array
+            description: Healthcare Enrollment Offerings for Employee Enrollment Event
+            items:
+              $ref: '#/components/schemas/healthcareEnrollmentOfferings_4d0b8901519210001cbee1efecdb0000'
             x-workday-type: Multi-instance
           descriptor:
             type: string
@@ -430,7 +366,12 @@ components:
             example: Lorem ipsum dolor sit ame
           id:
             type: string
-            description: The id for Enrollment Offering
+            description: Workday Id or Reference Id of the instance.
+    benefitPlanForElection_9234851c14b210002a58789b3fb20000:
+      description: Benefit Plan for Election
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
     VALIDATION_ERROR_MODEL_REFERENCE:
       allOf:
       - required:
@@ -453,16 +394,8 @@ components:
           id:
             type: string
             description: The id for Enrollment Offering
-    healthcareElectionsFromEnrollmentOffering_12efc4fddc4010001d8e4d466d7b0001:
-      allOf:
-      - $ref: '#/components/schemas/healthcareElectionsInEnrollmentOffering_12efc4fddc4010001bbe501350b30000'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Health Care Election
-    dependent_bb9c89eab9d6100021d0b03bd5010000:
-      description: Returns the Person for the Dependent Election
+    enrollmentOfferingType_86947b85567410001bba474ce3f90000:
+      description: The type of the benefit plan, such as Medical, Dental, Vision.
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
@@ -474,22 +407,22 @@ components:
           id:
             type: string
             description: The id for Enrollment Offering
-    ResourceIdPathValue_employeeEnrollmentEvent:
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-    healthcareCoverageTarget_57271b00461a10001bf1eb601a2b0000:
-      description: The health care coverage target selected for the health care election.  Examples include EE Only, EE + 1 dependent, and EE + 2 or more dependents.
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+    healthcareCoverageOptions_4f42502ff6c510000ed6f1333f850000:
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    kbArticleFromBenefitElection_3e986c16c4f110001788a2a7e3c90000:
-      allOf:
-      - $ref: '#/components/schemas/knowledgeBaseArticleID_3e986c16c4f1100017d3c89d0ede0000'
       - type: object
         properties:
-          id:
+          coverageLevel:
+            $ref: '#/components/schemas/coverageLevel_4f42502ff6c510000ed6f1333f850001'
+          employeeCost:
             type: string
-            description: The id for Knowledge Base Article
+            description: Employee Cost
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
     dependentElections_bb9c89eab9d61000101ef432e76c0000:
       allOf:
       - $ref: '#/components/schemas/dependentElectionView_bb9c89eab9d6100021d0afa20a5e0000'
@@ -498,11 +431,6 @@ components:
           id:
             type: string
             description: The id for Dependent Election
-    benefitPlanCurrency_9234851c14b21000284617a46c4b0002:
-      description: Benefit Plan Currency
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
     healthcareElectionsInEnrollmentOffering_12efc4fddc4010001bbe501350b30000:
       allOf:
       - type: object
@@ -578,32 +506,24 @@ components:
           id:
             type: string
             description: The id for Health Care Election
-    planName_86947b855674100011980b4952990000:
-      description: The name of the benefit plan the \~worker\~ selects for the enrollment election.
+    coverageLevel_4f42502ff6c510000ed6f1333f850001:
+      description: coverage Level
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    knowledgeBaseArticleID_3e986c16c4f1100017d3c89d0ede0000:
-      allOf:
-      - type: object
-        properties:
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Knowledge Base Article
-    planFrequency_9234851c14b21000284617a46c4b0001:
-      description: Benefit Plan Frequency
+    benefitPlanCurrency_9234851c14b21000284617a46c4b0002:
+      description: Benefit Plan Currency
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    planFrequency_86947b85567410001c2b97213a490000:
-      description: The default time frequency associated to a benefit plan, such as Monthly or Semi-Monthly.
+    healthcareCoverageTarget_57271b00461a10001bf1eb601a2b0000:
+      description: The health care coverage target selected for the health care election.  Examples include EE Only, EE + 1 dependent, and EE + 2 or more dependents.
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
+    ResourceIdPathValue_employeeEnrollmentEvent:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
     healthcareElections_12efc4fddc4010001d8e4d466d7b0000:
       allOf:
       - type: object
@@ -621,6 +541,86 @@ components:
           id:
             type: string
             description: The id for Enrollment Offering
+    beneficiaryAllocation_86947b85567410001c20970c1cc90000:
+      allOf:
+      - $ref: '#/components/schemas/beneficiaryAllocation_86947b85567410001c8e5f2717520000'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Beneficiary Allocation
+    dependent_bb9c89eab9d6100021d0b03bd5010000:
+      description: Returns the Person for the Dependent Election
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    enrollmentOfferingType_12efc4fddc4010001bbe501350b30002:
+      description: The type of the benefit plan, such as Medical, Dental, Vision.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    planFrequency_86947b85567410001c2b97213a490000:
+      description: The default time frequency associated to a benefit plan, such as Monthly or Semi-Monthly.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    planName_86947b855674100011980b4952990000:
+      description: The name of the benefit plan the \~worker\~ selects for the enrollment election.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    retirementSavingsElections_86947b855674100011207a1074c40000:
+      allOf:
+      - type: object
+        properties:
+          retirementSavingsElectionsForEnrollmentOffering:
+            type: array
+            description: Retirement Savings Elections For Enrollment Offering
+            items:
+              $ref: '#/components/schemas/retirementSavingsElectionsForEnrollmentOffering_86947b855674100011207aaa23530000'
+            x-workday-type: Multi-instance
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Enrollment Offering
+    dependentRelationship_bb9c89eab9d6100021d0b03bd5010002:
+      description: Relationship Type of the Dependent Person for the Dependent Election
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    planFrequency_9234851c14b21000284617a46c4b0001:
+      description: Benefit Plan Frequency
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+    kbArticleFromBenefitElection_3e986c16c4f110001788a2a7e3c90000:
+      allOf:
+      - $ref: '#/components/schemas/knowledgeBaseArticleID_3e986c16c4f1100017d3c89d0ede0000'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Knowledge Base Article
   securitySchemes:
     OAuth2:
       type: oauth2

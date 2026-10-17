@@ -5,9 +5,7 @@
     "_original/workday-benefits-benefit-enrollment-event-offerings-openapi.json",
     "_original/workday-benefits-benefit-partner-changelog.json",
     "_original/workday-benefits-benefit-partner-openapi.json",
-    "_ae-authored/workday-benefits-openapi.yml",
-    "changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json",
-    "changelog/workday-benefits-benefit-partner-changelog.json"
+    "_ae-authored/workday-benefits-openapi.yml"
   ],
   "outputs": [
     "workday-benefits-06-15-2026-api-openapi.yml",
@@ -24,34 +22,26 @@
     "workday-benefits-employee-benefits-api-openapi.yml",
     "workday-benefits-time-off-plans-api-openapi.yml"
   ],
-  "archived": [
-    "archived changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json",
-    "archived changelog/workday-benefits-benefit-partner-changelog.json"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "2 archived document(s) dropped as subsets of other archived documents",
+    "4 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "discovered stray spec: changelog/workday-benefits-benefit-enrollment-event-offerings-changelog.json",
-    "discovered stray spec: changelog/workday-benefits-benefit-partner-changelog.json",
     "workday-benefits-benefit-enrollment-event-offerings-changelog.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-benefits-benefit-enrollment-event-offerings-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-benefits-benefit-partner-changelog.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-benefits-benefit-partner-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-benefits-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "workday-benefits-benefit-enrollment-event-offerings-changelog.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "workday-benefits-benefit-partner-changelog.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "tag '06/15/2026' spans 4 source specs (workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json, workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json): per-path servers applied",
-    "tag '06/30/2026' spans 4 source specs (workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json, workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json): per-path servers applied",
-    "tag '08/17/2026' spans 2 source specs (workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-enrollment-event-offerings-changelog.json): per-path servers applied",
-    "tag '06/15/2024' spans 2 source specs (workday-benefits-benefit-partner-changelog.json, workday-benefits-benefit-partner-changelog.json): per-path servers applied",
-    "tag '09/09/2023' spans 2 source specs (workday-benefits-benefit-partner-changelog.json, workday-benefits-benefit-partner-changelog.json): per-path servers applied",
+    "tag '06/15/2026' spans 2 source specs (workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json): per-path servers applied",
+    "tag '06/30/2026' spans 2 source specs (workday-benefits-benefit-enrollment-event-offerings-changelog.json, workday-benefits-benefit-partner-changelog.json): per-path servers applied",
     "apis.yml register: already-registered"
   ],
   "skipped": [
     "_original/workday-benefits-benefit-partner-v1-openapi.json: archived document superseded by a larger archived document",
+    "_original/workday-benefits-benefit-partner-changelog_2.json: archived document superseded by a larger archived document",
     "_original/workday-benefits-benefit-enrollment-event-offerings-v1-openapi.json: archived document superseded by a larger archived document",
+    "_original/workday-benefits-benefit-enrollment-event-offerings-changelog_2.json: archived document superseded by a larger archived document",
     "workday-benefits-06-15-2024-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "workday-benefits-06-15-2026-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "workday-benefits-06-30-2026-api-openapi.yml: previously refined output, superseded by openapi/_original/",

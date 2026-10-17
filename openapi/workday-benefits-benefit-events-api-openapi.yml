@@ -83,6 +83,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    BenefitEventsResponse:
+      title: Benefit Events Response
+      description: Paginated response containing a list of benefit events
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of benefit events
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BenefitEvent'
+      required:
+      - total
+      - data
     ErrorResponse:
       title: Error Response
       description: Standard error response
@@ -102,21 +117,6 @@ components:
       required:
       - error
       - message
-    BenefitEventsResponse:
-      title: Benefit Events Response
-      description: Paginated response containing a list of benefit events
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of benefit events
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BenefitEvent'
-      required:
-      - total
-      - data
     BenefitEvent:
       title: Benefit Event
       description: A qualifying life event or open enrollment period
@@ -167,15 +167,6 @@ components:
       - startDate
       - endDate
   responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
     Unauthorized:
       description: Authentication credentials are missing or invalid
       content:
@@ -185,6 +176,15 @@ components:
           example:
             error: UNAUTHORIZED
             message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2

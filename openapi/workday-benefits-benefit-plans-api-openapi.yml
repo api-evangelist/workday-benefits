@@ -122,7 +122,54 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: planId
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   schemas:
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
     BenefitPlan:
       title: Benefit Plan
       description: A Workday benefit plan including health, dental, vision, life, or retirement benefits
@@ -182,25 +229,6 @@ components:
       - type
       - status
       - effectiveDate
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
     BenefitPlansResponse:
       title: Benefit Plans Response
       description: Paginated response containing a list of benefit plans
@@ -216,34 +244,6 @@ components:
       required:
       - total
       - data
-  responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
   securitySchemes:
     oauth2:
       type: oauth2

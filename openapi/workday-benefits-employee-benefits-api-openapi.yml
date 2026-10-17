@@ -68,6 +68,34 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: employeeId
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   schemas:
     ErrorResponse:
       title: Error Response
@@ -131,34 +159,6 @@ components:
       - enrollments
       - totalEmployeePremium
       - currency
-  responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
   securitySchemes:
     oauth2:
       type: oauth2
