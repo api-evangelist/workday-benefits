@@ -1,4 +1,4 @@
-# Workday Benefits (workday-benefits)
+# Workday Benefits
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,82 +64,226 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-APIs for managing employee benefits, enrollments, and benefits administration in Workday.
+Workday Benefits covers the benefits administration surface of Workday Human Capital Management: benefit plan definitions, enrollment events and offerings, employee elections, dependents and beneficiaries, retirement savings plans, ACA reporting data, rates and benefit providers. Workday publishes machine-readable contracts for this surface in two shapes - production REST services (benefitEnrollmentEventOfferings v1 and benefitPartner v1, OpenAPI 3.0.1 in the Workday REST API Explorer directory) and the Benefits_Administration Workday Web Service, a 47-operation SOAP contract published as a public WSDL at version v47.0. Access is tenant-scoped and OAuth 2.0 only; there is no public sandbox and no public pricing for the API surface.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/workday-benefits/refs/heads/main/apis.yml)
+**Areas:** Benefits · Human Resources · HCM · Enterprise · Payroll · Employee Benefits · SOAP · OpenAPI
 
-## Timestamps
+## Workday Benefits on APIs.io
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+Everything profiled for Workday Benefits is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/workday-benefits/](https://apis.io/providers/workday-benefits/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (14)
 
-### Workday Benefits API
+- [Workday Benefits Benefit Enrollments API](https://apis.io/apis/workday-benefits/workday-benefits-benefit-enrollments-api/) — Manage employee benefit enrollments and elections
+- [Workday Benefits Benefit Events API](https://apis.io/apis/workday-benefits/workday-benefits-benefit-events-api/) — Manage benefit qualifying events and open enrollment
+- [Workday Benefits Benefit Plans API](https://apis.io/apis/workday-benefits/workday-benefits-benefit-plans-api/) — Manage benefit plan definitions and configurations
+- [Workday Benefits Dependents API](https://apis.io/apis/workday-benefits/workday-benefits-dependents-api/) — Manage employee dependents and beneficiaries
+- [Workday Benefits Employee Benefits API](https://apis.io/apis/workday-benefits/workday-benefits-employee-benefits-api/) — Manage individual employee benefit summaries and balances
+- [Workday Benefits Time Off Plans API](https://apis.io/apis/workday-benefits/workday-benefits-time-off-plans-api/) — Manage time off and leave benefit plans
+- [Workday Benefits Administration Web Service (SOAP)](https://apis.io/apis/workday-benefits/workday-benefits-benefits-administration-soap-api/) — The Benefits Administration Web Service contains operations that expose Workday Human Capital Management Business Services benefits-related data: 47 SOAP…
+- [Workday Benefits 06/15/2024 API](https://apis.io/apis/workday-benefits/workday-benefits-06-15-2024-api/) — Changes for v2024.24
+- [Workday Benefits 06/15/2026 API](https://apis.io/apis/workday-benefits/workday-benefits-06-15-2026-api/) — Changes for v2026.24
+- [Workday Benefits 06/30/2026 API](https://apis.io/apis/workday-benefits/workday-benefits-06-30-2026-api/) — Changes for v2026.26
+- [Workday Benefits 08/17/2026 API](https://apis.io/apis/workday-benefits/workday-benefits-08-17-2026-api/) — Changes for v2026.33
+- [Workday Benefits 09/09/2023 API](https://apis.io/apis/workday-benefits/workday-benefits-09-09-2023-api/) — Changes for v2023.36
+- [Workday Benefits Employee Enrollment Event API](https://apis.io/apis/workday-benefits/workday-benefits-employeeenrollmentevent-api/) — Processing Worker's Latest Employee Enrollment Event
+- [Workday Benefits Programs API](https://apis.io/apis/workday-benefits/workday-benefits-programs-api/) — Provides the ability to import benefits program cards into Workday.
 
-Comprehensive API for managing employee benefits including health insurance, retirement plans, time off, and other benefit programs.
+### Published properties
 
-- **Human URL:** [https://www.workday.com/en-us/products/human-capital-management/benefits.html](https://www.workday.com/en-us/products/human-capital-management/benefits.html)
-- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/service`
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags
+#### MCP servers (1)
 
-- Benefits
-- Employee Benefits
-- Enrollments
-- Health Insurance
-- Human Resources
-- Retirement
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [Workday Benefits MCP (candidate)](https://apis.io/servers/workday-benefits/workday-benefits-mcp-candidate/)
 
-- [Documentation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Get_Benefits.html)
-- [OpenAPI](https://community.workday.com/sites/default/files/file-hosting/productionapi/Benefits/v40.2/Benefits.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w)
-- [Postman  Collection](https://www.postman.com/workday/workspace/workday-rest-api)
-- [Rate Limits](https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/VNmXGO5eT8oGWtOQRPd46w)
-- [Changelog](https://community.workday.com/api-versions)
-- [Status Page](https://status.workday.com)
-- [Terms of Service](https://www.workday.com/en-us/legal.html)
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Workday Benefits Agentic Access](https://apis.io/agentic-access/workday-benefits/workday-benefits-agentic-access/)
+
+#### JSON Schema (7)
+
+The data models the API reads and writes.
+
+- [Benefit Enrollment](https://apis.io/schemas/workday-benefits/workday-benefits-benefit-enrollment/)
+- [Benefit Enrollment Request](https://apis.io/schemas/workday-benefits/workday-benefits-benefit-enrollment-request/)
+- [Benefit Event](https://apis.io/schemas/workday-benefits/workday-benefits-benefit-event/)
+- [Benefit Plan](https://apis.io/schemas/workday-benefits/workday-benefits-benefit-plan/)
+- [Dependent](https://apis.io/schemas/workday-benefits/workday-benefits-dependent/)
+- [Employee Benefits](https://apis.io/schemas/workday-benefits/workday-benefits-employee-benefits/)
+- [Time Off Plan](https://apis.io/schemas/workday-benefits/workday-benefits-time-off-plan/)
+
+#### JSON Structure (7)
+
+Data models expressed in JSON Structure.
+
+- [Workday Benefits Benefit Enrollment Request Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-benefit-enrollment-request-structure/)
+- [Workday Benefits Benefit Enrollment Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-benefit-enrollment-structure/)
+- [Workday Benefits Benefit Event Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-benefit-event-structure/)
+- [Workday Benefits Benefit Plan Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-benefit-plan-structure/)
+- [Workday Benefits Dependent Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-dependent-structure/)
+- [Workday Benefits Employee Benefits Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-employee-benefits-structure/)
+- [Workday Benefits Time Off Plan Structure](https://apis.io/json-structure/workday-benefits/workday-benefits-time-off-plan-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Workday Benefits Context](https://apis.io/jsonld/workday-benefits/workday-benefits-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Workday Benefits Vocabulary](https://apis.io/vocabularies/workday-benefits/workday-benefits-vocabulary/)
+
+#### Examples (7)
+
+Example requests and responses.
+
+- [Workday Benefits Benefit Enrollment Example](https://apis.io/examples/workday-benefits/workday-benefits-benefit-enrollment-example/)
+- [Workday Benefits Benefit Enrollment Request Example](https://apis.io/examples/workday-benefits/workday-benefits-benefit-enrollment-request-example/)
+- [Workday Benefits Benefit Event Example](https://apis.io/examples/workday-benefits/workday-benefits-benefit-event-example/)
+- [Workday Benefits Benefit Plan Example](https://apis.io/examples/workday-benefits/workday-benefits-benefit-plan-example/)
+- [Workday Benefits Dependent Example](https://apis.io/examples/workday-benefits/workday-benefits-dependent-example/)
+- [Workday Benefits Employee Benefits Example](https://apis.io/examples/workday-benefits/workday-benefits-employee-benefits-example/)
+- [Workday Benefits Time Off Plan Example](https://apis.io/examples/workday-benefits/workday-benefits-time-off-plan-example/)
+
+#### Collections (13)
+
+Postman and Open Collection request collections.
+
+- [Workday Benefits API](https://apis.io/collections/workday-benefits/open-workday-benefits/)
+- [Workday Benefits Benefit Enrollments API](https://apis.io/collections/workday-benefits/open-workday-benefits-benefit-enrollments-api/)
+- [Workday Benefits Benefit Enrollments Benefit Events API](https://apis.io/collections/workday-benefits/open-workday-benefits-benefit-events-api/)
+- [Workday Benefits Benefit Enrollments Benefit Plans API](https://apis.io/collections/workday-benefits/open-workday-benefits-benefit-plans-api/)
+- [Workday Benefits Benefit Enrollments Dependents API](https://apis.io/collections/workday-benefits/open-workday-benefits-dependents-api/)
+- [Workday Benefits Benefit Enrollments Employee Benefits API](https://apis.io/collections/workday-benefits/open-workday-benefits-employee-benefits-api/)
+- [Workday Benefits Benefit Enrollments Time Off Plans API](https://apis.io/collections/workday-benefits/open-workday-benefits-time-off-plans-api/)
+- [Workday Benefits Benefit Enrollments API](https://apis.io/collections/workday-benefits/postman-workday-benefits-benefit-enrollments-api/)
+- [Workday Benefits Benefit Enrollments Benefit Events API](https://apis.io/collections/workday-benefits/postman-workday-benefits-benefit-events-api/)
+- [Workday Benefits Benefit Enrollments Benefit Plans API](https://apis.io/collections/workday-benefits/postman-workday-benefits-benefit-plans-api/)
+- [Workday Benefits Benefit Enrollments Dependents API](https://apis.io/collections/workday-benefits/postman-workday-benefits-dependents-api/)
+- [Workday Benefits Benefit Enrollments Employee Benefits API](https://apis.io/collections/workday-benefits/postman-workday-benefits-employee-benefits-api/)
+- [Workday Benefits Benefit Enrollments Time Off Plans API](https://apis.io/collections/workday-benefits/postman-workday-benefits-time-off-plans-api/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Workday Benefits Benefit Enrollment Event Offerings Overlay](https://apis.io/overlays/workday-benefits/workday-benefits-benefit-enrollment-event-offerings-overlay/)
+- [Workday Benefits Benefit Partner Overlay](https://apis.io/overlays/workday-benefits/workday-benefits-benefit-partner-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Workday Benefits — jsonschema rules](https://apis.io/rules/workday-benefits/workday-benefits-jsonschema-spectral-rules/)
+- [Workday Benefits API Rules](https://apis.io/rules/workday-benefits/workday-benefits-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Workday Benefits Authentication](https://apis.io/security/workday-benefits/workday-benefits-authentication/)
+- [Workday Benefits Domain Security](https://apis.io/security/workday-benefits/workday-benefits-domain-security/)
+- [Workday Benefits Trust Center](https://apis.io/security/workday-benefits/workday-benefits-trust-center/)
+- [Workday Benefits Vulnerability Disclosure](https://apis.io/security/workday-benefits/workday-benefits-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Workday Benefits Scopes](https://apis.io/scopes/workday-benefits/workday-benefits-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Workday Benefits Plans Pricing](https://apis.io/plans/workday-benefits/workday-benefits-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Workday Benefits Rate Limits](https://apis.io/rate-limits/workday-benefits/workday-benefits-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Workday Benefits Finops](https://apis.io/finops/workday-benefits/workday-benefits-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.workday.com/)
+- [Documentation](https://developer.workday.com/doc/GUID-86d66a6b-5d1a-40e4-af1b-ba4859f5df5a-enHYPHENus.md)
+- [Getting started](https://developer.workday.com/doc/GUID-6c547385-848b-4005-ab2c-632f1d6b5688.md)
+- [API reference](https://developer.workday.com/rest-api-explorer)
 - [Support](https://community.workday.com/)
-- [OpenAPI](openapi/workday-benefits-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/workday-benefits.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/workday-benefits.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/workday-benefits-benefit-plan-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-benefits-benefit-enrollment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-benefits-benefit-enrollment-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-benefits-dependent-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-benefits-benefit-event-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-benefits-time-off-plan-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-benefits-employee-benefits-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/workday-benefits-benefit-plan-structure.json)
-- [JSON Structure](json-structure/workday-benefits-benefit-enrollment-structure.json)
-- [JSON Structure](json-structure/workday-benefits-benefit-enrollment-request-structure.json)
-- [JSON Structure](json-structure/workday-benefits-dependent-structure.json)
-- [JSON Structure](json-structure/workday-benefits-benefit-event-structure.json)
-- [JSON Structure](json-structure/workday-benefits-time-off-plan-structure.json)
-- [JSON Structure](json-structure/workday-benefits-employee-benefits-structure.json)
-- [JSON-LD](json-ld/workday-benefits-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/workday-benefits-spectral-rules.yml)
-- [Naftiko Capability -  Benefits  Administration](capabilities/benefits-administration.yaml)
-- [Naftiko Capability -  Benefits ( Shared)](capabilities/shared/benefits.yaml)
-- [Vocabulary](vocabulary/workday-benefits-vocabulary.yml)
-
-## Common Properties
-
-- [Getting Started](https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/_wTPrHlQFO6kuhPPQvXUdg)
-- [Developer  Portal](https://developer.workday.com)
-- [Authentication  Guide](https://doc.workday.com/reader/J1YvI9CYZUWl1U7_PSHyHA/bRN0dJVT1fKqLxCRjJCx6w)
-- [S D Ks](https://github.com/Workday)
 - [Blog](https://blog.workday.com/en-us/technology.html)
-- [Privacy Policy](https://www.workday.com/en-us/privacy.html)
-- [JSON-LD](json-ld/workday-benefits-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/workday-benefits-spectral-rules.yml)
-- [Naftiko Capability -  Benefits  Administration](capabilities/benefits-administration.yaml)
-- [Naftiko Capability -  Benefits ( Shared)](capabilities/shared/benefits.yaml)
-- [Vocabulary](vocabulary/workday-benefits-vocabulary.yml)
+- [Terms of service](https://www.workday.com/en-us/legal.html)
+- [Privacy policy](https://www.workday.com/en-us/privacy.html)
+- [GitHub](https://github.com/Workday)
+- [Status](https://status.workday.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 51.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 42.5 |
+| Contract governance | 31.8 |
+| Operational transparency | 47.4 |
+| Developer ergonomics | 54.2 |
+| Access clarity | 36.8 |
+
+**Agent readiness 34.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 45.1** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/workday-benefits/](https://apis.io/providers/workday-benefits/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Workday Benefits: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/workday-benefits/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
